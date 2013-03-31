@@ -1,0 +1,34 @@
+﻿@using FitnessRecipes.Helpers
+<div class="row">
+    <div class="small-8 large-8 columns" style="padding-top: 15px">
+        <h3 class="box_header">Om Fitness Oppskrifter
+        </h3>
+        <p>
+            Fitness Oppskrifter er utviklet etter et ønske om å samle sunne oppskrifter og muligheten til å sette sammen spennende dietter. Vi gir dere oversikt over næringsinnhold slik at man får full kontroll over sitt daglige forbruk.
+        </p>
+    </div>
+    <div class="small-4 large-4 columns" style="padding-top: 15px">
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div class="clearfix">
+                    <div class="header_left" style="width: 270px">
+                        <h3 class="box_header">Siste nyheter fra bloggere
+                        </h3>
+                        @Html.Partial("_RssFeed", RssReader.GetRssFeed().Take(3))
+                    </div>
+                    <div class="header_right">
+                        <a href="#" id="footer_recent_posts_prev" class="scrolling_list_control_left icon_small_arrow left_white">
+                        </a>
+                        <a href="#" id="footer_recent_posts_next" class="scrolling_list_control_right icon_small_arrow right_white">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+@*        <div class="row">
+            <div class="small-12 large-12 columns">
+                @Html.Action("LatestRecipes", "Base")
+            </div>
+        </div>*@
+    </div>
+</div>

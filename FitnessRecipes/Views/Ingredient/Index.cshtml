@@ -1,0 +1,35 @@
+﻿@using FitnessRecipes.Resources.Views;
+@model Dictionary<char, List<IngredientViewModel>>
+
+@{
+    ViewBag.Title = @Ingredients.Ingredients;
+    ViewBag.LinkHeader = ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<h2>@Ingredients.Ingredients</h2>
+
+
+<ul id="ulIngredients">
+    @foreach (var m in Model.Where(m => m.Value.Count > 0))
+    {
+        <li>
+            <h2>@m.Key</h2>
+        </li>
+        foreach (var item in m.Value)
+        {
+        <li>
+            @item.Name
+        </li>
+        }
+    }
+</ul>
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.columnizer.js"></script>
+    <script type="text/javascript">
+        $().ready(function() {
+            $("#ulIngredients").columnize({ columns: 3 });
+        });
+    </script>
+}

@@ -1,0 +1,1730 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="FitnessRecipiesModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="FitnessRecipiesModelStoreContainer">
+          <EntitySet Name="Author" EntityType="FitnessRecipiesModel.Store.Author" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Brand" EntityType="FitnessRecipiesModel.Store.Brand" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Comment" EntityType="FitnessRecipiesModel.Store.Comment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Diet" EntityType="FitnessRecipiesModel.Store.Diet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DietCategory" EntityType="FitnessRecipiesModel.Store.DietCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DietComment" EntityType="FitnessRecipiesModel.Store.DietComment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DietIngredient" EntityType="FitnessRecipiesModel.Store.DietIngredient" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DietMeal" EntityType="FitnessRecipiesModel.Store.DietMeal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Ingredient" EntityType="FitnessRecipiesModel.Store.Ingredient" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IngredientCategory" EntityType="FitnessRecipiesModel.Store.IngredientCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IngredientQuantity" EntityType="FitnessRecipiesModel.Store.IngredientQuantity" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Meal" EntityType="FitnessRecipiesModel.Store.Meal" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MealCategory" EntityType="FitnessRecipiesModel.Store.MealCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MealComment" EntityType="FitnessRecipiesModel.Store.MealComment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="MealIngredient" EntityType="FitnessRecipiesModel.Store.MealIngredient" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="QuantityType" EntityType="FitnessRecipiesModel.Store.QuantityType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Recipe" EntityType="FitnessRecipiesModel.Store.Recipe" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Role" EntityType="FitnessRecipiesModel.Store.Role" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="User" EntityType="FitnessRecipiesModel.Store.User" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserDiet" EntityType="FitnessRecipiesModel.Store.UserDiet" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserFavourite" EntityType="FitnessRecipiesModel.Store.UserFavourite" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Author_0" Association="FitnessRecipiesModel.Store.FK_Author_0">
+            <End Role="User" EntitySet="User" />
+            <End Role="Author" EntitySet="Author" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_1" Association="FitnessRecipiesModel.Store.FK_Category_1">
+            <End Role="MealCategory" EntitySet="MealCategory" />
+            <End Role="MealCategory1" EntitySet="MealCategory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_0" Association="FitnessRecipiesModel.Store.FK_Comment_0">
+            <End Role="User" EntitySet="User" />
+            <End Role="Comment" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_1" Association="FitnessRecipiesModel.Store.FK_Comment_1">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="Comment1" EntitySet="Comment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diet_0" Association="FitnessRecipiesModel.Store.FK_Diet_0">
+            <End Role="User" EntitySet="User" />
+            <End Role="Diet" EntitySet="Diet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diet_1" Association="FitnessRecipiesModel.Store.FK_Diet_1">
+            <End Role="DietCategory" EntitySet="DietCategory" />
+            <End Role="Diet" EntitySet="Diet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietComment_0" Association="FitnessRecipiesModel.Store.FK_DietComment_0">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="DietComment" EntitySet="DietComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietComment_1" Association="FitnessRecipiesModel.Store.FK_DietComment_1">
+            <End Role="Diet" EntitySet="Diet" />
+            <End Role="DietComment" EntitySet="DietComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietIngredient_0" Association="FitnessRecipiesModel.Store.FK_DietIngredient_0">
+            <End Role="Diet" EntitySet="Diet" />
+            <End Role="DietIngredient" EntitySet="DietIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietIngredient_1" Association="FitnessRecipiesModel.Store.FK_DietIngredient_1">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="DietIngredient" EntitySet="DietIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietIngredient_2" Association="FitnessRecipiesModel.Store.FK_DietIngredient_2">
+            <End Role="QuantityType" EntitySet="QuantityType" />
+            <End Role="DietIngredient" EntitySet="DietIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietMeal_0" Association="FitnessRecipiesModel.Store.FK_DietMeal_0">
+            <End Role="Diet" EntitySet="Diet" />
+            <End Role="DietMeal" EntitySet="DietMeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietMeal_1" Association="FitnessRecipiesModel.Store.FK_DietMeal_1">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="DietMeal" EntitySet="DietMeal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Food_1" Association="FitnessRecipiesModel.Store.FK_Food_1">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="Ingredient1" EntitySet="Ingredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Food_2" Association="FitnessRecipiesModel.Store.FK_Food_2">
+            <End Role="QuantityType" EntitySet="QuantityType" />
+            <End Role="Ingredient" EntitySet="Ingredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingredient_0" Association="FitnessRecipiesModel.Store.FK_Ingredient_0">
+            <End Role="IngredientCategory" EntitySet="IngredientCategory" />
+            <End Role="Ingredient" EntitySet="Ingredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingredient_1" Association="FitnessRecipiesModel.Store.FK_Ingredient_1">
+            <End Role="Brand" EntitySet="Brand" />
+            <End Role="Ingredient" EntitySet="Ingredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredientQuantity_0" Association="FitnessRecipiesModel.Store.FK_IngredientQuantity_0">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="IngredientQuantity" EntitySet="IngredientQuantity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredientQuantity_1" Association="FitnessRecipiesModel.Store.FK_IngredientQuantity_1">
+            <End Role="QuantityType" EntitySet="QuantityType" />
+            <End Role="IngredientQuantity" EntitySet="IngredientQuantity" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_0" Association="FitnessRecipiesModel.Store.FK_Meal_0">
+            <End Role="MealCategory" EntitySet="MealCategory" />
+            <End Role="Meal" EntitySet="Meal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Meal_1" Association="FitnessRecipiesModel.Store.FK_Meal_1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Meal" EntitySet="Meal" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealComment_0" Association="FitnessRecipiesModel.Store.FK_MealComment_0">
+            <End Role="Comment" EntitySet="Comment" />
+            <End Role="MealComment" EntitySet="MealComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealComment_1" Association="FitnessRecipiesModel.Store.FK_MealComment_1">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealComment" EntitySet="MealComment" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealIngredient_0" Association="FitnessRecipiesModel.Store.FK_MealIngredient_0">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="MealIngredient" EntitySet="MealIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealIngredient_1" Association="FitnessRecipiesModel.Store.FK_MealIngredient_1">
+            <End Role="Ingredient" EntitySet="Ingredient" />
+            <End Role="MealIngredient" EntitySet="MealIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealIngredient_2" Association="FitnessRecipiesModel.Store.FK_MealIngredient_2">
+            <End Role="QuantityType" EntitySet="QuantityType" />
+            <End Role="MealIngredient" EntitySet="MealIngredient" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_0" Association="FitnessRecipiesModel.Store.FK_Recipe_0">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="Recipe" EntitySet="Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_1" Association="FitnessRecipiesModel.Store.FK_Recipe_1">
+            <End Role="User" EntitySet="User" />
+            <End Role="Recipe" EntitySet="Recipe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDiet_0" Association="FitnessRecipiesModel.Store.FK_UserDiet_0">
+            <End Role="Diet" EntitySet="Diet" />
+            <End Role="UserDiet" EntitySet="UserDiet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDiet_1" Association="FitnessRecipiesModel.Store.FK_UserDiet_1">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserDiet" EntitySet="UserDiet" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFavourite_0" Association="FitnessRecipiesModel.Store.FK_UserFavourite_0">
+            <End Role="User" EntitySet="User" />
+            <End Role="UserFavourite" EntitySet="UserFavourite" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserFavourite_1" Association="FitnessRecipiesModel.Store.FK_UserFavourite_1">
+            <End Role="Meal" EntitySet="Meal" />
+            <End Role="UserFavourite" EntitySet="UserFavourite" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Link" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Text" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" />
+          <Property Name="CommentId" Type="int" />
+          <Property Name="Email" Type="nvarchar" MaxLength="350" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="350" />
+        </EntityType>
+        <EntityType Name="Diet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IsPublic" Type="bit" Nullable="false" />
+          <Property Name="ImgUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="CategoryId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="DietCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DietComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="DietId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DietIngredient">
+          <Key>
+            <PropertyRef Name="DietId" />
+            <PropertyRef Name="IngredientId" />
+          </Key>
+          <Property Name="DietId" Type="int" Nullable="false" />
+          <Property Name="IngredientId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="QuantityTypeId" Type="int" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Time" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DietMeal">
+          <Key>
+            <PropertyRef Name="DietId" />
+            <PropertyRef Name="MealId" />
+          </Key>
+          <Property Name="DietId" Type="int" Nullable="false" />
+          <Property Name="MealId" Type="int" Nullable="false" />
+          <Property Name="Time" Type="int" Nullable="false" />
+          <Property Name="Day" Type="nvarchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Ingredient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IngredientId" Type="int" />
+          <Property Name="Carb" Type="float" Nullable="false" />
+          <Property Name="Protein" Type="float" Nullable="false" />
+          <Property Name="Fat" Type="float" Nullable="false" />
+          <Property Name="Kcal" Type="float" Nullable="false" />
+          <Property Name="QuantityTypeId" Type="int" />
+          <Property Name="DateAdded" Type="datetime" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="Link" Type="nvarchar" MaxLength="500" />
+          <Property Name="BrandId" Type="int" />
+        </EntityType>
+        <EntityType Name="IngredientCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IngredientQuantity">
+          <Key>
+            <PropertyRef Name="IngredientId" />
+            <PropertyRef Name="QuantitytypeId" />
+          </Key>
+          <Property Name="IngredientId" Type="int" Nullable="false" />
+          <Property Name="QuantitytypeId" Type="int" Nullable="false" />
+          <Property Name="To100Ggram" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ImgUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MealCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="MealComment">
+          <Key>
+            <PropertyRef Name="CommentId" />
+          </Key>
+          <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="MealId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MealIngredient">
+          <Key>
+            <PropertyRef Name="MealId" />
+            <PropertyRef Name="IngredientId" />
+          </Key>
+          <Property Name="MealId" Type="int" Nullable="false" />
+          <Property Name="IngredientId" Type="int" Nullable="false" />
+          <Property Name="Optional" Type="bit" Nullable="false" />
+          <Property Name="Quantity" Type="float" Nullable="false" />
+          <Property Name="QuantityTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="QuantityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="MealId" />
+          </Key>
+          <Property Name="MealId" Type="int" Nullable="false" />
+          <Property Name="WebUrl" Type="nvarchar" Nullable="false" MaxLength="250" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="DateAdded" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" MaxLength="350" />
+          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="1500" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ImgUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebUrl" Type="nvarchar" MaxLength="500" />
+          <Property Name="Name" Type="nvarchar" MaxLength="500" />
+          <Property Name="Password" Type="nvarchar(max)" />
+          <Property Name="Role" Type="int" />
+        </EntityType>
+        <EntityType Name="UserDiet">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="DietId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="DietId" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserFavourite">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="MealId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="MealId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Author_0">
+          <End Role="User" Type="FitnessRecipiesModel.Store.User" Multiplicity="1" />
+          <End Role="Author" Type="FitnessRecipiesModel.Store.Author" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Author">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_1">
+          <End Role="MealCategory" Type="FitnessRecipiesModel.Store.MealCategory" Multiplicity="0..1" />
+          <End Role="MealCategory1" Type="FitnessRecipiesModel.Store.MealCategory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MealCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealCategory1">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_0">
+          <End Role="User" Type="FitnessRecipiesModel.Store.User" Multiplicity="0..1" />
+          <End Role="Comment" Type="FitnessRecipiesModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_1">
+          <End Role="Comment" Type="FitnessRecipiesModel.Store.Comment" Multiplicity="0..1" />
+          <End Role="Comment1" Type="FitnessRecipiesModel.Store.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment1">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diet_0">
+          <End Role="User" Type="FitnessRecipiesModel.Store.User" Multiplicity="0..1" />
+          <End Role="Diet" Type="FitnessRecipiesModel.Store.Diet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Diet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diet_1">
+          <End Role="DietCategory" Type="FitnessRecipiesModel.Store.DietCategory" Multiplicity="1" />
+          <End Role="Diet" Type="FitnessRecipiesModel.Store.Diet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Diet">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietComment_0">
+          <End Role="Comment" Type="FitnessRecipiesModel.Store.Comment" Multiplicity="1" />
+          <End Role="DietComment" Type="FitnessRecipiesModel.Store.DietComment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietComment">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietComment_1">
+          <End Role="Diet" Type="FitnessRecipiesModel.Store.Diet" Multiplicity="1" />
+          <End Role="DietComment" Type="FitnessRecipiesModel.Store.DietComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietComment">
+              <PropertyRef Name="DietId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietIngredient_0">
+          <End Role="Diet" Type="FitnessRecipiesModel.Store.Diet" Multiplicity="1" />
+          <End Role="DietIngredient" Type="FitnessRecipiesModel.Store.DietIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietIngredient">
+              <PropertyRef Name="DietId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietIngredient_1">
+          <End Role="Ingredient" Type="FitnessRecipiesModel.Store.Ingredient" Multiplicity="1" />
+          <End Role="DietIngredient" Type="FitnessRecipiesModel.Store.DietIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietIngredient">
+              <PropertyRef Name="IngredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietIngredient_2">
+          <End Role="QuantityType" Type="FitnessRecipiesModel.Store.QuantityType" Multiplicity="1" />
+          <End Role="DietIngredient" Type="FitnessRecipiesModel.Store.DietIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuantityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietIngredient">
+              <PropertyRef Name="QuantityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietMeal_0">
+          <End Role="Diet" Type="FitnessRecipiesModel.Store.Diet" Multiplicity="1" />
+          <End Role="DietMeal" Type="FitnessRecipiesModel.Store.DietMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietMeal">
+              <PropertyRef Name="DietId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietMeal_1">
+          <End Role="Meal" Type="FitnessRecipiesModel.Store.Meal" Multiplicity="1" />
+          <End Role="DietMeal" Type="FitnessRecipiesModel.Store.DietMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietMeal">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Food_1">
+          <End Role="Ingredient" Type="FitnessRecipiesModel.Store.Ingredient" Multiplicity="0..1" />
+          <End Role="Ingredient1" Type="FitnessRecipiesModel.Store.Ingredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingredient1">
+              <PropertyRef Name="IngredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Food_2">
+          <End Role="QuantityType" Type="FitnessRecipiesModel.Store.QuantityType" Multiplicity="0..1" />
+          <End Role="Ingredient" Type="FitnessRecipiesModel.Store.Ingredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuantityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingredient">
+              <PropertyRef Name="QuantityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingredient_0">
+          <End Role="IngredientCategory" Type="FitnessRecipiesModel.Store.IngredientCategory" Multiplicity="0..1" />
+          <End Role="Ingredient" Type="FitnessRecipiesModel.Store.Ingredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IngredientCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingredient">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingredient_1">
+          <End Role="Brand" Type="FitnessRecipiesModel.Store.Brand" Multiplicity="0..1" />
+          <End Role="Ingredient" Type="FitnessRecipiesModel.Store.Ingredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingredient">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredientQuantity_0">
+          <End Role="Ingredient" Type="FitnessRecipiesModel.Store.Ingredient" Multiplicity="1" />
+          <End Role="IngredientQuantity" Type="FitnessRecipiesModel.Store.IngredientQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IngredientQuantity">
+              <PropertyRef Name="IngredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredientQuantity_1">
+          <End Role="QuantityType" Type="FitnessRecipiesModel.Store.QuantityType" Multiplicity="1" />
+          <End Role="IngredientQuantity" Type="FitnessRecipiesModel.Store.IngredientQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuantityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IngredientQuantity">
+              <PropertyRef Name="QuantitytypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meal_0">
+          <End Role="MealCategory" Type="FitnessRecipiesModel.Store.MealCategory" Multiplicity="0..1" />
+          <End Role="Meal" Type="FitnessRecipiesModel.Store.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MealCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Meal_1">
+          <End Role="User" Type="FitnessRecipiesModel.Store.User" Multiplicity="1" />
+          <End Role="Meal" Type="FitnessRecipiesModel.Store.Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealComment_0">
+          <End Role="Comment" Type="FitnessRecipiesModel.Store.Comment" Multiplicity="1" />
+          <End Role="MealComment" Type="FitnessRecipiesModel.Store.MealComment" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealComment">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealComment_1">
+          <End Role="Meal" Type="FitnessRecipiesModel.Store.Meal" Multiplicity="1" />
+          <End Role="MealComment" Type="FitnessRecipiesModel.Store.MealComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealComment">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealIngredient_0">
+          <End Role="Meal" Type="FitnessRecipiesModel.Store.Meal" Multiplicity="1" />
+          <End Role="MealIngredient" Type="FitnessRecipiesModel.Store.MealIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealIngredient">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealIngredient_1">
+          <End Role="Ingredient" Type="FitnessRecipiesModel.Store.Ingredient" Multiplicity="1" />
+          <End Role="MealIngredient" Type="FitnessRecipiesModel.Store.MealIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealIngredient">
+              <PropertyRef Name="IngredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealIngredient_2">
+          <End Role="QuantityType" Type="FitnessRecipiesModel.Store.QuantityType" Multiplicity="1" />
+          <End Role="MealIngredient" Type="FitnessRecipiesModel.Store.MealIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuantityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealIngredient">
+              <PropertyRef Name="QuantityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_0">
+          <End Role="Meal" Type="FitnessRecipiesModel.Store.Meal" Multiplicity="1" />
+          <End Role="Recipe" Type="FitnessRecipiesModel.Store.Recipe" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_1">
+          <End Role="User" Type="FitnessRecipiesModel.Store.User" Multiplicity="0..1" />
+          <End Role="Recipe" Type="FitnessRecipiesModel.Store.Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDiet_0">
+          <End Role="Diet" Type="FitnessRecipiesModel.Store.Diet" Multiplicity="1" />
+          <End Role="UserDiet" Type="FitnessRecipiesModel.Store.UserDiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDiet">
+              <PropertyRef Name="DietId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDiet_1">
+          <End Role="User" Type="FitnessRecipiesModel.Store.User" Multiplicity="1" />
+          <End Role="UserDiet" Type="FitnessRecipiesModel.Store.UserDiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDiet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFavourite_0">
+          <End Role="User" Type="FitnessRecipiesModel.Store.User" Multiplicity="1" />
+          <End Role="UserFavourite" Type="FitnessRecipiesModel.Store.UserFavourite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFavourite">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserFavourite_1">
+          <End Role="Meal" Type="FitnessRecipiesModel.Store.Meal" Multiplicity="1" />
+          <End Role="UserFavourite" Type="FitnessRecipiesModel.Store.UserFavourite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserFavourite">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FitnessRecipiesModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="FitnessRecipiesEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Authors" EntityType="FitnessRecipiesModel.Author" />
+          <EntitySet Name="Comments" EntityType="FitnessRecipiesModel.Comment" />
+          <EntitySet Name="Diets" EntityType="FitnessRecipiesModel.Diet" />
+          <EntitySet Name="Ingredients" EntityType="FitnessRecipiesModel.Ingredient" />
+          <EntitySet Name="Meals" EntityType="FitnessRecipiesModel.Meal" />
+          <EntitySet Name="MealIngredients" EntityType="FitnessRecipiesModel.MealIngredient" />
+          <EntitySet Name="QuantityTypes" EntityType="FitnessRecipiesModel.QuantityType" />
+          <EntitySet Name="Users" EntityType="FitnessRecipiesModel.User" />
+          <AssociationSet Name="FK_Author_0" Association="FitnessRecipiesModel.FK_Author_0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Author" EntitySet="Authors" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_0" Association="FitnessRecipiesModel.FK_Comment_0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Comment" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comment_1" Association="FitnessRecipiesModel.FK_Comment_1">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="Comment1" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Diet_0" Association="FitnessRecipiesModel.FK_Diet_0">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Diet" EntitySet="Diets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Food_1" Association="FitnessRecipiesModel.FK_Food_1">
+            <End Role="Ingredient" EntitySet="Ingredients" />
+            <End Role="Ingredient1" EntitySet="Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Food_2" Association="FitnessRecipiesModel.FK_Food_2">
+            <End Role="QuantityType" EntitySet="QuantityTypes" />
+            <End Role="Ingredient" EntitySet="Ingredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealIngredient_1" Association="FitnessRecipiesModel.FK_MealIngredient_1">
+            <End Role="Ingredient" EntitySet="Ingredients" />
+            <End Role="MealIngredient" EntitySet="MealIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealIngredient_0" Association="FitnessRecipiesModel.FK_MealIngredient_0">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="MealIngredient" EntitySet="MealIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MealIngredient_2" Association="FitnessRecipiesModel.FK_MealIngredient_2">
+            <End Role="QuantityType" EntitySet="QuantityTypes" />
+            <End Role="MealIngredient" EntitySet="MealIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="DietComment" Association="FitnessRecipiesModel.DietComment">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="Diet" EntitySet="Diets" />
+          </AssociationSet>
+          <AssociationSet Name="MealComment" Association="FitnessRecipiesModel.MealComment">
+            <End Role="Comment" EntitySet="Comments" />
+            <End Role="Meal" EntitySet="Meals" />
+          </AssociationSet>
+          <AssociationSet Name="UserFavourite" Association="FitnessRecipiesModel.UserFavourite">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Meal" EntitySet="Meals" />
+          </AssociationSet>
+          <EntitySet Name="MealCategories" EntityType="FitnessRecipiesModel.MealCategory" />
+          <AssociationSet Name="FK_Meal_0" Association="FitnessRecipiesModel.FK_Meal_0">
+            <End Role="MealCategory" EntitySet="MealCategories" />
+            <End Role="Meal" EntitySet="Meals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Category_1" Association="FitnessRecipiesModel.FK_Category_1">
+            <End Role="MealCategory" EntitySet="MealCategories" />
+            <End Role="MealCategory1" EntitySet="MealCategories" />
+          </AssociationSet>
+          <EntitySet Name="DietCategories" EntityType="FitnessRecipiesModel.DietCategory" />
+          <EntitySet Name="IngredientCategories" EntityType="FitnessRecipiesModel.IngredientCategory" />
+          <AssociationSet Name="FK_Diet_1" Association="FitnessRecipiesModel.FK_Diet_1">
+            <End Role="DietCategory" EntitySet="DietCategories" />
+            <End Role="Diet" EntitySet="Diets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ingredient_0" Association="FitnessRecipiesModel.FK_Ingredient_0">
+            <End Role="IngredientCategory" EntitySet="IngredientCategories" />
+            <End Role="Ingredient" EntitySet="Ingredients" />
+          </AssociationSet>
+          <EntitySet Name="DietIngredients" EntityType="FitnessRecipiesModel.DietIngredient" />
+          <EntitySet Name="DietMeals" EntityType="FitnessRecipiesModel.DietMeal" />
+          <AssociationSet Name="FK_DietIngredient_0" Association="FitnessRecipiesModel.FK_DietIngredient_0">
+            <End Role="Diet" EntitySet="Diets" />
+            <End Role="DietIngredient" EntitySet="DietIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietMeal_0" Association="FitnessRecipiesModel.FK_DietMeal_0">
+            <End Role="Diet" EntitySet="Diets" />
+            <End Role="DietMeal" EntitySet="DietMeals" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietIngredient_1" Association="FitnessRecipiesModel.FK_DietIngredient_1">
+            <End Role="Ingredient" EntitySet="Ingredients" />
+            <End Role="DietIngredient" EntitySet="DietIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietIngredient_2" Association="FitnessRecipiesModel.FK_DietIngredient_2">
+            <End Role="QuantityType" EntitySet="QuantityTypes" />
+            <End Role="DietIngredient" EntitySet="DietIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DietMeal_1" Association="FitnessRecipiesModel.FK_DietMeal_1">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="DietMeal" EntitySet="DietMeals" />
+          </AssociationSet>
+          <EntitySet Name="Brands" EntityType="FitnessRecipiesModel.Brand" />
+          <AssociationSet Name="FK_Ingredient_1" Association="FitnessRecipiesModel.FK_Ingredient_1">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Ingredient" EntitySet="Ingredients" />
+          </AssociationSet>
+          <EntitySet Name="Recipes" EntityType="FitnessRecipiesModel.Recipe" />
+          <AssociationSet Name="FK_Recipe_0" Association="FitnessRecipiesModel.FK_Recipe_0">
+            <End Role="Meal" EntitySet="Meals" />
+            <End Role="Recipe" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipe_1" Association="FitnessRecipiesModel.FK_Recipe_1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Recipe" EntitySet="Recipes" />
+          </AssociationSet>
+          <EntitySet Name="UserDiets" EntityType="FitnessRecipiesModel.UserDiet" />
+          <AssociationSet Name="FK_UserDiet_0" Association="FitnessRecipiesModel.FK_UserDiet_0">
+            <End Role="Diet" EntitySet="Diets" />
+            <End Role="UserDiet" EntitySet="UserDiets" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserDiet_1" Association="FitnessRecipiesModel.FK_UserDiet_1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="UserDiet" EntitySet="UserDiets" />
+          </AssociationSet>
+          <EntitySet Name="Roles" EntityType="FitnessRecipiesModel.Role" />
+          <AssociationSet Name="FK_Meal_1" Association="FitnessRecipiesModel.FK_Meal_1">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Meal" EntitySet="Meals" />
+          </AssociationSet>
+          <EntitySet Name="IngredientQuantities" EntityType="FitnessRecipiesModel.IngredientQuantity" />
+          <AssociationSet Name="FK_IngredientQuantity_0" Association="FitnessRecipiesModel.FK_IngredientQuantity_0">
+            <End Role="Ingredient" EntitySet="Ingredients" />
+            <End Role="IngredientQuantity" EntitySet="IngredientQuantities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IngredientQuantity_1" Association="FitnessRecipiesModel.FK_IngredientQuantity_1">
+            <End Role="QuantityType" EntitySet="QuantityTypes" />
+            <End Role="IngredientQuantity" EntitySet="IngredientQuantities" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="FitnessRecipiesModel.FK_Author_0" FromRole="Author" ToRole="User" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Text" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="String" Name="Username" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CommentId" />
+          <Property Type="String" Name="Email" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WebSite" MaxLength="350" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="FitnessRecipiesModel.FK_Comment_0" FromRole="Comment" ToRole="User" />
+          <NavigationProperty Name="Comment1" Relationship="FitnessRecipiesModel.FK_Comment_1" FromRole="Comment" ToRole="Comment1" />
+          <NavigationProperty Name="Comment2" Relationship="FitnessRecipiesModel.FK_Comment_1" FromRole="Comment1" ToRole="Comment" />
+          <NavigationProperty Name="Diet" Relationship="FitnessRecipiesModel.DietComment" FromRole="Comment" ToRole="Diet" />
+          <NavigationProperty Name="Meal" Relationship="FitnessRecipiesModel.MealComment" FromRole="Comment" ToRole="Meal" />
+        </EntityType>
+        <EntityType Name="Diet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="IsPublic" Nullable="false" />
+          <Property Type="String" Name="ImgUrl" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WebUrl" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CategoryId" Nullable="false" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="String" Name="Name" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="User" Relationship="FitnessRecipiesModel.FK_Diet_0" FromRole="Diet" ToRole="User" />
+          <NavigationProperty Name="Comments" Relationship="FitnessRecipiesModel.DietComment" FromRole="Diet" ToRole="Comment" />
+          <NavigationProperty Name="DietCategory" Relationship="FitnessRecipiesModel.FK_Diet_1" FromRole="Diet" ToRole="DietCategory" />
+          <NavigationProperty Name="DietIngredients" Relationship="FitnessRecipiesModel.FK_DietIngredient_0" FromRole="Diet" ToRole="DietIngredient" />
+          <NavigationProperty Name="DietMeals" Relationship="FitnessRecipiesModel.FK_DietMeal_0" FromRole="Diet" ToRole="DietMeal" />
+          <NavigationProperty Name="UserDiets" Relationship="FitnessRecipiesModel.FK_UserDiet_0" FromRole="Diet" ToRole="UserDiet" />
+        </EntityType>
+        <EntityType Name="Ingredient">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="IngredientId" />
+          <Property Type="Double" Name="Carb" Nullable="false" />
+          <Property Type="Double" Name="Protein" Nullable="false" />
+          <Property Type="Double" Name="Fat" Nullable="false" />
+          <Property Type="Double" Name="Kcal" Nullable="false" />
+          <Property Type="Int32" Name="QuantityTypeId" />
+          <Property Type="DateTime" Name="DateAdded" Precision="3" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="CategoryId" />
+          <NavigationProperty Name="Ingredient1" Relationship="FitnessRecipiesModel.FK_Food_1" FromRole="Ingredient" ToRole="Ingredient1" />
+          <NavigationProperty Name="Ingredient2" Relationship="FitnessRecipiesModel.FK_Food_1" FromRole="Ingredient1" ToRole="Ingredient" />
+          <NavigationProperty Name="QuantityType" Relationship="FitnessRecipiesModel.FK_Food_2" FromRole="Ingredient" ToRole="QuantityType" />
+          <NavigationProperty Name="MealIngredients" Relationship="FitnessRecipiesModel.FK_MealIngredient_1" FromRole="Ingredient" ToRole="MealIngredient" />
+          <NavigationProperty Name="IngredientCategory" Relationship="FitnessRecipiesModel.FK_Ingredient_0" FromRole="Ingredient" ToRole="IngredientCategory" />
+          <NavigationProperty Name="DietIngredients" Relationship="FitnessRecipiesModel.FK_DietIngredient_1" FromRole="Ingredient" ToRole="DietIngredient" />
+          <Property Type="String" Name="Link" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="BrandId" />
+          <NavigationProperty Name="Brand" Relationship="FitnessRecipiesModel.FK_Ingredient_1" FromRole="Ingredient" ToRole="Brand" />
+          <NavigationProperty Name="IngredientQuantities" Relationship="FitnessRecipiesModel.FK_IngredientQuantity_0" FromRole="Ingredient" ToRole="IngredientQuantity" />
+        </EntityType>
+        <EntityType Name="Meal">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="ImgUrl" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="Int32" Name="CategoryId" />
+          <NavigationProperty Name="MealIngredients" Relationship="FitnessRecipiesModel.FK_MealIngredient_0" FromRole="Meal" ToRole="MealIngredient" />
+          <NavigationProperty Name="Comments" Relationship="FitnessRecipiesModel.MealComment" FromRole="Meal" ToRole="Comment" />
+          <NavigationProperty Name="Users" Relationship="FitnessRecipiesModel.UserFavourite" FromRole="Meal" ToRole="User" />
+          <NavigationProperty Name="MealCategory" Relationship="FitnessRecipiesModel.FK_Meal_0" FromRole="Meal" ToRole="MealCategory" />
+          <NavigationProperty Name="DietMeals" Relationship="FitnessRecipiesModel.FK_DietMeal_1" FromRole="Meal" ToRole="DietMeal" />
+          <NavigationProperty Name="Recipe" Relationship="FitnessRecipiesModel.FK_Recipe_0" FromRole="Meal" ToRole="Recipe" />
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="FitnessRecipiesModel.FK_Meal_1" FromRole="Meal" ToRole="User" />
+        </EntityType>
+        <EntityType Name="MealIngredient">
+          <Key>
+            <PropertyRef Name="MealId" />
+            <PropertyRef Name="IngredientId" />
+          </Key>
+          <Property Type="Int32" Name="MealId" Nullable="false" />
+          <Property Type="Int32" Name="IngredientId" Nullable="false" />
+          <Property Type="Boolean" Name="Optional" Nullable="false" />
+          <Property Type="Double" Name="Quantity" Nullable="false" />
+          <Property Type="Int32" Name="QuantityTypeId" Nullable="false" />
+          <NavigationProperty Name="Ingredient" Relationship="FitnessRecipiesModel.FK_MealIngredient_1" FromRole="MealIngredient" ToRole="Ingredient" />
+          <NavigationProperty Name="Meal" Relationship="FitnessRecipiesModel.FK_MealIngredient_0" FromRole="MealIngredient" ToRole="Meal" />
+          <NavigationProperty Name="QuantityType" Relationship="FitnessRecipiesModel.FK_MealIngredient_2" FromRole="MealIngredient" ToRole="QuantityType" />
+        </EntityType>
+        <EntityType Name="QuantityType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ingredients" Relationship="FitnessRecipiesModel.FK_Food_2" FromRole="QuantityType" ToRole="Ingredient" />
+          <NavigationProperty Name="MealIngredients" Relationship="FitnessRecipiesModel.FK_MealIngredient_2" FromRole="QuantityType" ToRole="MealIngredient" />
+          <NavigationProperty Name="DietIngredients" Relationship="FitnessRecipiesModel.FK_DietIngredient_2" FromRole="QuantityType" ToRole="DietIngredient" />
+          <NavigationProperty Name="IngredientQuantities" Relationship="FitnessRecipiesModel.FK_IngredientQuantity_1" FromRole="QuantityType" ToRole="IngredientQuantity" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Username" MaxLength="350" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="ImgUrl" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="WebUrl" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Name" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Password" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Author" Relationship="FitnessRecipiesModel.FK_Author_0" FromRole="User" ToRole="Author" />
+          <NavigationProperty Name="Comments" Relationship="FitnessRecipiesModel.FK_Comment_0" FromRole="User" ToRole="Comment" />
+          <NavigationProperty Name="Diets" Relationship="FitnessRecipiesModel.FK_Diet_0" FromRole="User" ToRole="Diet" />
+          <NavigationProperty Name="MealFavorites" Relationship="FitnessRecipiesModel.UserFavourite" FromRole="User" ToRole="Meal" />
+          <NavigationProperty Name="Recipes" Relationship="FitnessRecipiesModel.FK_Recipe_1" FromRole="User" ToRole="Recipe" />
+          <NavigationProperty Name="UserDiets" Relationship="FitnessRecipiesModel.FK_UserDiet_1" FromRole="User" ToRole="UserDiet" />
+          <Property Type="Int32" Name="Role" />
+          <NavigationProperty Name="Meals" Relationship="FitnessRecipiesModel.FK_Meal_1" FromRole="User" ToRole="Meal" />
+        </EntityType>
+        <Association Name="FK_Author_0">
+          <End Type="FitnessRecipiesModel.User" Role="User" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.Author" Role="Author" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Author">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_0">
+          <End Type="FitnessRecipiesModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.Comment" Role="Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comment_1">
+          <End Type="FitnessRecipiesModel.Comment" Role="Comment" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.Comment" Role="Comment1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Comment">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comment1">
+              <PropertyRef Name="CommentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Diet_0">
+          <End Type="FitnessRecipiesModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.Diet" Role="Diet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Diet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Food_1">
+          <End Type="FitnessRecipiesModel.Ingredient" Role="Ingredient" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.Ingredient" Role="Ingredient1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingredient1">
+              <PropertyRef Name="IngredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Food_2">
+          <End Type="FitnessRecipiesModel.QuantityType" Role="QuantityType" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.Ingredient" Role="Ingredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuantityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingredient">
+              <PropertyRef Name="QuantityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealIngredient_1">
+          <End Type="FitnessRecipiesModel.Ingredient" Role="Ingredient" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.MealIngredient" Role="MealIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealIngredient">
+              <PropertyRef Name="IngredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealIngredient_0">
+          <End Type="FitnessRecipiesModel.Meal" Role="Meal" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.MealIngredient" Role="MealIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealIngredient">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MealIngredient_2">
+          <End Type="FitnessRecipiesModel.QuantityType" Role="QuantityType" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.MealIngredient" Role="MealIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuantityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealIngredient">
+              <PropertyRef Name="QuantityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="DietComment">
+          <End Type="FitnessRecipiesModel.Comment" Role="Comment" Multiplicity="*" />
+          <End Type="FitnessRecipiesModel.Diet" Role="Diet" Multiplicity="0..1" />
+        </Association>
+        <Association Name="MealComment">
+          <End Type="FitnessRecipiesModel.Comment" Role="Comment" Multiplicity="*" />
+          <End Type="FitnessRecipiesModel.Meal" Role="Meal" Multiplicity="0..1" />
+        </Association>
+        <Association Name="UserFavourite">
+          <End Type="FitnessRecipiesModel.User" Role="User" Multiplicity="*" />
+          <End Type="FitnessRecipiesModel.Meal" Role="Meal" Multiplicity="*" />
+        </Association>
+        <EntityType Name="MealCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="CategoryId" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Meals" Relationship="FitnessRecipiesModel.FK_Meal_0" FromRole="MealCategory" ToRole="Meal" />
+          <NavigationProperty Name="MealCategory1" Relationship="FitnessRecipiesModel.FK_Category_1" FromRole="MealCategory" ToRole="MealCategory1" />
+          <NavigationProperty Name="MealCategory2" Relationship="FitnessRecipiesModel.FK_Category_1" FromRole="MealCategory1" ToRole="MealCategory" />
+        </EntityType>
+        <Association Name="FK_Meal_0">
+          <End Type="FitnessRecipiesModel.MealCategory" Role="MealCategory" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.Meal" Role="Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MealCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Category_1">
+          <End Type="FitnessRecipiesModel.MealCategory" Role="MealCategory" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.MealCategory" Role="MealCategory1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MealCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MealCategory1">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DietCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <NavigationProperty Name="Diets" Relationship="FitnessRecipiesModel.FK_Diet_1" FromRole="DietCategory" ToRole="Diet" />
+        </EntityType>
+        <EntityType Name="IngredientCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <NavigationProperty Name="Ingredients" Relationship="FitnessRecipiesModel.FK_Ingredient_0" FromRole="IngredientCategory" ToRole="Ingredient" />
+        </EntityType>
+        <Association Name="FK_Diet_1">
+          <End Type="FitnessRecipiesModel.DietCategory" Role="DietCategory" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.Diet" Role="Diet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DietCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Diet">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ingredient_0">
+          <End Type="FitnessRecipiesModel.IngredientCategory" Role="IngredientCategory" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.Ingredient" Role="Ingredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IngredientCategory">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingredient">
+              <PropertyRef Name="CategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="DietIngredient">
+          <Key>
+            <PropertyRef Name="DietId" />
+            <PropertyRef Name="IngredientId" />
+          </Key>
+          <Property Type="Int32" Name="DietId" Nullable="false" />
+          <Property Type="Int32" Name="IngredientId" Nullable="false" />
+          <Property Type="Double" Name="Quantity" Nullable="false" />
+          <Property Type="Int32" Name="QuantityTypeId" Nullable="false" />
+          <Property Type="String" Name="Day" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Time" Nullable="false" />
+          <NavigationProperty Name="Diet" Relationship="FitnessRecipiesModel.FK_DietIngredient_0" FromRole="DietIngredient" ToRole="Diet" />
+          <NavigationProperty Name="Ingredient" Relationship="FitnessRecipiesModel.FK_DietIngredient_1" FromRole="DietIngredient" ToRole="Ingredient" />
+          <NavigationProperty Name="QuantityType" Relationship="FitnessRecipiesModel.FK_DietIngredient_2" FromRole="DietIngredient" ToRole="QuantityType" />
+        </EntityType>
+        <EntityType Name="DietMeal">
+          <Key>
+            <PropertyRef Name="DietId" />
+            <PropertyRef Name="MealId" />
+          </Key>
+          <Property Type="Int32" Name="DietId" Nullable="false" />
+          <Property Type="Int32" Name="MealId" Nullable="false" />
+          <Property Type="Int32" Name="Time" Nullable="false" />
+          <Property Type="String" Name="Day" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Diet" Relationship="FitnessRecipiesModel.FK_DietMeal_0" FromRole="DietMeal" ToRole="Diet" />
+          <NavigationProperty Name="Meal" Relationship="FitnessRecipiesModel.FK_DietMeal_1" FromRole="DietMeal" ToRole="Meal" />
+        </EntityType>
+        <Association Name="FK_DietIngredient_0">
+          <End Type="FitnessRecipiesModel.Diet" Role="Diet" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.DietIngredient" Role="DietIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietIngredient">
+              <PropertyRef Name="DietId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietMeal_0">
+          <End Type="FitnessRecipiesModel.Diet" Role="Diet" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.DietMeal" Role="DietMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietMeal">
+              <PropertyRef Name="DietId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietIngredient_1">
+          <End Type="FitnessRecipiesModel.Ingredient" Role="Ingredient" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.DietIngredient" Role="DietIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietIngredient">
+              <PropertyRef Name="IngredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietIngredient_2">
+          <End Type="FitnessRecipiesModel.QuantityType" Role="QuantityType" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.DietIngredient" Role="DietIngredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuantityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietIngredient">
+              <PropertyRef Name="QuantityTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DietMeal_1">
+          <End Type="FitnessRecipiesModel.Meal" Role="Meal" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.DietMeal" Role="DietMeal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DietMeal">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Link" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Ingredients" Relationship="FitnessRecipiesModel.FK_Ingredient_1" FromRole="Brand" ToRole="Ingredient" />
+        </EntityType>
+        <Association Name="FK_Ingredient_1">
+          <End Type="FitnessRecipiesModel.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.Ingredient" Role="Ingredient" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ingredient">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Recipe">
+          <Key>
+            <PropertyRef Name="MealId" />
+          </Key>
+          <Property Type="Int32" Name="MealId" Nullable="false" />
+          <Property Type="String" Name="WebUrl" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="UserId" />
+          <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
+          <Property Type="String" Name="Notes" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="DateAdded" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Meal" Relationship="FitnessRecipiesModel.FK_Recipe_0" FromRole="Recipe" ToRole="Meal" />
+          <NavigationProperty Name="User" Relationship="FitnessRecipiesModel.FK_Recipe_1" FromRole="Recipe" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_Recipe_0">
+          <End Type="FitnessRecipiesModel.Meal" Role="Meal" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.Recipe" Role="Recipe" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Meal">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="MealId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Recipe_1">
+          <End Type="FitnessRecipiesModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="FitnessRecipiesModel.Recipe" Role="Recipe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Recipe">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="UserDiet">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="DietId" />
+          </Key>
+          <Property Type="Int32" Name="UserId" Nullable="false" />
+          <Property Type="Int32" Name="DietId" Nullable="false" />
+          <Property Type="Boolean" Name="Active" Nullable="false" />
+          <NavigationProperty Name="Diet" Relationship="FitnessRecipiesModel.FK_UserDiet_0" FromRole="UserDiet" ToRole="Diet" />
+          <NavigationProperty Name="User" Relationship="FitnessRecipiesModel.FK_UserDiet_1" FromRole="UserDiet" ToRole="User" />
+        </EntityType>
+        <Association Name="FK_UserDiet_0">
+          <End Type="FitnessRecipiesModel.Diet" Role="Diet" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.UserDiet" Role="UserDiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Diet">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDiet">
+              <PropertyRef Name="DietId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserDiet_1">
+          <End Type="FitnessRecipiesModel.User" Role="User" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.UserDiet" Role="UserDiet" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="UserDiet">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_Meal_1">
+          <End Type="FitnessRecipiesModel.User" Role="User" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.Meal" Role="Meal" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Meal">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="IngredientQuantity">
+          <Key>
+            <PropertyRef Name="IngredientId" />
+            <PropertyRef Name="QuantitytypeId" />
+          </Key>
+          <Property Type="Int32" Name="IngredientId" Nullable="false" />
+          <Property Type="Int32" Name="QuantitytypeId" Nullable="false" />
+          <Property Type="Double" Name="To100Ggram" Nullable="false" />
+          <NavigationProperty Name="Ingredient" Relationship="FitnessRecipiesModel.FK_IngredientQuantity_0" FromRole="IngredientQuantity" ToRole="Ingredient" />
+          <NavigationProperty Name="QuantityType" Relationship="FitnessRecipiesModel.FK_IngredientQuantity_1" FromRole="IngredientQuantity" ToRole="QuantityType" />
+        </EntityType>
+        <Association Name="FK_IngredientQuantity_0">
+          <End Type="FitnessRecipiesModel.Ingredient" Role="Ingredient" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.IngredientQuantity" Role="IngredientQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ingredient">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IngredientQuantity">
+              <PropertyRef Name="IngredientId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IngredientQuantity_1">
+          <End Type="FitnessRecipiesModel.QuantityType" Role="QuantityType" Multiplicity="1" />
+          <End Type="FitnessRecipiesModel.IngredientQuantity" Role="IngredientQuantity" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="QuantityType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="IngredientQuantity">
+              <PropertyRef Name="QuantitytypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FitnessRecipiesModelStoreContainer" CdmEntityContainer="FitnessRecipiesEntities">
+          <EntitySetMapping Name="Authors">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.Comment">
+              <MappingFragment StoreEntitySet="Comment">
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Diets">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.Diet">
+              <MappingFragment StoreEntitySet="Diet">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="WebUrl" ColumnName="WebUrl" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="IsPublic" ColumnName="IsPublic" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ingredients">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.Ingredient">
+              <MappingFragment StoreEntitySet="Ingredient">
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="QuantityTypeId" ColumnName="QuantityTypeId" />
+                <ScalarProperty Name="Kcal" ColumnName="Kcal" />
+                <ScalarProperty Name="Fat" ColumnName="Fat" />
+                <ScalarProperty Name="Protein" ColumnName="Protein" />
+                <ScalarProperty Name="Carb" ColumnName="Carb" />
+                <ScalarProperty Name="IngredientId" ColumnName="IngredientId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Meals">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.Meal">
+              <MappingFragment StoreEntitySet="Meal">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MealIngredients">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.MealIngredient">
+              <MappingFragment StoreEntitySet="MealIngredient">
+                <ScalarProperty Name="QuantityTypeId" ColumnName="QuantityTypeId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Optional" ColumnName="Optional" />
+                <ScalarProperty Name="IngredientId" ColumnName="IngredientId" />
+                <ScalarProperty Name="MealId" ColumnName="MealId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QuantityTypes">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.QuantityType">
+              <MappingFragment StoreEntitySet="QuantityType">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.User">
+              <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WebUrl" ColumnName="WebUrl" />
+                <ScalarProperty Name="ImgUrl" ColumnName="ImgUrl" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="DietComment" TypeName="FitnessRecipiesModel.DietComment" StoreEntitySet="DietComment">
+            <EndProperty Name="Diet">
+              <ScalarProperty Name="Id" ColumnName="DietId" />
+            </EndProperty>
+            <EndProperty Name="Comment">
+              <ScalarProperty Name="Id" ColumnName="CommentId" />
+            </EndProperty>
+            <Condition ColumnName="DietId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="MealComment" TypeName="FitnessRecipiesModel.MealComment" StoreEntitySet="MealComment">
+            <EndProperty Name="Meal">
+              <ScalarProperty Name="Id" ColumnName="MealId" />
+            </EndProperty>
+            <EndProperty Name="Comment">
+              <ScalarProperty Name="Id" ColumnName="CommentId" />
+            </EndProperty>
+            <Condition ColumnName="MealId" IsNull="false" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="UserFavourite" TypeName="FitnessRecipiesModel.UserFavourite" StoreEntitySet="UserFavourite">
+            <EndProperty Name="Meal">
+              <ScalarProperty Name="Id" ColumnName="MealId" />
+            </EndProperty>
+            <EndProperty Name="User">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="MealCategories">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.MealCategory">
+              <MappingFragment StoreEntitySet="MealCategory">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DietCategories">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.DietCategory">
+              <MappingFragment StoreEntitySet="DietCategory">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IngredientCategories">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.IngredientCategory">
+              <MappingFragment StoreEntitySet="IngredientCategory">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DietIngredients">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.DietIngredient">
+              <MappingFragment StoreEntitySet="DietIngredient">
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="QuantityTypeId" ColumnName="QuantityTypeId" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="IngredientId" ColumnName="IngredientId" />
+                <ScalarProperty Name="DietId" ColumnName="DietId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DietMeals">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.DietMeal">
+              <MappingFragment StoreEntitySet="DietMeal">
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="MealId" ColumnName="MealId" />
+                <ScalarProperty Name="DietId" ColumnName="DietId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.Brand">
+              <MappingFragment StoreEntitySet="Brand">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recipes">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.Recipe">
+              <MappingFragment StoreEntitySet="Recipe">
+                <ScalarProperty Name="DateAdded" ColumnName="DateAdded" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="WebUrl" ColumnName="WebUrl" />
+                <ScalarProperty Name="MealId" ColumnName="MealId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDiets">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.UserDiet">
+              <MappingFragment StoreEntitySet="UserDiet">
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="DietId" ColumnName="DietId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IngredientQuantities">
+            <EntityTypeMapping TypeName="FitnessRecipiesModel.IngredientQuantity">
+              <MappingFragment StoreEntitySet="IngredientQuantity">
+                <ScalarProperty Name="To100Ggram" ColumnName="To100Ggram" />
+                <ScalarProperty Name="QuantitytypeId" ColumnName="QuantitytypeId" />
+                <ScalarProperty Name="IngredientId" ColumnName="IngredientId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,8 @@
+﻿@model IEnumerable<MealViewModel>
+Treff:<br/>
+<ul>
+    @foreach (var meal in Model)
+    {
+        <li>@Html.ActionLink(@meal.Name, "Meal", "Meal", new { id = @meal.Id }, null)</li>
+    }
+</ul>

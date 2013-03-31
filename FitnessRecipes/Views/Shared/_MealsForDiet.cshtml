@@ -1,0 +1,21 @@
+﻿@using FitnessRecipes.BLL.Services
+@using FitnessRecipes.Helpers
+@model IEnumerable<DietMealViewModel>
+@foreach (var meal in Model)
+{
+    <div class="row">
+        <div class="small-6 large-6 columns"><span data-mealid="@meal.MealId">@meal.Meal.Name</span>
+        </div>
+        <div class="small-2 large-2 columns">@DateTime.Today.AddMinutes(meal.Time).ToShortTimeString()</div>
+        <div class="small-3 large-3 columns">
+            @foreach (var day in meal.Day.ToIntArray())
+            {
+                <span>
+                    @Enum.GetName(typeof(ScheduleHelper.Days), day)[0]
+                </span>
+            }
+        </div>
+        <div class="small-1 large-1 columns"><a href="#" class="removeMeal" data-mealid="@meal.MealId"><i class="icon-remove"></i></a></div>
+    </div>
+        
+}

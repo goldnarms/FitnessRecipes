@@ -1,0 +1,7 @@
+﻿@model IEnumerable<MealCategoryViewModel>
+<ul class="categories" style="padding-top: 10px">
+    @foreach (var category in Model)
+    {
+        <li><a class="categoryMeal" href="#" data-mealcategoryid="@category.Id">@category.Name</a></li>
+    }
+</ul>

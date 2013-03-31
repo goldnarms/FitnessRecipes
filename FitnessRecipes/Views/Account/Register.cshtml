@@ -1,0 +1,87 @@
+﻿@model RegisterModel
+@{
+    ViewBag.Title = "Registrer deg";
+    ViewBag.LinkHeader = "Registrer";
+}
+
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>@ViewBag.Title</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Registrer deg
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns  page_margin_top">
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h3>Fyll ut informasjon om deg</h3>
+                <hr class="greenBorderBottom" />
+            </div>
+        </div>
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class ="contact_form"})) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    <div class="row">
+        <div class="small-4 large-4 columns">
+            @Html.LabelFor(m => m.UserName, new { @class ="inline"})
+        </div>
+        <div class="small-8 large-8 columns">
+            @Html.TextBoxFor(m => m.UserName, new { @class ="text_input"})
+        </div>
+    </div>
+        <div class="row">
+        <div class="small-4 large-4 columns">
+                @Html.LabelFor(m => m.Password, new { @class ="inline"})
+                    </div>
+        <div class="small-8 large-8 columns">
+                @Html.PasswordFor(m => m.Password, new { @class ="text_input"})
+        </div>
+    </div>
+        <div class="row">
+        <div class="small-4 large-4 columns">
+                @Html.LabelFor(m => m.ConfirmPassword, new { @class ="inline"})
+                    </div>
+        <div class="small-8 large-8 columns">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class ="text_input"})
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-4 large-4 columns">
+            @Html.LabelFor(m => m.Email, new { @class ="inline"})
+        </div>
+        <div class="small-8 large-8 columns">
+            @Html.TextBoxFor(m => m.Email, new { @class ="text_input"})
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns right">
+                <input type="submit" value="Register" />
+        </div>
+    </div>
+                }
+            </div>
+    <div class="small-4 large-4 columns">
+                        <br />
+        <ul>
+            <li class="home_box white">
+            </li>
+        @Html.Partial("_Sidebar")
+        </ul>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

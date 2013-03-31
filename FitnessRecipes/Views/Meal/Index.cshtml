@@ -1,0 +1,40 @@
+﻿@model Dictionary<char,List<MealViewModel>>
+
+@{
+    ViewBag.Title = "title";
+}
+
+
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>MÅLTID</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Måltid
+            </li>
+        </ul>
+    </div>
+</div>
+<ul>
+    @foreach (var alfabetOppskrifter in Model.Where(alfabetOppskrifter => alfabetOppskrifter.Value.Count > 0))
+    {
+        <li>
+            <h2>@alfabetOppskrifter.Key</h2>
+        </li>
+        foreach (var oppskrift in alfabetOppskrifter.Value)
+        {
+            <li>
+                @Html.ActionLink(@oppskrift.Name, "Meal", "Meal", new { id = oppskrift.Id}, null)
+            </li>
+        }
+    }
+</ul>

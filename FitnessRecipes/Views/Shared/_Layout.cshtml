@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans|Droid+Serif' rel='stylesheet'
+        type='text/css'>
+    <link href="~/Content/font-awesome.css" rel="stylesheet" />
+    @Styles.Render("~/Content/themes/foundation")
+    @Styles.Render("~/Content/themes/base/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @*@Scripts.Render("~/bundles/fitnessrecipes")*@
+</head>
+<body>
+    @Html.Partial("_Menu")
+    @RenderSection("slider", required: false)
+    <div class="row">
+        <div class="small-12 large-12 columns" style="min-height: 380px">
+            @RenderBody()
+        </div>
+    </div>
+    <div style="background-color: #303030; width: 100%; margin-top: 20px">
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                @Html.Partial("_Footer")
+            </div>
+        </div>
+    </div>
+    @*    <script>
+        document.write('<script src=/js/vendor/'
+          + ('__proto__' in {} ? 'zepto' : 'jquery')
+          + '.js><\/script>');
+</script>*@
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/foundation")
+    <script>
+        $(document).foundation();
+    </script>
+    @*@Scripts.Render("~/bundles/jqueryui")*@
+    @*    @Scripts.Render("~/bundles/knockout")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/foundation")*@
+    @RenderSection("scripts", required: false)
+    @*<script src="~/js/mealslider.js"></script>*@
+</body>
+</html>

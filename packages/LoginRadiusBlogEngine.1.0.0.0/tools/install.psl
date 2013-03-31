@@ -1,0 +1,5 @@
+param($installPath, $toolsPath, $package, $project)
+
+$project.Object.References.Add("LoginRadiusDataObject");
+$project.Object.References.Add("LoginRadiusSDKv2");
+$project.Object.References.Add("Newtonsoft.Json");

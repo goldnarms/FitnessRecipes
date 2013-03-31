@@ -1,0 +1,57 @@
+﻿@model FitnessRecipes.Models.Language
+
+@{
+    ViewBag.Title = "Language";
+}
+
+<h2>Language</h2>
+<div class="content">
+    <div class="float-right">
+    <h2>Add New Product</h2>
+    <form id="addAuthor" data-bind="submit: create">
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Contact</legend>
+            @Html.EditorForModel()
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    </form>
+    </div>
+</div>
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+  <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.0.0.js")"></script> 
+      <script type="text/javascript">
+          function LanguageViewModel() {
+              var self = this;
+              self.languages = ko.observableArray();
+
+              var baseUri = '../api/language';
+
+              self.create = function (formElement) {
+                  // If valid, post the serialized form data to the web api
+                  $(formElement).validate();
+                  if ($(formElement).valid()) {
+                      $.post(baseUri, $(formElement).serialize(), "json")
+                          .done(function (o) { self.languages.push(o); });
+                  }
+              };
+              
+              self.update = function (language) {
+                  $.ajax({ type: "PUT", url: baseUri + '/' + language.Id, data: language });
+              };
+              
+              self.remove = function (language) {
+                  // First remove from the server, then from the UI
+                  $.ajax({ type: "DELETE", url: baseUri + '/' + language.Id })
+                      .done(function () { self.authors.remove(language); });
+              };
+              $.getJSON(baseUri, self.languages);
+          }
+          
+          ko.applyBindings(new LanguageViewModel());
+  </script>
+}

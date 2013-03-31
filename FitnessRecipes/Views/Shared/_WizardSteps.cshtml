@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WizardStepViewModel>
+
+<ul class="sidebarnav">
+    @foreach (var wizardstep in Model.OrderBy(ws => ws.SortOrder))
+    {
+        if (wizardstep.Selected)
+        {
+            <li><span class="icon_small_arrow right_black">&nbsp;&nbsp;&nbsp;</span>@wizardstep.LinkText</li>
+        }
+        else
+        {
+            if (wizardstep.Active)
+            {
+                <li><span>&nbsp;&nbsp;&nbsp;</span>@Html.ActionLink(@wizardstep.LinkText, @wizardstep.Action, @wizardstep.Controller, @wizardstep.RouteValues, null)</li>
+            }
+            else
+            {
+                <li><span>&nbsp;&nbsp;&nbsp;</span>@wizardstep.LinkText</li>    
+            }
+        }
+    }
+</ul>
+
+
+@*    if (wizardstep.Active)
+    {
+        <li><span class="icon_small_arrow right_black">&nbsp;&nbsp;&nbsp;</span>Legg til / endre matrett</li>
+    }
+    <li><span class="icon_small_arrow right_black">&nbsp;&nbsp;&nbsp;</span>@Html.ActionLink("Ingredienser", "AddIngredients", "Meal", new { mealId = Model.Id}, null)</li>
+    <li><span class="icon_small_arrow right_black">&nbsp;&nbsp;&nbsp;</span>@Html.ActionLink("Oppskrift", "AddRecipe", "Meal", new { id = Model.Id}, null)</li>*@

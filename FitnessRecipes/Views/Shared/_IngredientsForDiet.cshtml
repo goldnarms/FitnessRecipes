@@ -1,0 +1,27 @@
+﻿@using FitnessRecipes.BLL.Services
+@using FitnessRecipes.Helpers
+@model IEnumerable<DietIngredientViewModel>
+@*<ul class="items_list light_green">
+    @foreach (var ingredient in Model)
+    {
+        <li><span data-ingredientid="@ingredient.IngredientId">@ingredient.Ingredient.Name</span></li>
+    }
+</ul>*@
+@foreach (var ingredient in Model)
+{
+    <div class="row">
+        <div class="small-6 large-6 columns"><span data-ingredientid="@ingredient.IngredientId">@ingredient.Ingredient.Name</span>
+        </div>
+        <div class="small-2 large-2 columns">@DateTime.Today.AddMinutes(ingredient.Time).ToShortTimeString()</div>
+        <div class="small-3 large-3 columns">
+            @foreach (var day in ingredient.Day.ToIntArray())
+            {
+                <span>
+                    @Enum.GetName(typeof(ScheduleHelper.Days), day)[0]
+                </span>
+            }
+        </div>
+        <div class="small-1 large-1 columns"><a href="#" class="removeIngredient" data-ingredientid="@ingredient.IngredientId"><i class="icon-remove"></i></a></div>
+    </div>
+        
+}

@@ -1,0 +1,87 @@
+﻿@using FitnessRecipes.Helpers
+@{
+    var user = SessionFacade.User;
+    var diet = SessionFacade.CurrentDiet;
+    var dietNotification = new DietNotifier(diet, DateTime.Now);
+}
+
+<li class="home_box light_green mealslider">
+    <ul class="mealslider" data-orbit  data-options="timer_speed:8000; slide_number_class: Hidden; bullets:false;">
+        <li>
+            <img src="~/Content/themes/base/images/mealSlider/001.png" />
+        </li>
+        <li>
+            <img src="~/Content/themes/base/images/mealSlider/002.png" />
+        </li>
+    </ul>
+</li>
+<li class="home_box light_green">
+    @if (diet != null)
+    {
+        <h2>Neste måltid</h2>
+        if (dietNotification != null)
+        {
+        @Html.Raw(dietNotification.ToString());
+        }
+    }
+</li>
+<li class="home_box green">
+    @if (User.Identity.IsAuthenticated)
+    {
+        <h2>Velkommen @User.Identity.Name
+        </h2>
+
+        <h3>Din konto</h3>
+        <ul class="items_list green margin_top">
+            <li class="icon_card_white">
+                @Html.ActionLink("Endre...", "Manage", "Account")
+            </li>
+            <li class="icon_card_white">
+                <span>3-day Session
+                </span>
+                <div class="value">
+                    $ 269.25
+                </div>
+            </li>
+            <li class="icon_card_white">
+                <span>7-day Session
+                </span>
+                <div class="value">
+                    $ 630.95
+                </div>
+            </li>
+        </ul>
+        <a class="more black icon_small_arrow margin_right_white" href="~/Views/Ingredient/contact.html"
+            title="Contact us">Contact us</a>
+    }
+    else
+    {
+        <h2>Registrer deg
+        </h2>
+    }
+</li>
+@*            <li class="home_box dark">
+                <h2>
+                    <a href="#" title="Special Cards">Special Cards
+                    </a>
+                </h2>
+                <h3>senior and family cards</h3>
+                <ul class="items_list gray margin_top">
+                    <li class="icon_card_green">
+                        <span>Senior Card
+                        </span>
+                        <div class="value">
+                            20% Off
+                        </div>
+                    </li>
+                    <li class="icon_card_green">
+                        <span>Family Card
+                        </span>
+                        <div class="value">
+                            10% Off
+                        </div>
+                    </li>
+                </ul>
+                <a class="more icon_small_arrow margin_right_white" href="~/Views/Ingredient/contact.html" title="Contact us">
+                    Contact us</a>
+            </li>*@

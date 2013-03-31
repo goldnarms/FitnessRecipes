@@ -1,0 +1,346 @@
+﻿@using FitnessRecipes.Helpers
+@model MealViewModel
+
+@{
+    ViewBag.Title = "Måltid";
+    var user = SessionFacade.User;
+    Html.Hidden("hiUserId", user != null ? user.Id : 0);
+}
+<link href="~/Content/themes/base/jquery.fancybox.css" rel="stylesheet" />
+@Html.HiddenFor(m => m.Id, new { id = "hiMealId" })
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>MÅLTID</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Oppskrift
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns page_margin_top">
+        <div class="row">
+            <div class="small-8 large-8 columns oppskrifter">
+                <h3>@Html.DisplayFor(model => model.Name)</h3>
+            </div>
+            <div class="small-3 large-3 columns" style="text-align: right">
+                <i class="icon-facebook"></i>
+                <i class="icon-plus"></i>
+                <i class="icon-twitter"></i>
+                @if (user != null)
+                {
+                    <a href="#" id="btnAddToFavorites" title="Legg til i favoritter"><i class="icon-heart">
+                    </i></a>
+                    if (user.Id == Model.UserId)
+                    {
+                        <a href="/Meal/Create/@Model.Id" id="btnEdit" title="Endre dette måltidet"><i class="icon-edit"></i></a>
+                        <a href="#" id="btnDelete" title="Slett dette måltidet"><i class="icon-trash"></i></a>
+                    }
+                }
+            </div>
+        </div>
+        <hr class="greenBorderBottom" />
+        <div class="row">
+            <div class="small-3 large-3 columns clearfix tabs">
+
+                <dl class="tabs">
+                    <dd class="tabsli active"><a class="tabsa" href="#simple1">Info</a></dd>
+                    <dd class="tabsli"><a class="tabsa" href="#simple2">Ingredienser</a></dd>
+                    <dd class="tabsli"><a class="tabsa" href="#simple3">Dietter</a></dd>
+                    @if (Model.Recipe != null)
+                    {
+                        <dd class="tabsli"><a class="tabsa" href="#simple4">Oppskrift</a></dd>
+                    }
+                    @if (user != null && Model.UserId == user.Id)
+                    {
+                        <dd class="tabsli">@Html.ActionLink("Endre", "Create", "Meal", new { id = Model.Id }, new { @class = "tabsa" })
+                        </dd>
+                    }
+                </dl>
+            </div>
+            <div class="small-9 large-9 columns">
+                <ul class="tabs-content">
+                    <li class="active" id="simple1Tab">
+                        <div class="row">
+                            <div class="small-12 large-12 columns">
+                                <div class="gallery_box">
+                                    <a id="single_image" href="@Model.ImgUrl">
+                                        <img src="@Model.ImgUrl" /></a>
+                                </div>
+                                <h2>Informasjon</h2>
+                                @if (@Model.Recipe != null)
+                                {
+                                    <div class="row">
+                                        <div class="small-12 large-12 columns">
+                                            <h3 class="box_header">
+                                                @Html.DisplayNameFor(model => model.Recipe.Description)
+                                            </h3>
+                                            <p>
+                                                @Html.DisplayTextFor(model => model.Recipe.Description)
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                                <div class="row">
+                                    <div class="small-3 large-3 columns">
+                                        <h3 class="box_header">Kcal
+                                        </h3>
+                                        <p>@Model.Kcal.ToString("N1")</p>
+
+                                    </div>
+                                    <div class="small-3 large-3 columns">
+                                        <h3 class="box_header">Protein
+                                        </h3>
+                                        <p>@Model.Protein.ToString("N1")</p>
+
+                                    </div>
+                                    <div class="small-3 large-3 columns">
+                                        <h3 class="box_header">Karb
+                                        </h3>
+                                        <p>@Model.Carb.ToString("N1")</p>
+
+                                    </div>
+                                    <div class="small-3 large-3 columns">
+                                        <h3 class="box_header">Fett
+                                        </h3>
+                                        <p>@Model.Fat.ToString("N1")</p>
+
+                                    </div>
+                                </div>
+                                @if (Model.Recipe != null)
+                                {
+                                    <div class="row">
+                                        <div class="small-12 large-12 columns">
+                                            <h3 class="box_header">
+                                                @Html.DisplayNameFor(model => model.Recipe.WebUrl)
+                                            </h3>
+                                            <p>
+                                                <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span><a href="@Model.Recipe.WebUrl" target="_blank">@Model.Recipe.WebUrl</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="small-12 large-12 columns">
+                                            @if (Model.Recipe.User != null)
+                                            {
+                                                <h3 class="box_header">
+                                                    @Html.DisplayNameFor(model => model.Recipe.UserId)
+                                                </h3>
+                                                <p>
+                                                    <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span><a href="/Author/Author/@Model.Recipe.UserId">@Model.Recipe.User.Name</a>
+                                                </p>
+                                            }
+                                            else
+                                            {
+                                                <h3 class="box_header">Laget av
+                                                </h3>
+                                                <p>
+                                                    @Model.Recipe.User.Name
+                                                </p>
+                                            }
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </li>
+                    <li id="simple2Tab" class="hide">
+                        <div class="row">
+                            <div class="small-12 large-12 columns">
+                                <h2 class="box_header">Ingredienser</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 large-12 columns">
+                                <br />
+                                <ul>
+                                    <li>
+                                        <div class="row">
+                                            <div class="small-6 large-6 columns box_header">Navn(Mengde)</div>
+                                            <div class="small-6 large-6 columns">
+                                                <ul class="small-block-grid-4 large-block-grid-4">
+                                                    <li class="box_header">Kcal
+                                                    </li>
+                                                    <li class="box_header">Protein
+                                                    </li>
+                                                    <li class="box_header">Karbs
+                                                    </li>
+                                                    <li class="box_header">Fett
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @foreach (var ingredient in Model.Ingredients)
+                                    {
+                                        <li>
+                                            <div class="row">
+                                                <div class="small-6 large-6 columns" style="margin-left: 0; padding-left: 0">
+                                                    <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span>
+                                                    @Html.ActionLink(@ingredient.Ingredient.Name, "Details", "Ingredient", new { id = ingredient.Ingredient.Id }, null)
+                                                    <span>(@ingredient.Quantity @ingredient.QuantityType.Name)</span>
+                                                </div>
+                                                <div class="small-6 large-6 columns">
+                                                    <ul class="small-block-grid-4 large-block-grid-4">
+                                                        <li>
+                                                            <span>@ingredient.Kcal.ToString("N1")</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>@ingredient.Protein.ToString("N1")</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>@ingredient.Carb.ToString("N1")</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>@ingredient.Fat.ToString("N1")</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li id="simple3Tab" class="hide">
+                        <div class="row">
+                            <div class="small-12 large-12 columns">
+                                <h2 class="box_header">Dietter</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 large-12 columns" style="padding-bottom: 15px">
+                                <h4 class="sentence">Denne oppskriften er brukt som en del i følgende dietter:</h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 large-12 columns">
+                                <ul>
+                                    <li>
+                                        <div class="row">
+                                            <div class="small-6 large-6 columns box_header">Navn</div>
+                                            <div class="small-6 large-6 columns">
+                                                <ul class="small-block-grid-4 large-block-grid-4">
+                                                    <li class="box_header">Kcal
+                                                    </li>
+                                                    <li class="box_header">Protein
+                                                    </li>
+                                                    <li class="box_header">Karb
+                                                    </li>
+                                                    <li class="box_header">Fett
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    @if (Model.Diets != null)
+                                    {
+                                        foreach (var diet in Model.Diets)
+                                        {
+                                            <li>
+                                                <div class="row">
+                                                    <div class="small-6 large-6 columns" style="margin-left: 0; padding-left: 0">
+                                                        <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span>
+                                                        @Html.ActionLink(@diet.Name, "Details", "Diet", new {id = diet.Id}, null)
+                                                    </div>
+                                                    <div class="small-6 large-6 columns">
+                                                        <ul class="small-block-grid-4 large-block-grid-4">
+                                                            <li>
+                                                                <span>@diet.Kcal</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>@diet.Protein%</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>@diet.Carb%</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>@diet.Fat%</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        }
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    @if (Model.Recipe != null)
+                    {
+                        <li id="simple4Tab" class="hide">
+                            <div class="row" style="padding-bottom: 15px">
+                                <div class="small-12 large-12 columns">
+                                    <h2 class="box_header">Oppskrift</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-12 large-12 columns">
+                                    <h3 class="box_header">
+                                        @Html.DisplayNameFor(model => model.Recipe.Notes)
+                                    </h3>
+                                    <p class="reducedpadding">
+                                        @Html.DisplayFor(model => model.Recipe.Notes)
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-12 large-12 columns">
+                                    <h3 class="box_header">
+                                        @Html.DisplayNameFor(model => model.Recipe.WebUrl)
+                                    </h3>
+                                    <p class="reducedpadding">
+                                        <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span><a href="@Model.Recipe.WebUrl" target="_blank">@Model.Recipe.WebUrl</a>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-12 large-12 columns">
+                                    <h3 class="box_header">
+                                        @Html.DisplayNameFor(model => model.Recipe.UserId)
+                                    </h3>
+                                    <p class="reducedpadding">
+                                        <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span><a href="@Model.Recipe.User.WebUrl" target="_blank">@Model.Recipe.User.Name</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="small-4 large-4 columns">
+                <br />
+        <ul>
+            <li class="home_box white">
+
+                </li>
+            @Html.Partial("_Sidebar")
+        </ul>
+    </div>
+</div>
+@section scripts
+{
+    <script src="~/js/recipeDetail.js"></script>
+    <script src="~/Scripts/jquery.fancybox-1.3.4.pack.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+        });
+    </script>
+}

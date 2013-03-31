@@ -1,0 +1,45 @@
+﻿@model FrontPageViewModel
+<ul class="home_box_container clearfix small-block-grid-3 large-block-grid-3 middlebox">
+    <li>
+        <div class="home_box white">
+            <div class="clearfix">
+                <h2 class="largeGreenText">Oppskrifter</h2>
+                <h3 class="mediumBlackText">søk blant våre oppskrifter</h3>
+                <ul >
+                    @foreach (var recipe in Model.Recipes)
+                    {
+                        <li>@Html.ActionLink(@recipe.Meal.Name, "Meal", "Meal", new { id = @recipe.MealId }, null)</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="home_box light_green">
+            <div class="clearfix">
+                <h2 class="largeWhiteText">Dietter</h2>
+                <h3 class="mediumBlackText">sett opp din egen diett</h3>
+                <ul class="whiteText">
+                    @foreach (var diet in Model.Diets)
+                    {
+                        <li>@Html.ActionLink(@diet.Name, "Details", "Diet", new { id = @diet.Id}, null)</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="home_box green">
+            <div class="clearfix">
+                <h2 class="largeWhiteText">Bloggere</h2>
+                <h3 class="mediumBlackText">nye oppskrifter fra bloggere</h3>
+                    <ul class="whiteText">
+                    @foreach (var author in Model.Authors)
+                    {
+                        <li>@Html.ActionLink(@author.User.Name, "Author", "Author", new { id = @author.UserId}, null)</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </li>
+</ul>

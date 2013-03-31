@@ -1,0 +1,7 @@
+﻿@model IEnumerable<DietViewModel>
+<ul>
+    @foreach (var diet in Model)
+    {
+        <li>@Html.ActionLink(@diet.Name, "Details", "Diet", new { id = @diet.Id}, null)</li>
+    }
+</ul>

@@ -1,0 +1,117 @@
+﻿@using FitnessRecipes.Helpers
+@{
+    var user = SessionFacade.User;
+}
+             <ul class="sf-menu header_right">
+                        @if (ViewBag.LinkHeader == "Home")
+                        {
+                            @:<li class="selected">
+                        }
+                        else
+                        {
+                            @:<li>
+                        }
+                        @Html.ActionLink("HJEM", "Index", "Home")
+                    </li>
+                        @if (ViewBag.LinkHeader == "Recipe")
+                        {
+                            @:<li class="selected">
+                        }
+                        else
+                        {
+                            @:<li>
+                        }
+                        @Html.ActionLink("OPPSKRIFTER", "Index", "Meal")
+                     @if (user != null)
+                     {
+                 <ul>
+                         
+                     <li>
+                         @Html.ActionLink("LEGG TIL", "Create", "Meal")
+                     </li>
+                     <li>
+                         @Html.ActionLink("LEGG TIL MATVARE", "Create", "Ingredient")
+                     </li>
+                 </ul>
+                     }
+                    </li>
+                        @if (ViewBag.LinkHeader == "Diet")
+                        {
+                            @:<li class="selected">
+                        }
+                        else
+                        {
+                            @:<li>
+                        }
+                        @Html.ActionLink("DIETTER", "Index", "Diet")
+                        <ul>
+                            <li>
+                                @Html.ActionLink("LEGG TIL", "Create", "Diet")
+                            </li>
+                        </ul>
+                    </li>
+                        @if (ViewBag.LinkHeader == "Author")
+                        {
+                            @:<li class="selected">
+                        }
+                        else
+                        {
+                            @:<li>
+                        }
+                        @Html.ActionLink("BLOGGER", "Index", "Author")
+                        <ul>
+                            <li>
+                                @Html.ActionLink("LEGG TIL", "Create", "Author")
+                            </li>
+                        </ul>
+                    </li>
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            if (ViewBag.LinkHeader == "Registrer")
+                            {
+                                @:<li class="selected">
+                            }
+                            else
+                            {
+                                @:<li>
+                            }
+                            @Html.ActionLink("REGISTRER", "Register", "Account")
+                            @:</li >
+                            if (ViewBag.LinkHeader == "Login")
+                            {
+                                @:<li class="selected">
+                            }
+                            else
+                            {
+                                @:<li>
+                            }
+                            @Html.ActionLink("LOGG INN", "Login", "Account")
+                            @:</li >
+                        }
+                        else
+                        {
+                            if (ViewBag.LinkHeader == "Account")
+                            {
+                                @:<li class="selected">
+                            }
+                            else
+                            {
+                                @:<li>
+                            }
+                            @Html.ActionLink("DIN KONTO", "Manage", "Account")
+                            @:</li >
+                            if (ViewBag.LinkHeader == "Logout")
+                            {
+                                @:<li class="selected">
+                            }
+                            else
+                            {
+                                @:<li>
+                            }
+                            using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" })) {
+                                @Html.AntiForgeryToken()
+                                <a href="javascript:document.getElementById('logoutForm').submit()">LOGG UT</a>
+                            }
+                            @:</li >
+                        }
+                    </ul>

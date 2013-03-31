@@ -1,0 +1,96 @@
+﻿@using System.Collections
+@using FitnessRecipes.Helpers
+@using FitnessRecipes.Resources.Common
+@using FitnessRecipes.Resources.Views
+@model MealViewModel
+
+@{
+    ViewBag.Title = "Legg til nytt måltid";
+    ViewBag.LinkHeader = "Meal";
+    var hideUploadImage = Model.Id != 0 && !string.IsNullOrEmpty(@Model.ImgUrl);
+}
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>@Common.Meal.ToUpper()</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>@Common.Breadcrumb</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>   
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Legg til måltid
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns page_margin_top">
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h2>Legg til nytt måltid</h2>
+                <hr class="greenBorderBottom" />
+            </div>
+        </div>
+        @using (Html.BeginForm("Create", "Meal", FormMethod.Post, new { @class = "contact_form", enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true)
+            @Html.HiddenFor(m => m.Id)
+            <div class="row">
+                <div class="small-6 large-6 columns">
+                    @Html.LabelForRequired(model => model.Name)
+                </div>
+                <div class="small-6 large-6 columns">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-6 large-6 columns">
+                    @Html.LabelFor(model => model.ImgUrl)
+                </div>
+                <div class="small-6 large-6 columns">
+                    @Html.Partial("_ImageUpload", new ImageUploadViewModel { File = @Model.File, HideUploadDiv = @hideUploadImage, ImageSource = @Model.ImgUrl })
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-6 large-6 columns">
+                    @Html.LabelFor(model => model.CategoryId)
+                </div>
+                <div class="small-6 large-6 columns">
+                    @Html.DropDownListFor(m => m.CategoryId, new SelectList(ViewData["Categories"] as IEnumerable, "Id", "Name"))
+                    @Html.ValidationMessageFor(model => model.CategoryId)
+                </div>
+            </div>
+            <div class="row" style="padding-top: 20px">
+                <div class="small-12 large-12 columns" style="text-align: right">
+                    <input type="submit" value="@Common.Create" />
+                </div>
+            </div>
+        }
+
+    </div>
+    <div class="small-4 large-4 columns">
+        <br />
+        <ul>
+            <li class="home_box white">
+                @Html.Partial("_WizardSteps", new List<WizardStepViewModel>
+                                                  {
+                                                      new WizardStepViewModel { Active = true, Selected = true, LinkText = MealViews.AddEditMeal, SortOrder = 1},
+                                                      new WizardStepViewModel { Action = RouteValues.AddIngredients, Active = Model.Id != 0, Selected = false, Controller = RouteValues.Meal, LinkText = MealViews.AddEditIngrediens, SortOrder = 2, RouteValues =  new { mealId = Model.Id }},
+                                                      new WizardStepViewModel { Action = RouteValues.AddRecipe, Active = Model.Id != 0, Selected = false, Controller = RouteValues.Meal, LinkText = MealViews.AddEditRecipe, SortOrder = 3, RouteValues =  new { id = Model.Id }}
+                                                  })
+            </li>
+        @Html.Partial("_Sidebar")
+        </ul>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+    <script src="~/js/utilz.js"></script>
+}

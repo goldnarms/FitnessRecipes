@@ -1,0 +1,25 @@
+﻿@model IEnumerable<IngredientViewModel>
+<h3>Matvarer</h3>
+<ul class="ingredientList">
+    @foreach (var ingredient in Model)
+    {
+        if (ingredient.Ingredients.Any())
+        {
+            <li><a href="#" class="superIngredient" data-ingredientid="@ingredient.Id">@ingredient.Name</a>
+                <span class="ingredientCount">@string.Format("({0})", ingredient.Ingredients.Count())</span>
+            </li>
+            <ul class="subIngredient" style="display: none">
+                @foreach(var subingredient in ingredient.Ingredients)
+                {
+                    <li><a href="#" class="ingredientPopup" data-ingredientid="@subingredient.Id" >@subingredient.Name</a></li>
+                }
+            </ul>
+        }
+        else if(!ingredient.IngredientId.HasValue)
+        {
+            <li><a href="#" class="ingredientPopup" data-ingredientid="@ingredient.Id" >@ingredient.Name</a></li>
+        }
+    }
+</ul>
+<br/>
+@Html.ActionLink("Legg til en ny matvare...", "Create", "Ingredient")

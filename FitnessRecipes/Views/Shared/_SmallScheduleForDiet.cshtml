@@ -1,0 +1,28 @@
+﻿@using FitnessRecipes.Helpers
+@model IEnumerable<ScheduleViewModel>
+<div class="timetable">
+    @{
+        var i = 0;
+    }
+    @foreach (var day in Model.GroupBy(m => m.Day))
+    {
+        <div class="row">
+            <div class="small-12 large-12 columns">
+        <h3 class="box_header">
+            @Enum.GetName(typeof (ScheduleHelper.Days), i)
+        </h3>
+        <ul class="items_list dark opening_hours">
+            @foreach (var dietentry in day.OrderBy(d => d.Time))
+            {
+                <li>@Html.Raw(dietentry.Link)
+                    <div class="value">
+                        @DateTime.Today.AddMinutes(@dietentry.Time).ToShortTimeString()
+                    </div>
+                </li>
+            }
+        </ul>                
+            </div>
+        </div>
+        i++;
+    }
+</div>

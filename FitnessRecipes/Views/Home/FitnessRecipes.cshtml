@@ -1,0 +1,57 @@
+﻿@model FitnessRecipes.ViewModels.FitnessRecipesViewModel
+@{
+    ViewBag.Title = "FitnessRecipes";
+}
+
+<h2>FitnessRecipes</h2>
+
+<div class="content">
+    <div class="float-right">
+        <h2>Add New Product</h2>
+        <form id="addAuthor" data-bind="submit: create">
+            @Html.ValidationSummary(true)
+            <fieldset>
+                <legend>Contact</legend>
+                @Html.EditorForModel()
+                <p>
+                    <input type="submit" value="Save" />
+                </p>
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.0.0.js")"></script> 
+    <script type="text/javascript">
+        function FitnessRecipesViewModel() {
+            var self = this;
+            self.fitnessRecipes = ko.observableArray();
+
+            var baseUri = '../api/fitnessrecipes';
+
+            self.create = function(formElement) {
+                // If valid, post the serialized form data to the web api
+                $(formElement).validate();
+                if ($(formElement).valid()) {
+                    $.post(baseUri, $(formElement).serialize(), "json")
+                        .done(function(o) { self.fitnessRecipes.push(o); });
+                }
+            };
+
+            //self.update = function(fitnessRecipe) {
+            //    $.ajax({ type: "PUT", url: baseUri + '/' + fitnessRecipe.Id, data: fitnessRecipe });
+            //};
+
+            //self.remove = function (fitnessRecipe) {
+            //    // First remove from the server, then from the UI
+            //    $.ajax({ type: "DELETE", url: baseUri + '/' + fitnessRecipe.Id })
+            //        .done(function () { self.authors.remove(fitnessRecipe); });
+            //};
+            $.getJSON(baseUri, self.fitnessRecipes);
+        }
+
+        ko.applyBindings(new FitnessRecipesViewModel());
+    </script>
+}

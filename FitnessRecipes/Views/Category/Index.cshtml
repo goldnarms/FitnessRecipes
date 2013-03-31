@@ -1,0 +1,26 @@
+﻿@model IEnumerable<MealCategoryViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<ul class="items_list gray">
+    @foreach (var item in Model)
+    {
+        <li style="height: 15px">
+            <div class="row">
+                <div class="small-9 large-9 columns">
+                    @Html.ActionLink(item.Name, "Details", new { id = item.Id })
+                </div>
+                <div class="small-3 large-3 columns">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                          @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { onclick = "return confirm('Er du sikker på at du vil slette denne?');" })
+                </div>
+            </div>
+        </li>
+    }
+</ul>

@@ -1,0 +1,45 @@
+﻿@model BrandViewModel
+
+
+@using (@Html.BeginForm("CreateBrand", "Ingredient", FormMethod.Post, new { id = "brandForm" }))
+{
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <h2 class="largeGreenText headerPadding">Legg til et matvaremerke / en produsent.
+        </h2>
+    </div>
+</div>
+<div class="row">
+    <div class="small-3 large-3 columns inline right">
+        @Html.DisplayNameFor(m => m.Name)
+    </div>
+    <div class="small-9 large-9 columns">
+        @Html.TextBoxFor(m => m.Name)
+        @Html.ValidationMessageFor(m => m.Name)
+    </div>
+</div>
+<div class="row">
+    <div class="small-3 large-3 columns inline right">
+        @Html.DisplayNameFor(m => m.Description)
+    </div>
+    <div class="small-9 large-9 columns">
+        @Html.EditorFor(m => m.Description)
+        @Html.ValidationMessageFor(m => m.Description)
+    </div>
+</div>
+<div class="row">
+    <div class="small-3 large-3 columns inline right">
+        @Html.DisplayNameFor(m => m.Link)
+    </div>
+    <div class="small-9 large-9 columns">
+        @Html.EditorFor(m => m.Link)
+        @Html.ValidationMessageFor(m => m.Link)
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns right">
+        <a class="more black icon_small_arrow margin_right_white" id="btnBrandAdd" title="Legg til"
+            href="#">Legg til</a>
+    </div>
+</div>
+}

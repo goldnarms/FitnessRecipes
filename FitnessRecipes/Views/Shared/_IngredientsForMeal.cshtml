@@ -1,0 +1,7 @@
+﻿@model IEnumerable<IngredientViewModel>
+<ul class="items_list light_green">
+    @foreach (var ingredient in Model)
+    {
+        <li><span data-ingredientid="@ingredient.Id">@ingredient.Name</span></li>
+    }
+</ul>

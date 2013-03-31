@@ -1,0 +1,35 @@
+﻿@model IEnumerable<RecipeViewModel>
+<div class="sidebar_box first">
+    <ul class="training_classes">
+        @foreach (var recipe in Model)
+        {
+            <li>
+                <div id="accordion-gym-fitness">
+                    <h3>@recipe.Name</h3>
+                    <h5>@recipe.Author.Name</h5>
+                </div>
+                <div class="clearfix">
+                    <div class="item_content clearfix">
+                        <a class="thumb_image" href="@recipe.WebUrl" title="Gym Fitness">
+                            <img src="@recipe.ImageUrl" alt="" />
+                        </a>
+                        <div class="text">
+                            <ul>
+                                @foreach (var ingredient in @recipe.Ingredients)
+                                {
+                                    <li>@ingredient.Name</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item_footer clearfix">
+                        <a class="more icon_small_arrow margin_right_white" href="@recipe.WebUrl" title="Details">
+                            Åpne</a>
+                        <a class="more icon_small_arrow margin_right_white" href="@recipe.Author.WebUrl" title="Timetable">
+                            Blogg</a>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

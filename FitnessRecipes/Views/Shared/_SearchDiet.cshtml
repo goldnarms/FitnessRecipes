@@ -1,0 +1,16 @@
+﻿<div class="clearfix contact_form">
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h2>Diettsøk</h2>
+            <h3>søk blant våre dietter</h3>
+        </div></div>
+    <div class="row" style="padding-top: 10px;">
+        <div class="small-9 large-9 columns">
+            @Html.TextBox("tbSearchField", null, new {@class = "text_input hint"})
+        </div>
+        <div class="small-3 large-3 columns">
+            <a class="more black icon_small_arrow margin_right_white" id="btnSearchDiet" title="Søk" href="#"> Søk</a>
+        </div>
+    </div>
+            <div id="searchResult"></div>
+</div>

@@ -1,0 +1,20 @@
+﻿@model FrontPageViewModel
+@{
+    ViewBag.Title = "Hjem";
+    ViewBag.LinkHeader = "Home";
+}
+@section slider {
+    <div style="text-align: center">
+        <img src="~/Content/themes/base/images/slider/img1.jpg" width="1900" height="620" />
+    </div>
+}
+<div class="hide-for-medium-down" style="margin-top: -180px">
+    @Html.Partial("_ThreeBoxes", model:Model)
+    @Html.Partial("_About")
+</div>
+<div class="show-for-medium-down" >
+    @Html.Partial("_ThreeBoxes", model:Model)
+    @Html.Partial("_About")
+    </div>
+@section Scripts {
+}

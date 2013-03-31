@@ -1,0 +1,80 @@
+﻿@model IEnumerable<CommentViewModel>
+                @{
+                  var numberOfComments = Model != null ? Model.Count(c => !c.IsDeleted) + Model.Where(c=> !c.IsDeleted).Sum(m => m.SubComments != null ? m.SubComments.Count :0) : 0;  
+                }
+<div class="row">
+    <div class="small-2 large-2 columns">
+        <div class="comment_box">
+            <div class="first_row">@numberOfComments
+                <span class="second_row small">Kommentarer</span>
+            </div>
+        </div>
+    </div>
+    <div class="small-10 large-10 columns">
+        <div id="comments_list">
+            <ul>
+                @foreach (var comment in Model.Where(c => !c.IsDeleted && !c.CommentId.HasValue).OrderBy(c => c.Id))
+                {
+                    <li class="comment clearfix">
+                        <div class="comment_details">
+                            <div class="posted_by">
+                                @if (comment.User != null)
+                                {
+                                    <span>Skrevet av <a class="author" href = "#" title = "@comment.User.Username" > @comment.User.Username </a> den @comment.DateAdded.ToShortDateString()</span>
+                                }
+                                else
+                                {
+                                    <span>Skrevet av <a class="author" href = "#" title = "@comment.Username" > @comment.Username </a> den @comment.DateAdded.ToShortDateString()</span>
+                                }
+                            </div>
+                            <p>
+                                @comment.Text
+                            </p>
+                            <a class="btnReply more icon_small_arrow margin_right_white" href="#commentform" data-commentid="@comment.Id">Svar
+                            </a>
+                        </div>
+                        <hr style="border-style: dotted"/>
+                        <ul>
+                            @if (comment.SubComments != null)
+                            {
+                                foreach (var subcomment in comment.SubComments.Where(c => !c.IsDeleted).OrderBy(c => c.Id))
+                                {
+                                    <li class="comment clearfix" style="width: 480px">
+                                        <div class="comment_details">
+                                            <div class="posted_by">
+                                                @if (subcomment.User != null)
+                                                {
+                                                    <span>Skrevet av <a class="author" href = "#" title = "@subcomment.User.Username"> @subcomment.User.Username </a> den @subcomment.DateAdded.ToShortDateString()</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>Skrevet av @subcomment.Username den @subcomment.DateAdded.ToShortDateString()</span>
+                                                }
+                                            </div>
+                                            <p>
+                                                @subcomment.Text
+                                            </p>
+                                            <a class="btnReply more icon_small_arrow margin_right_white" href="#commentform" data-commentid="@comment.Id">Svar
+                                            </a>
+                                        </div>
+                                        <hr style="border-style: dotted; margin-bottom: 0px"/>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </li>					                            
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+<br/>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <h3 class="box_header">Legg igjen en kommentar
+        </h3>
+    </div>
+</div>
+<div id="commentform" class="comment_form">
+    @(User.Identity.IsAuthenticated ? Html.Partial("_LeaveCommentAuthenticated") : Html.Partial("_LeaveComment"))
+</div>

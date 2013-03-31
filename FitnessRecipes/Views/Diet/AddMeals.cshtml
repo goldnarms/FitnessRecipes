@@ -1,0 +1,187 @@
+﻿@using System.Collections
+@model DietViewModel
+
+@{
+    ViewBag.Title = "Legg til ingredienser";
+}
+@Html.HiddenFor(m => m.Id, new { id = "hiDietId" })
+@Html.Hidden("hiIngredientId")
+@Html.Hidden("hiMealId")
+
+<div id="addMealModal" class="reveal-modal medium modalText">
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h2 class="largeGreenText headerPadding">Legg til et måltid.</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-3 large-3 columns inline right">
+            Dag:
+        </div>
+        <div class="small-9 large-9 columns">
+            M: @Html.CheckBox("cbMealMon", false, new { @class = "cbDays", id = "cbMealMonday" })
+            T: @Html.CheckBox("cbMealTue", false, new { @class = "cbDays", id = "cbMealTuesday" })
+            O: @Html.CheckBox("cbMealWed", false, new { @class = "cbDays", id = "cbMealWednesday" })
+            T: @Html.CheckBox("cbMealThu", false, new { @class = "cbDays", id = "cbMealThursday" })
+            F: @Html.CheckBox("cbMealTFri", false, new { @class = "cbDays", id = "cbMealFriday" })
+            L: @Html.CheckBox("cbMealSat", false, new { @class = "cbDays", id = "cbMealSaturday" })
+            S: @Html.CheckBox("cbMealSun", false, new { @class = "cbDays", id = "cbMealSunday" })
+            @*@Html.DropDownList("ddlMealDay", new SelectList(ViewData["Days"] as IEnumerable, "Daynumber", "DayOfWeek"), new { id = "ddlMealDay" })*@
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-3 large-3 columns inline right">
+            Tidspunkt:
+        </div>
+        <div class="small-5 large-5 columns end">
+            @Html.DropDownList("ddlMealTime", new SelectList(ViewData["Time"] as IEnumerable, "Minutes", "TimeOfDay"), new { id = "ddlMealTime" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns right">
+            <a class="more black icon_small_arrow margin_right_white" id="btnMealAdd" title="Legg til" href="#">Legg til</a>
+        </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="addModal" class="reveal-modal medium modalText">
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h2 class="largeGreenText headerPadding">Legg til matvare.</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-4 large-4 columns inline right">
+            Antall:
+        </div>
+        <div class="small-3 large-3 columns">
+            @Html.TextBox("tbQuantity", null, new { id = "tbQuantity", data_val = "true", data_val_number = "Må være et nummer" })
+        </div>
+        <div class="small-5 large-5 columns end">
+            @Html.DropDownList("ddlQuantityType", new SelectList(ViewData["QuantityTypes"] as IEnumerable, "Id", "Name"), new { id = "ddlQuantityType" })
+        </div>
+    </div>
+        <div class="row">
+        <div class="small-3 large-3 columns inline right">
+            Dag:
+        </div>
+        <div class="small-9 large-9 columns">
+            M: @Html.CheckBox("cbMon", false, new { @class = "cbDays", id = "cbMonday" })
+            T: @Html.CheckBox("cbTue", false, new { @class = "cbDays", id = "cbTuesday" })
+            O: @Html.CheckBox("cbWed", false, new { @class = "cbDays", id = "cbWednesday" })
+            T: @Html.CheckBox("cbThu", false, new { @class = "cbDays", id = "cbThursday" })
+            F: @Html.CheckBox("cbTFri", false, new { @class = "cbDays", id = "cbFriday" })
+            L: @Html.CheckBox("cbSat", false, new { @class = "cbDays", id = "cbSaturday" })
+            S: @Html.CheckBox("cbSun", false, new { @class = "cbDays", id = "cbSunday" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-3 large-3 columns inline right">
+            Tidspunkt:
+        </div>
+        <div class="small-5 large-5 columns end">
+            @Html.DropDownList("ddlTime", new SelectList(ViewData["Time"] as IEnumerable, "Minutes", "TimeOfDay"), new { id = "ddlTime" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns right">
+            <a id="btnIngredientAdd" class="more black icon_small_arrow margin_right_white" title="Legg til" href="#">Legg til</a>
+        </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>
+                @Html.ActionLink(Model.Name, "Details", "Diet", new { id = Model.Id}, null)
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Diettoppsett
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns page_margin_top">
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h2>Diettoppsett for @Html.DisplayFor(model => model.Name)</h2>
+                <hr class="greenBorderBottom" />
+            </div>
+        </div>
+                <div class="row margin-bottom paddingbottom">
+            <div class="small-12 large-12 columns">
+                <h4 class="box_header margin">Retter</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div class="addIngredients" id="addedMeals"></div>
+            </div>
+        </div>
+                        <div class="row margin-bottom paddingbottom">
+            <div class="small-12 large-12 columns">
+                <h4 class="box_header margin">Matvarer</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div class="addIngredients" id="addedIngredients"></div>
+            </div>
+        </div>
+        <br/>
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h4 class="greenBorderBottom" style="padding-bottom: 5px">Legg til måltider/matvarer</h4>
+            </div>
+        </div>
+        <h4 class="box_header margin">Kategorier</h4>
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div id="mealCategories"></div>
+            </div>
+        </div>
+        <div class="row paddingbottom">
+            <div class="small-12 large-12 columns">
+                <div id="ingredientCategories"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-9 large-9 columns">
+                @Html.TextBox("tbSearchField", null, new { @class = "text_input hint" })
+            </div>
+            <div class="small-3 large-3 columns">
+                <a class="more black icon_small_arrow margin_right_white" id="btnSearch" title="Søk" href="#">Søk</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div class="addIngredients" id="searchResultMeals"></div><br/>
+                <div class="addIngredients" id="searchResult"></div>
+            </div>
+        </div>
+    </div>
+    <div class="small-4 large-4 columns">
+        <br />
+        <ul>
+            <li class="home_box white"></li>
+        @Html.Partial("_Sidebar")
+        </ul>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/modalhandler.js"></script>
+    <script src="~/js/utilz.js"></script>
+    <script src="~/js/addmeals.js"></script>
+    <script src="~/Scripts/jquery.foundation.reveal.js"></script>
+
+}

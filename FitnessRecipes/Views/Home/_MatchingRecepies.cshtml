@@ -1,0 +1,74 @@
+﻿@model IEnumerable<RecipeViewModel>
+<ul>
+    @foreach(var category in Model.GroupBy(r => r.Category))
+    {
+        <li>
+            @category.Key.Text.TextValue
+        </li>
+    }
+</ul>
+<ul class="training_classes">
+    @foreach (var recipe in Model)
+    {
+        <li style="width: 350px">
+            <div>
+                <h3>@recipe.Name</h3>
+                <h5>@recipe.Author.Name</h5>
+            </div>
+            <div class="item_content clearfix">
+                <div class="row">
+                    <div class="small-3 large-3 columns">
+                                        <a class="thumb_image" href="@recipe.WebUrl" title="Gym Fitness">
+                    <img src="@recipe.ImageUrl" alt="" />
+                </a>
+                    </div>
+                    <div class="small-7 large-7 columns">
+                        <div class="text">
+                            <ul>
+                                @foreach (var ingredient in @recipe.Ingredients)
+                                {
+                                    <li>@ingredient.Name</li>
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="small-2 large-2 columns">
+                        <img src="~/Content/themes/base/images/heart_small.png" />
+                    </div>
+                </div>
+                <div class="item_footer clearfix">
+                    <a class="more black icon_small_arrow margin_right_white" href="@recipe.WebUrl" title="Åpne" target="_blank">
+                        Åpne</a>
+                    <a class="more black icon_small_arrow margin_right_white" href="@recipe.Author.WebUrl" title="Blogg" target="_blank">
+                        Blogg</a>
+                </div>
+            </div>
+        </li>
+        <li style="width: 350px">
+            <div>
+                <h3>@recipe.Name</h3>
+                <h5>@recipe.Author.Name</h5>
+            </div>
+            <div class="item_content clearfix">
+                <a class="thumb_image" href="@recipe.WebUrl" title="Gym Fitness">
+                    <img src="@recipe.ImageUrl" alt="" />
+                </a>
+                <div class="text">
+                    <ul>
+                        @foreach (var ingredient in @recipe.Ingredients)
+                        {
+                            <li>@ingredient.Name</li>
+                        }
+                    </ul>
+                </div>
+                <div class="item_footer clearfix">
+                    <a class="more black icon_small_arrow margin_right_white" href="@recipe.WebUrl" title="Åpne" target="_blank">
+                        Åpne</a>
+                    <a class="more black icon_small_arrow margin_right_white" href="@recipe.Author.WebUrl" title="Blogg" target="_blank">
+                        Blogg</a>
+                </div>
+            </div>
+        </li>
+    }
+</ul>
+<script src="@Url.Content("~/js/test.js")" type="text/javascript"></script>

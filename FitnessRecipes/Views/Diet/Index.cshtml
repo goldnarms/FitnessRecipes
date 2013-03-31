@@ -1,0 +1,40 @@
+﻿@model Dictionary<char, List<DietViewModel>>
+
+@{
+    ViewBag.Title = "Dietter";
+    ViewBag.LinkHeader = "Diet";
+}
+
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>DIETTER</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Dietter
+            </li>
+        </ul>
+    </div>
+</div>
+<ul>
+    @foreach (var dietLetter in Model.Where(letter => letter.Value.Count > 0))
+    {
+        <li>
+            <h2>@dietLetter.Key</h2>
+        </li>
+        foreach (var diet in dietLetter.Value)
+        {
+            <li>
+                @Html.ActionLink(@diet.Name, "Details", "Diet", new { id = @diet.Id}, null)
+            </li>
+        }
+    }
+</ul>

@@ -1,0 +1,31 @@
+﻿@model IEnumerable<RecipeViewModel>
+
+<div class="scrolling_list_wrapper">
+    <ul class="scrolling_list footer_recent_posts">
+        @foreach(var recipe in Model)
+        {
+            <li class="icon_small_arrow right_white">
+                <a href="@recipe.WebUrl">@recipe.Meal.Name
+                </a>
+                <abbr title="29 May 2012" class="timeago">29 May 2012</abbr>
+            </li>
+        }
+    </ul>
+</div>
+
+@*        <li class="icon_small_arrow right_white">
+            <a href="post.html">Lorem ipsum dolor sit amat velum.
+            </a>
+            <abbr title="04 Apr 2012" class="timeago">04 Apr 2012</abbr>
+        </li>
+        <li class="icon_small_arrow right_white">
+            <a href="post.html">Mauris adipiscing mauris fringilla turpis interdum sed pulvinar
+                nisi malesuada.
+            </a>
+            <abbr title="02 Feb 2012" class="timeago">02 Feb 2012</abbr>
+        </li>
+        <li class="icon_small_arrow right_white">
+            <a href="post.html">Lorem ipsum dolor sit amat velum, consectetur adipiscing elit.
+            </a>
+            <abbr title="24 Jan 2011" class="timeago">24 Jan 2011</abbr>
+        </li>*@

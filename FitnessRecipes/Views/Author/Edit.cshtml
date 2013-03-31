@@ -1,0 +1,52 @@
+﻿@model AuthorViewModel
+
+@{
+    ViewBag.Title = "Edit";
+    ViewBag.LinkHeader = ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Name)
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Note)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.Note)
+        @Html.ValidationMessageFor(model => model.Note)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ImageUrl)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.ImageUrl)
+        @Html.ValidationMessageFor(model => model.ImageUrl)
+    </div>
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.WebUrl)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.WebUrl)
+        @Html.ValidationMessageFor(model => model.WebUrl)
+    </div>
+
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

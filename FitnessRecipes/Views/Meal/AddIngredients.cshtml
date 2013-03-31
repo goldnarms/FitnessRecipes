@@ -1,0 +1,123 @@
+﻿@using System.Collections
+@using FitnessRecipes.Resources.Common
+@using FitnessRecipes.Resources.Views
+@model MealViewModel
+
+@{
+    ViewBag.Title = "Legg til ingredienser";
+    ViewBag.LinkHeader = "MealIngredient";
+}
+@Html.HiddenFor(m => m.Id, new { id = "hiMealId" })
+@Html.Hidden("hiIngredientId")
+
+<div id="addModal" class="reveal-modal medium modalText">
+    <div class="row">
+        <div class="small-12 large-12 columns">
+            <h2 class="largeGreenText headerPadding">Legg til en ingrediens.</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-4 large-4 columns inline right">
+            Antall:
+        </div>
+        <div class="small-3 large-3 columns">
+            @Html.TextBox("tbQuantity", null, new { id = "tbQuantity", data_val = "true", data_val_number = "Må være et nummer" })
+        </div>
+        <div class="small-5 large-5 columns">
+            @Html.DropDownList("ddlQuantityType", new SelectList(ViewData["QuantityTypes"] as IEnumerable, "Id", "Name"), new { id = "ddlQuantityType" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-4 large-4 columns inline right">
+            Valgfri:
+        </div>
+        <div class="small-8 large-8 columns">
+            @Html.CheckBox("cbOptional", new { id = "cbOptional", @class = "text_input" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns right">
+            <a id="btnIngredientsAdd" class="more black icon_small_arrow margin_right_white"
+                id="btnAddIngredients" title="Legg til" href="#">Legg til</a>
+        </div>
+    </div>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Legg til matvarer
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns page_margin_top">
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div class="addIngredients" id="addedIngredients"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h3>Legg til matvarer</h3>
+                <hr class="greenBorderBottom" />
+            </div>
+        </div>
+        <h3 class="box_header margin">Kategorier</h3>
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div id="ingredientCategories"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-9 large-9 columns">
+                @Html.TextBox("tbSearchField", null, new { @class = "text_input hint" })
+            </div>
+            <div class="small-3 large-3 columns">
+                <a class="more black icon_small_arrow margin_right_white" id="btnSearchIngredients"
+                    title="Søk"
+                    href="#">Søk</a>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <div class="addIngredients" id="searchResult"></div>
+            </div>
+        </div>
+        <div class="row" style="padding-top: 20px">
+            <div class="small-12 large-12 columns" style="text-align: right">
+                @Html.ActionLink("Alle ingredienser lagt til - Gå til måltid", "Meal", "Meal", new { id = Model.Id, @class = "tabsa" }, new { @class = "tabsa" })
+                @Html.ActionLink("Alle ingredienser lagt til - Legg til oppskrift", "AddRecipe", "Meal", new { id = Model.Id }, new { @class = "tabsa" })
+            </div>
+        </div>
+    </div>
+    <div class="small-4 large-4 columns">
+        <br />
+        <ul>
+            <li class="home_box white">
+                @Html.Partial("_WizardSteps", new List<WizardStepViewModel>
+                                                  {
+                                                      new WizardStepViewModel { Action = RouteValues.Create, Active = true, Selected = false, Controller = RouteValues.Meal, LinkText = MealViews.AddEditMeal, SortOrder = 1, RouteValues =  new { id = Model.Id }},
+                                                      new WizardStepViewModel { Active = true, Selected = true, LinkText = MealViews.AddEditIngrediens, SortOrder = 2},
+                                                      new WizardStepViewModel { Action = RouteValues.AddRecipe, Active = Model.Id != 0, Selected = false, Controller = RouteValues.Meal, LinkText = MealViews.AddEditRecipe, SortOrder = 3, RouteValues =  new { id = Model.Id }}
+                                                  })
+            </li>
+            @Html.Partial("_Sidebar")
+        </ul>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/js/addingredients.js"></script>
+    <script src="~/Scripts/jquery.foundation.reveal.js"></script>
+
+}

@@ -1,0 +1,9 @@
+﻿<div class="small-6 large-6 columns">
+    @Html.TextBox("tbName", null, new { placeholder = "Ditt navn", @class = "text_input", id ="tbName" })
+    @Html.TextBox("tbEmail", null, new { placeholder = "Din e-post adresse", @class = "text_input", id = "tbEmail" })
+    @Html.TextBox("tbWebsite", null, new { placeholder = "Webside(valgfri)", @class = "text_input", id ="tbWebsite" })
+</div>
+<div class="small-6 large-6 columns">
+    @Html.TextArea("tbMessage", new { placeholder = "Kommentar", @class = "text_input", id ="tbMessage" })
+    <a href="#" class = "more icon_small_arrow margin_right_white" id = "btnAddComment">Svar</a>
+</div>

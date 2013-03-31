@@ -1,0 +1,19 @@
+﻿@model IEnumerable<RssFeed> 
+@foreach (var item in Model)
+{
+    <div class="row rssfeed">
+        <div class="small-12 large-12 columns">
+            <a href="@item.Link" target="_blank">@Html.Encode(item.Title)</a>
+        </div>
+    </div>
+    <div class="row rssfeed">
+        <div class="small-12 large-12 columns">
+            @HttpUtility.HtmlDecode(item.Description)
+        </div>
+            </div>
+    <div class="row rssfeed">
+        <div class="small-12 large-12 columns">
+            <a href="@item.Link" target="_blank">Les...</a>
+        </div>
+    </div>
+}

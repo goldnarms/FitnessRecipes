@@ -1,0 +1,32 @@
+﻿@model Dictionary<char, List<QuantityTypeViewModel>>
+
+@{
+    ViewBag.Title = "Index";
+	ViewBag.LinkHeader = ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<h2>Måleenheter</h2>
+
+
+<ul>
+    @foreach (var m in Model.Where(m => m.Value.Count > 0))
+    {
+        <li>
+            <h2>@m.Key</h2>
+        </li>
+        foreach (var item in m.Value)
+        {
+            <li style="font-size: 18px">
+			    @Html.ActionLink(item.Name, "Details", new { id=item.ID })<a href="@Url.Action("Delete", new { id = item.ID })"><img name="remove" class="removebutton" src="~/Content/themes/base/images/remove_small.png" onmouseover="remove.src='~/Content/themes/base/images/remove_small_hover.png'" onmouseout="remove.src='~/Content/themes/base/images/remove_small.png'" alt=""/></a>
+            </li>
+        }
+    }
+</ul>
+@*@section scripts
+{
+    <script type="text/javascript">
+        $.document.ready(function () {
+            $(".removebutton").click
+        })
+    </script>
+}*@

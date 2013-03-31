@@ -1,0 +1,101 @@
+﻿@model LoginModel
+
+@{
+    ViewBag.Title = "Logg inn";
+    ViewBag.LinkHeader = "Login";
+}
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>@ViewBag.Title</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Logg inn
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns  page_margin_top">
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h3>Fyll ut innloggingsinformasjon</h3>
+                <hr class="greenBorderBottom" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-6 large-6 columns">
+                @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "contact_form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                    <div class="row">
+                        <div class="small-4 large-4 columns">
+                            @Html.LabelFor(m => m.UserName, new { @class = "inline" })
+                        </div>
+                        <div class="small-8 large-8 columns">
+                            @Html.TextBoxFor(m => m.UserName, new { @class = "text_input" })
+                            @Html.ValidationMessageFor(m => m.UserName)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="small-4 large-4 columns">
+                            @Html.LabelFor(m => m.Password, new { @class = "inline" })
+
+                        </div>
+                        <div class="small-8 large-8 columns">
+                            @Html.PasswordFor(m => m.Password)
+                            @Html.ValidationMessageFor(m => m.Password)
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-6 small-6 small-offset-4 large-offset-4 columns">
+                            <div class="row">
+                                <div class="small-2 large-2 columns">
+                                    @Html.CheckBoxFor(m => m.RememberMe)
+                                </div>
+                                <div class="small-10 large-10 columns">
+                                    @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="large-6 small-6 large-offset-6 small-offset-6 columns right">
+                            <input type="submit" value="Log in" />
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="small-6 large-6 columns">
+                @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+            </div>
+        </div>
+
+
+
+
+        <p>
+            @Html.ActionLink("Registrer deg", "Register") hvis du ikke har en konto.
+        </p>
+    </div>
+    <div class="small-4 large-4 columns">
+                <br />
+        <ul>
+        <li class="home_box white">
+                        </li>
+        @Html.Partial("_Sidebar")
+            </ul>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

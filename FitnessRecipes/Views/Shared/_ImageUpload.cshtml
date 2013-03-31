@@ -1,0 +1,19 @@
+﻿@using AdminPortal.Web.Helpers
+@using FitnessRecipes.Resources.Common
+@model ImageUploadViewModel
+
+@if (@Model.HideUploadDiv)
+{
+    <img src="@Model.ImageSource" alt=""/>
+    <br />
+    <a href="#" id="@CommonValues.LnkChangeImage">@Common.ChangeImage</a>
+    <div id="divHideImageUpload" style="display: none">
+        @Html.TextBoxFor(model => model.File, new { type = "file", id = "tbFile" })<br />
+        @Html.ValidationMessageFor(model => model.File, null, new { @class = "error" })
+    </div>
+}
+@if (!@Model.HideUploadDiv)
+{
+    @Html.TextBoxFor(model => model.File, new { type = "file", id = "tbFile" })<br />
+    @Html.ValidationMessageFor(model => model.File, null, new { @class = "error" })
+}

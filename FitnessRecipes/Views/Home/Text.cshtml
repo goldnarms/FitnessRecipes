@@ -1,0 +1,61 @@
+﻿@using System.Collections
+@model FitnessRecipes.Models.Text
+
+@{
+    ViewBag.Title = "Text";
+}
+
+<h2>Text</h2>
+
+<div class="content">
+    <div class="float-right">
+    <h2>Legg til tekst</h2>
+    <form id="addText" data-bind="submit: create">
+        @Html.ValidationSummary(true)
+        <fieldset>
+            @Html.DisplayTextFor(model => model.TextValue)<br/>
+            @Html.EditorFor(model => model.TextValue)<br/>
+            @Html.DisplayTextFor(model => model.Language)<br/>
+            @Html.DropDownList("LanguageId", new SelectList(ViewData["Languages"] as IEnumerable, "Value", "Text", Model.LanguageId))
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    </form>
+    </div>
+</div>
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+  <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.0.0.js")"></script> 
+      <script type="text/javascript">
+          function TextViewModel() {
+              var self = this;
+              self.texts = ko.observableArray();
+
+              var baseUri = '../api/text';
+
+              self.create = function (formElement) {
+                  // If valid, post the serialized form data to the web api
+                  $(formElement).validate();
+                  if ($(formElement).valid()) {
+                      $.post(baseUri, $(formElement).serialize(), "json")
+                          .done(function (o) { self.texts.push(o); });
+                  }
+              };
+              
+              self.update = function (text) {
+                  $.ajax({ type: "PUT", url: baseUri + '/' + text.Id, data: text });
+              };
+              
+              self.remove = function (text) {
+                  // First remove from the server, then from the UI
+                  $.ajax({ type: "DELETE", url: baseUri + '/' + text.Id })
+                      .done(function () { self.authors.remove(text); });
+              };
+              $.getJSON(baseUri, self.texts);
+          }
+          
+          ko.applyBindings(new TextViewModel());
+  </script>
+}

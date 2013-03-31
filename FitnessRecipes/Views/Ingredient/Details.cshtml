@@ -1,0 +1,159 @@
+﻿@model IngredientViewModel
+
+@{
+    ViewBag.Title = "Matvare";
+    ViewBag.LinkHeader = "Ingredient";    
+}
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>MATVARE</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Matvare
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns  page_margin_top">
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h3>@Html.DisplayFor(model => model.Name)</h3>
+                <hr class="greenBorderBottom" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-3 large-3 columns clearfix tabs">
+@*                <div class="section-container vertical-nav" data-section="vertical-nav" style="">
+                    <section>
+                        <a class="tabsa" href="#simple1">Info</a>
+                    </section>
+                    <section>
+                        <a class="tabsa" href="#simple2">Oppskrifter</a>
+                    </section>
+                </div>*@
+                    <dl class="tabs">
+                        <dd class="tabsli active"><a class="tabsa" href="#simple1">Info</a></dd>
+                        <dd class="tabsli"><a class="tabsa" href="#simple2">Oppskrifter</a></dd>
+                    </dl>
+                </div>
+            <div class="small-9 large-9 columns">
+                <ul class="tabs-content">
+                    <li class="active" id="simple1Tab" data-slug="#simple1">
+                        <div class="row">
+                            <div class="small-12 large-12 columns headerPadding">
+                                <h2 class="box_header">Informasjon</h2>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="small-12 large-12 columns">
+                                @*@Model.*@
+                            </div>
+                        </div>
+                                <div class="row">
+                                    <div class="small-3 large-3 columns">
+                                        <h3 class="box_header">Kcal
+                                        </h3>
+                                        <p>@Model.Kcal</p>
+
+                                    </div>
+                                    <div class="small-3 large-3 columns">
+                                        <h3 class="box_header">Protein
+                                        </h3>
+                                        <p>@Model.Protein</p>
+
+                                    </div>
+                                    <div class="small-3 large-3 columns">
+                                        <h3 class="box_header">Karb
+                                        </h3>
+                                        <p>@Model.Carb</p>
+
+                                    </div>
+                                    <div class="small-3 large-3 columns">
+                                        <h3 class="box_header">Fett
+                                        </h3>
+                                        <p>@Model.Fat</p>
+
+                                    </div>
+                                </div>
+                    </li>
+                    <li id="simple2Tab" class="hide" data-slug="#simple2">
+                        <div class="row">
+                            <div class="small-12 large-12 columns">
+                                <div class="row">
+                                    <div class="small-12 large-12 columns">
+                                        <h2>Oppskrifter</h2>
+                                        <h4 class="sentence">Denne matvaren er brukt som en del i følgende oppskrifter:</h4>
+                                         <ul>
+                                            <li>
+                                                <div class="row">
+                                                    <div class="small-6 large-6 columns box_header">Navn</div>
+                                                    <div class="small-6 large-6 columns">
+                                                        <ul class="small-block-grid-4 large-block-grid-4">
+                                                            <li class="box_header">Kcal
+                                                            </li>
+                                                            <li class="box_header">Protein
+                                                            </li>
+                                                            <li class="box_header">Karb
+                                                            </li>
+                                                            <li class="box_header">Fett
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            @foreach (var meal in Model.Meals)
+                                            {
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="small-6 large-6 columns" style="margin-left: 0; padding-left: 0">
+                                                            <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span>
+                                                            @Html.ActionLink(meal.Name, "Meal", "Meal", new { id = meal.Id }, null)
+                                                        </div>
+                                                        <div class="small-6 large-6 columns">
+                                                            <ul class="small-block-grid-4 large-block-grid-4">
+                                                                <li>
+                                                                    <span>@meal.Kcal</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span>@meal.Protein%</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span>@meal.Carb%</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span>@meal.Fat%</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="small-4 large-4 columns">
+        <br />
+        <ul>
+            <li class="home_box white"></li>
+        @Html.Partial("_Sidebar")
+        </ul>
+    </div>
+</div>

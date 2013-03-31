@@ -1,0 +1,44 @@
+﻿<div style="width: 100%; background-color: white; height: 60px">
+    <div class="row">
+                <div class="small-12 large-4 hide-for-small columns">
+            <div class="header_left">
+                <a href="/index" title="FitnessOppskrifter">
+                    <img src="../../Content/themes/base/images/header_logo.png" alt="logo" />
+                    <span class="logo_left">FITNESS</span>
+                    <span class="logo_right">OPPSKRIFTER</span>
+                </a>
+            </div>
+        </div>
+                <div class="small-12 large-4 show-for-small columns">
+            <div class="header_left">
+                <a href="/index" title="FitnessOppskrifter">
+                    <img src="../../Content/themes/base/images/header_logo.png" alt="logo" />
+                    <span class="logo_left">FITNESS</span>
+                    <span class="logo_right">OPPSKRIFTER</span>
+                </a>
+            </div>
+        </div>
+        <div class="large-12 show-for-small small-12 columns" style="padding: 0; text-align: center">
+            <div class="header_container">
+                <div class="header clearfix" style="padding: 0px 18px;">
+                    <div class="mobile_menu">
+                        <select>
+                            <option value="-">-</option>
+                            <option value="@Url.Action("Index", "Home")" selected="selected">HJEM</option>
+                            <option value="@Url.Action("Index", "Recipe")l">ALLE OPPSKRIFTER</option>
+                            <option value="@Url.Action("Register", "Account")">REGISTRER</option>
+                            <option value="@Url.Action("Login", "Account")">LOGG INN</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="large-8 hide-for-small small-12 columns">
+            <div class="header_container">
+                <div class="header clearfix">
+                    @Html.Partial("_MenuList")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

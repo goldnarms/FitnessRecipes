@@ -1,0 +1,7 @@
+﻿@model IEnumerable<MealViewModel>
+
+    @foreach (var meal in Model)
+    {
+            <img src="@meal.ImgUrl" title="@meal.Name" />
+            @*<span>@meal.Name</span>*@
+    }

@@ -1,0 +1,35 @@
+﻿@model ICollection<ExternalLogin>
+
+@if (Model.Count > 0)
+{
+    <h3>Registrerte eksterne tjenester</h3>
+    <hr class="greenBorderBottom" />
+    <div class="row">
+
+        @foreach (ExternalLogin externalLogin in Model)
+        {
+            <div class="small-6 large-6 columns">
+                @externalLogin.ProviderDisplayName
+            </div>
+            <div class="small-6 large-6 columns">
+
+                @if (ViewBag.ShowRemoveButton)
+                {
+                    using (Html.BeginForm("Disassociate", "Account"))
+                    {
+                    @Html.AntiForgeryToken()
+                    <fieldset>
+                        @Html.Hidden("provider", externalLogin.Provider)
+                        @Html.Hidden("providerUserId", externalLogin.ProviderUserId)
+                        <input type="submit" value="Fjern" title="Fjern @externalLogin.ProviderDisplayName fra din konto" />
+                    </fieldset>
+                    }
+                }
+                else
+                {
+                    @: &nbsp;
+                    }
+            </div>
+        }
+    </div>
+}

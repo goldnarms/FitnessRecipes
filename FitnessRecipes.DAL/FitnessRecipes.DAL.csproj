@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{924E6C40-1AEE-40EF-AD9A-D248AA7BBC12}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FitnessRecipes.DAL</RootNamespace>
+    <AssemblyName>FitnessRecipes.DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\FitnessRecipes\bin\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Fakes\FakeAuthorRepository.cs" />
+    <Compile Include="Fakes\FakeCategoryRepository.cs" />
+    <Compile Include="Fakes\FakeCommentRepository.cs" />
+    <Compile Include="Fakes\FakeDietIngredientRepository.cs" />
+    <Compile Include="Fakes\FakeDietMealRepository.cs" />
+    <Compile Include="Fakes\FakeDietRepository.cs" />
+    <Compile Include="Fakes\FakeIngredientRepository.cs" />
+    <Compile Include="Fakes\FakeMealRepository.cs" />
+    <Compile Include="Fakes\FakeQuantityTypeRepository.cs" />
+    <Compile Include="Fakes\FakeRepository.cs" />
+    <Compile Include="Fakes\FakeUserDietRepository.cs" />
+    <Compile Include="Fakes\FakeUserRepository.cs" />
+    <Compile Include="Interfaces\IAuthorRepository.cs" />
+    <Compile Include="Interfaces\ICommentRepository.cs" />
+    <Compile Include="Interfaces\IDietCategoryRepository.cs" />
+    <Compile Include="Interfaces\IDietIngredientRepository.cs" />
+    <Compile Include="Interfaces\IDietMealRepository.cs" />
+    <Compile Include="Interfaces\IDietRepository.cs" />
+    <Compile Include="Interfaces\IIngredientQuantityRepository.cs" />
+    <Compile Include="Interfaces\IIngredientRepository.cs" />
+    <Compile Include="Interfaces\IMealIngredientRepository.cs" />
+    <Compile Include="Interfaces\IMealRepository.cs" />
+    <Compile Include="Interfaces\IQuantityTypeRepository.cs" />
+    <Compile Include="Interfaces\IUserDietRepository.cs" />
+    <Compile Include="Interfaces\IUserRepository.cs" />
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Author.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AuthorRepository.cs" />
+    <Compile Include="Models\Brand.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BrandRepository.cs" />
+    <Compile Include="Models\CategoryRepository.cs" />
+    <Compile Include="Models\Comment.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CommentRepository.cs" />
+    <Compile Include="Models\DbContextFactory.cs" />
+    <Compile Include="Models\Diet.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DietCategory.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DietCategoryRepository.cs" />
+    <Compile Include="Models\DietIngredient.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DietIngredientRepository.cs" />
+    <Compile Include="Models\DietMeal.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DietMealRepository.cs" />
+    <Compile Include="Models\DietRepository.cs" />
+    <Compile Include="Fakes\FakeDietCategoryRepository.cs" />
+    <Compile Include="Models\FitnessRecipesModel.Context.cs">
+      <DependentUpon>FitnessRecipesModel.Context.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\FitnessRecipesModel.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\FitnessRecipesModel.Designer.cs">
+      <DependentUpon>FitnessRecipesModel.edmx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Models\IDbContextFactory.cs" />
+    <Compile Include="Models\Ingredient.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IngredientCategory.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IngredientCategoryRepository.cs" />
+    <Compile Include="Models\IngredientQuantity.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IngredientQuantityRepository.cs" />
+    <Compile Include="Models\IngredientRepository.cs" />
+    <Compile Include="Interfaces\IRecipeRepository.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Models\IUnitOfWork.cs" />
+    <Compile Include="Models\Meal.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MealCategory.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MealIngredient.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MealIngredientRepository.cs" />
+    <Compile Include="Models\MealRepository.cs" />
+    <Compile Include="Models\ObjectFactory.cs" />
+    <Compile Include="Models\QuantityType.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuantityTypeRepository.cs" />
+    <Compile Include="Models\Recipe.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RecipeRepository.cs" />
+    <Compile Include="Models\Repository.cs" />
+    <Compile Include="Models\Role.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\UnitOfWork.cs" />
+    <Compile Include="Models\User.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserDiet.cs">
+      <DependentUpon>FitnessRecipesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\UserDietRepository.cs" />
+    <Compile Include="Models\UserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Models\FitnessRecipesModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FitnessRecipesModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\FitnessRecipesModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FitnessRecipesModel.edmx</DependentUpon>
+      <LastGenOutput>FitnessRecipesModel.Context.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\FitnessRecipesModel.edmx.diagram">
+      <DependentUpon>FitnessRecipesModel.edmx</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Models\FitnessRecipesModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>FitnessRecipesModel.edmx</DependentUpon>
+      <LastGenOutput>FitnessRecipesModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

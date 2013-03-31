@@ -1,0 +1,17 @@
+﻿@model IEnumerable<MealViewModel>
+<h3>Retter</h3>
+<ul class="ingredientList">
+    @foreach (var meal in Model)
+    {
+        <li>
+            <a href="#" class="mealPopup" data-mealid="@meal.Id" >@meal.Name</a>
+            @if (meal.Recipe != null)
+            {
+                <a href="/recipe/recipe/@meal.Id">
+                    <img src="~/Content/themes/base/images/recipeSmall.png" /></a>
+            }
+        </li>
+    }
+</ul>
+<br/>
+@Html.ActionLink("Legg til ny rett...", "Create", "Meal")

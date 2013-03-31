@@ -1,0 +1,16 @@
+﻿@model IEnumerable<IngredientViewModel>
+Treff:<br/>
+<ul>
+    @foreach (var ingredient in Model)
+    {
+        if (ingredient.Ingredients.Any())
+        {
+            <li>@Html.ActionLink(@ingredient.Name, "Details", string.Format("{0}({1})", "Ingredient", ingredient.Ingredients.Count()), new { id = @ingredient.Id})</li>
+        }
+        else
+        {
+            
+        <li>@Html.ActionLink(@ingredient.Name, "Details", "Ingredient", new { id = @ingredient.Id})</li>
+        }
+    }
+</ul>

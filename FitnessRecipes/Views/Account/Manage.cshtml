@@ -1,0 +1,80 @@
+﻿@model LocalPasswordModel
+@{
+    ViewBag.Title = "Manage Account";
+    ViewBag.LinkHeader = "Account";
+}
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>DIN KONTO</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>din konto
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns  page_margin_top">
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h3>Kontoinformasjon</h3>
+                <hr class="greenBorderBottom" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <p>Du er logget inn som <strong>@User.Identity.Name</strong>.</p>
+            </div>
+        </div>
+
+        @if (ViewBag.HasLocalPassword)
+        {
+            <div class="row">
+                <div class="small-12 large-12 columns">
+                    @Html.Partial("_ChangePasswordPartial")
+                </div>
+            </div>
+        }
+        else
+        { 
+            <div class="row">
+                <div class="small-12 large-12 columns">
+                    @Html.Partial("_SetPasswordPartial")
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="small-12 large-12 columns">
+                <section id="externalLogins">
+                    @Html.Action("RemoveExternalLogins")
+                    <br/>
+                    <h3>Legg til en ekstern logg inn</h3>
+                    <hr class="greenBorderBottom" />
+                    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="small-4 large-4 columns">
+                <br />
+        <ul>
+            <li class="home_box white">
+            </li>
+                @Html.Partial("_Sidebar")
+        
+        </ul>
+    </div>
+</div>
+<p class="message-success">@ViewBag.StatusMessage</p>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

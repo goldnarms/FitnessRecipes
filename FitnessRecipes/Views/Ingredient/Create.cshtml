@@ -1,0 +1,139 @@
+﻿@using System.Collections
+@using FitnessRecipes.Helpers
+@using FitnessRecipes.Resources.Common;
+@model IngredientViewModel
+@{
+    ViewBag.Title = "Legg til ny matvare";
+}
+<div id="addBrandModal" class="reveal-modal medium modalText">
+    @Html.Partial("_CreateBrand", new BrandViewModel())
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>MATVARE</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Legg til matvare
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns page_margin_top">
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h3>Legg til ny</h3>
+                <hr class="greenBorderBottom" />
+            </div>
+        </div>
+@using (Html.BeginForm("Create", "Ingredient", FormMethod.Post, new { @class = "contact_form" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="row">
+        <div class="small-6 large-6 columns">
+            @Html.LabelForRequired(model => model.Name)    
+        </div>
+        <div class="small-6 large-6 columns">
+            @Html.EditorFor(model => model.Name)
+            @Html.ValidationMessageFor(model => model.Name)            
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="small-6 large-6 columns">
+        @Html.LabelForRequired(model => model.Carb)
+        </div>
+        <div class="small-6 large-6 columns">
+        @Html.EditorFor(model => model.Carb)
+        @Html.ValidationMessageFor(model => model.Carb)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-6 large-6 columns">
+        @Html.LabelForRequired(model => model.Protein)
+        </div>
+        <div class="small-6 large-6 columns">
+        @Html.EditorFor(model => model.Protein)
+        @Html.ValidationMessageFor(model => model.Protein)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-6 large-6 columns">
+        @Html.LabelForRequired(model => model.Fat)
+        </div>
+        <div class="small-6 large-6 columns">
+        @Html.EditorFor(model => model.Fat)
+        @Html.ValidationMessageFor(model => model.Fat)
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-6 large-6 columns">
+        @Html.LabelForRequired(model => model.Kcal)
+        </div>
+        <div class="small-6 large-6 columns">
+        @Html.EditorFor(model => model.Kcal)
+        @Html.ValidationMessageFor(model => model.Kcal)
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-6 large-6 columns">
+            @Html.LabelForRequired(model => model.Link)
+        </div>
+        <div class="small-6 large-6 columns">
+            @Html.EditorFor(model => model.Link)
+            @Html.ValidationMessageFor(model => model.Link)
+        </div>
+    </div>
+        <div class="row">
+        <div class="small-6 large-6 columns">
+        @Html.LabelForRequired(model => model.BrandId)
+        </div>
+        <div class="small-6 large-6 columns">
+            @Html.DropDownListFor(m => m.BrandId, new SelectList(ViewData["Brands"] as IEnumerable, "Id", "Name", "Har ingen merke..."), new { id ="ddlBrands"})<br/>
+            <a href="#" id="lnkAddBrand">Klikk her for å legge til nytt merke...</a>
+        @Html.ValidationMessageFor(model => model.BrandId)
+        </div>
+    </div>
+    <div class="row">
+        <div class="small-12 large-12 columns" style="text-align: right">
+        <input type="submit" value="@Common.Create" />
+        </div>
+    </div>
+}
+    </div>
+    <div class="small-4 large-4 columns">
+        <br />
+        <ul>
+            <li class="home_box white"></li>
+        @Html.Partial("_Sidebar")
+        </ul>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+        jQuery.extend(jQuery.validator.methods, {
+            number: function (value, element) {
+                return this.optional(element)
+                    || /^-?(?:\d+|\d{1,3}(?:\.\d{3})+)(?:[,.]\d+)?$/.test(val);
+            }
+        });
+    </script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+    <script src="~/js/modalhandler.js"></script>
+    <script src="~/js/utilz.js"></script>
+    <script src="~/js/createingredient.js"></script>
+}

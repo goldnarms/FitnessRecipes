@@ -1,0 +1,12 @@
+﻿@model IEnumerable<IngredientViewModel>
+@foreach (var item in Model)
+{
+    <li>
+        <div class="row">
+            <div class="small-10 large-10 columns" style="border-bottom: 1px solid #eee;">
+                <span style="color: black; width: 316px; font-family: Arial; font-size: 13px; font-weight:400">@Html.DisplayFor(modelItem => item.Name)</span>
+            </div>
+            <div class="small-2 large-2 columns"><input type="button" class="smallbutton icon_small_arrow subtract_black" style="display: block" value="" id="btnRemoveIngredient" /></div>
+        </div>
+    </li>
+}

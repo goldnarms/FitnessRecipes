@@ -1,0 +1,111 @@
+﻿@using FitnessRecipes.Helpers
+@using FitnessRecipes.Resources.Common
+@model RecipeViewModel
+@{
+    ViewBag.LinkHeader = "Recipe";
+    ViewBag.Title = "Legg til ny oppskrift";
+    var user = SessionFacade.User;
+}
+<div class="page_header row">
+    <div class="small-12 large-12 columns page_header_left">
+        <h1>OPPSKRIFT</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="small-12 large-12 columns">
+        <ul class="bread_crumb clearfix">
+            <li>Du er her:</li>
+            <li>
+                @Html.ActionLink("Hjem", "Index", "Home")
+            </li>
+            <li class="separator icon_small_arrow right_white">&nbsp;
+            </li>
+            <li>Legg til oppskrift
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="row">
+    <div class="small-8 large-8 columns page_margin_top">
+        <div class="row">
+            <div class="small-12 large-12 columns oppskrifter">
+                <h3>Legg til ny</h3>
+                <hr class="greenBorderBottom" />
+            </div>
+        </div>
+        @using (Html.BeginForm("Create", "Recipe", FormMethod.Post, new { @class = "contact_form" }))
+        {
+            @Html.ValidationSummary(true)
+            <div class="row">
+                <div class="small-6 large-6 columns">
+                    @Html.LabelFor(model => model.Meal.Name)
+                </div>
+                <div class="small-6 large-6 columns">
+                    @Html.TextBoxFor(model => model.Meal.Name, new { @class = "text_input hint wide", placeholder = "navn" })
+                    @Html.ValidationMessageFor(model => model.Meal.Name)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-6 large-6 columns">
+                    @Html.LabelFor(model => model.Meal.ImgUrl)
+                </div>
+                <div class="small-6 large-6 columns">
+                    @Html.TextBoxFor(model => model.Meal.ImgUrl, new { @class = "text_input hint wide", placeholder = "bildesti" })
+                    @Html.ValidationMessageFor(model => model.Meal.ImgUrl)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-6 large-6 columns">
+                    @Html.LabelFor(model => model.WebUrl)
+                </div>
+                <div class="small-6 large-6 columns">
+                    @Html.TextBoxFor(model => model.WebUrl, new { @class = "text_input hint wide", placeholder = "webadresse" })
+                    @Html.ValidationMessageFor(model => model.WebUrl)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="small-6 large-6 columns">
+                    @Html.LabelFor(model => model.UserId)
+                </div>
+                <div class="small-6 large-6 columns">
+                    @Html.DropDownListFor(model => model.UserId, new SelectList(Model.Authors, "Id", "Name"), new { id = "ddlIngredients"})
+                    @Html.ValidationMessageFor(model => model.UserId)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-6 large-6 columns">
+                    @Html.LabelFor(model => model.Categories)
+                </div>
+                <div class="small-6 large-6 columns">
+                    @Html.DropDownListFor(model => model.Meal.CategoryId, new SelectList(Model.Categories, "Id", "Name"), new { id = "ddlCategories" })
+                    @Html.ValidationMessageFor(model => model.Meal.CategoryId)
+                </div>
+            </div>
+            <div class="row">
+                <div class="small-12 large-12 columns" style="text-align: right">
+                    <input type="button" class="buttonGreenBorder" value="Avbryt" />
+                    <input type="submit" value="@Common.Create" />
+                </div>
+            </div>
+
+        }
+    </div>
+    <div class="small-4 large-4 columns">
+        <br />
+        <ul>
+            <li class="home_box white"></li>
+        @Html.Partial("_Sidebar")
+        </ul>
+    </div>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script type="javascript">
+        $(document).ready(function() {
+            $("#ddlIngredients").chosen();
+            $("#ddlCategories").chosen();
+        });
+    </script>
+}

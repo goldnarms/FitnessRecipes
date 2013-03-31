@@ -1,0 +1,58 @@
+﻿model FitnessRecipes.Models.Author
+
+@{
+    ViewBag.Title = "Author";
+}
+
+<h2>Author</h2>
+
+<div class="content">
+    <div class="float-right">
+    <h2>Add New Product</h2>
+    <form id="addAuthor" data-bind="submit: create">
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>Contact</legend>
+            @Html.EditorForModel()
+            <p>
+                <input type="submit" value="Save" />
+            </p>
+        </fieldset>
+    </form>
+    </div>
+</div>
+
+@section Scripts {
+  @Scripts.Render("~/bundles/jqueryval")
+  <script type="text/javascript" src="@Url.Content("~/Scripts/knockout-2.0.0.js")"></script> 
+      <script type="text/javascript">
+          function AuthorViewModel() {
+              var self = this;
+              self.authors = ko.observableArray();
+
+              var baseUri = '../api/author';
+
+              self.create = function (formElement) {
+                  // If valid, post the serialized form data to the web api
+                  $(formElement).validate();
+                  if ($(formElement).valid()) {
+                      $.post(baseUri, $(formElement).serialize(), "json")
+                          .done(function (o) { self.authors.push(o); });
+                  }
+              };
+              
+              self.update = function (author) {
+                  $.ajax({ type: "PUT", url: baseUri + '/' + author.Id, data: author });
+              };
+              
+              self.remove = function (author) {
+                  // First remove from the server, then from the UI
+                  $.ajax({ type: "DELETE", url: baseUri + '/' + author.Id })
+                      .done(function () { self.authors.remove(author); });
+              };
+              $.getJSON(baseUri, self.authors);
+          }
+          
+          ko.applyBindings(new AuthorViewModel());
+  </script>
+}

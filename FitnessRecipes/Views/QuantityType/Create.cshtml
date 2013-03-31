@@ -1,0 +1,65 @@
+﻿@model QuantityTypeViewModel
+
+@{
+    ViewBag.Title = "Create";
+    ViewBag.LinkHeader = ViewContext.RouteData.Values["controller"].ToString();
+}
+
+<h2>Legg til ny måleenhet</h2>
+
+@using (Html.BeginForm("Create", "QuantityType", FormMethod.Post, new { @class = "contact_form" }))
+{
+    @Html.ValidationSummary(true)
+
+    <div class="editor-label">
+        @Html.LabelFor(model => model.Name)
+    </div>
+    <div class="editor-field">
+        @Html.TextBoxFor(model => model.Name, new { @class = "text_input hint wide", placeholder = "Name" })
+        @Html.ValidationMessageFor(model => model.Name)
+    </div>
+    
+    <p>
+        <button type="button" name="button" value="cancel">Avbryt</button>
+        <button name="button" value="create">Lagre</button>
+    </p>
+}
+
+
+
+<div id="modalSuccess" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Ny måle enhet lagt til</h2>
+    <p id="lead">Måleenheten har blitt lagt til i databasen</p>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="modalError" class="reveal-modal [expand, xlarge, large, medium, small]">
+    <h2>Det skjedde en feil</h2>
+    <p id="lead">Kunne ikke lagre enheten, det kan være fordi den er lagret fra før.</p>
+    <a class="close-reveal-modal">&#215;</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/foundation.js"></script>
+    <script src="~/Scripts/jquery.foundation.reveal.js"></script>
+    @*<script src="~/Scripts/jquery.signalR-0.5.3.js"></script>*@
+    @*    <script type="text/javascript">
+        var messageposter = $.connection.messageposter;
+        messageposter.receive = function (message) {
+            $('#myModal').reveal();
+            $("#lead").append(message);
+        };
+    </script>*@
+    @if (TempData["message"] != null && TempData["message"].ToString() == "success")
+    {
+        <script type="text/javascript">
+            $('#modalSuccess').reveal();
+        </script>
+    }
+    @if (TempData["message"] != null && TempData["message"].ToString() == "error")
+    {
+        <script type="text/javascript">
+            $('#modalError').reveal();
+        </script>
+    }
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="225be15d36e64ec095f56b1ad787bac3" Name="Diagram1" ZoomLevel="59">
+        <EntityTypeShape EntityType="FitnessRecipiesModel.Author" Width="1.5" PointX="13" PointY="19" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.Comment" Width="1.5" PointX="9.6570449441937" PointY="3.6072516756166015" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.Diet" Width="1.5" PointX="13.875" PointY="10.25" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.Ingredient" Width="1.5" PointX="2.6263505716930844" PointY="8.4454047868239712" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.Meal" Width="1.5" PointX="7.5" PointY="0.625" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.MealIngredient" Width="1.5" PointX="4.5598092733695221" PointY="4.871459396961825" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.QuantityType" Width="1.5" PointX="2.625" PointY="5" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.User" Width="1.5" PointX="10.25" PointY="18.875" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Author_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Comment_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Comment_1" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Diet_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Food_1" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Food_2" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_MealIngredient_1" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_MealIngredient_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_MealIngredient_2" />
+        <AssociationConnector Association="FitnessRecipiesModel.DietComment" />
+        <AssociationConnector Association="FitnessRecipiesModel.MealComment" />
+        <AssociationConnector Association="FitnessRecipiesModel.UserFavourite" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.MealCategory" Width="1.5" PointX="6.8504403656583461" PointY="15.908750809686609" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Meal_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Category_1" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.DietCategory" Width="1.5" PointX="3.6693250721643329" PointY="28.654705463282163" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.IngredientCategory" Width="1.5" PointX="5.25" PointY="24.75" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Diet_1" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Ingredient_0" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.DietIngredient" Width="1.5" PointX="5.2036445183696429" PointY="12.359312078151532" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.DietMeal" Width="1.5" PointX="12.375" PointY="1.875" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_DietIngredient_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_DietMeal_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_DietIngredient_1" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_DietIngredient_2" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_DietMeal_1" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.Brand" Width="1.5" PointX="7.2084457721600517" PointY="27.924082396516614" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Ingredient_1" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.Recipe" Width="1.5" PointX="6.625" PointY="19.5" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Recipe_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Recipe_1" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.UserDiet" Width="1.5" PointX="2.0275897430384484" PointY="12.963221943454455" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_UserDiet_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_UserDiet_1" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.Role" Width="1.5" PointX="12" PointY="8" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_Meal_1" />
+        <EntityTypeShape EntityType="FitnessRecipiesModel.IngredientQuantity" Width="1.5" PointX="10.840505947750296" PointY="5.3740773822060213" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_IngredientQuantity_0" />
+        <AssociationConnector Association="FitnessRecipiesModel.FK_IngredientQuantity_1" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
