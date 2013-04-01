@@ -1,10 +1,8 @@
-﻿using FitnessRecipes.DAL.Models;
-
-namespace FitnessRecipes.BLL.Services
+﻿namespace FitnessRecipes.BLL.Services
 {
     public static class QuantityConverter
     {
-        public static double ConvertTo100Grams(int quantityTypeId, int ingredientId = 1)
+        public static double ConvertTo100Grams(int quantityTypeId, double convertFactor = 1)
         {
             switch (quantityTypeId)
             {
@@ -48,15 +46,17 @@ namespace FitnessRecipes.BLL.Services
                     }
                 case 14:
                     {
-                        var context = new DbContextFactory().GetFitnessRecipeEntities();
-                        var repository = new IngredientQuantityRepository(context);
-                        return repository.GetConvertFactor(ingredientId, quantityTypeId);
+                        return convertFactor;
                     }
                 default:
                     {
-                        return 0;
+                        return 100;
                     }
             }
+        }
+        public static double ConvertToGrams(int quantityTypeId, double convertFactor = 1)
+        {
+            return ConvertTo100Grams(quantityTypeId, convertFactor)/100;
         }
     }
 }

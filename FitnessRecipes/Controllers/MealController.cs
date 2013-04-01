@@ -15,43 +15,27 @@ namespace FitnessRecipes.Controllers
 {
     public class MealController : Controller
     {
-        private readonly IRepository<Meal> _mealRepository;
-        private readonly IRepository<Ingredient> _ingredientRepository;
-        private readonly IRepository<QuantityType> _quantityTypeRepository;
-        private readonly IRepository<IngredientCategory> _ingredientCategoryRepository;
-        private readonly IRepository<MealIngredient> _mealIngredientRepository;
-        private readonly IRepository<MealCategory> _categoryRepository;
-        private readonly IRepository<Recipe> _recipeRepository;
+        private readonly IMealRepository _mealRepository;
+        private readonly IIngredientRepository _ingredientRepository;
+        private readonly IQuantityTypeRepository _quantityTypeRepository;
+        private readonly IIngredientCategoryRepository _ingredientCategoryRepository;
+        private readonly IMealIngredientRepository _mealIngredientRepository;
+        private readonly IMealCategoryRepository _categoryRepository;
+        private readonly IRecipeRepository _recipeRepository;
         private readonly IUserRepository _userRepository;
-        private readonly IRepository<Author> _authorRepository;
+        private readonly IAuthorRepository _authorRepository;
 
-        //public MealController()
-        //{
-        //    var fitnessRecipeEntites = new DbContextFactory().GetFitnessRecipeEntities();
-        //    _mealRepository = new MealRepository(fitnessRecipeEntites);
-        //    _ingredientRepository = new IngredientRepository(fitnessRecipeEntites);
-        //    _quantityTypeRepository = new QuantityTypeRepository(fitnessRecipeEntites);
-        //    _ingredientCategoryRepository = new IngredientCategoryRepository(fitnessRecipeEntites);
-        //    _mealIngredientRepository = new MealIngredientRepository(fitnessRecipeEntites);
-        //    _categoryRepository = new CategoryRepository(fitnessRecipeEntites);
-        //    _recipeRepository = new RecipeRepository(fitnessRecipeEntites);
-        //    _authorRepository = new AuthorRepository(fitnessRecipeEntites);
-        //}
-
-        public MealController(IRepository<Meal> mealRepository, IRepository<Ingredient> ingredientRepository, 
-            IRepository<QuantityType> quantityTypeRepository, IRepository<IngredientCategory> categoryRepository, 
-            IRepository<MealIngredient> mealIngredientRepository, IRepository<MealCategory> mealCategoryRepository,
-            IRepository<Recipe> recipeRepository, IRepository<Author> authorRepository, IUserRepository userRepository)
+        public MealController(IMealRepository mealRepository, IIngredientRepository ingredientRepository, IQuantityTypeRepository quantityTypeRepository, IIngredientCategoryRepository ingredientCategoryRepository, IMealIngredientRepository mealIngredientRepository, IMealCategoryRepository categoryRepository, IRecipeRepository recipeRepository, IUserRepository userRepository, IAuthorRepository authorRepository)
         {
             _mealRepository = mealRepository;
             _ingredientRepository = ingredientRepository;
             _quantityTypeRepository = quantityTypeRepository;
-            _ingredientCategoryRepository = categoryRepository;
+            _ingredientCategoryRepository = ingredientCategoryRepository;
             _mealIngredientRepository = mealIngredientRepository;
-            _categoryRepository = mealCategoryRepository;
+            _categoryRepository = categoryRepository;
             _recipeRepository = recipeRepository;
-            _authorRepository = authorRepository;
             _userRepository = userRepository;
+            _authorRepository = authorRepository;
         }
 
         public ActionResult Index()

@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
+using FitnessRecipes.DAL.Repositories;
 using FitnessRecipes.ViewModels;
 
 namespace FitnessRecipes.Controllers

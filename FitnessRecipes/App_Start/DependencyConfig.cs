@@ -4,6 +4,7 @@ using AdminPortal.BLL.Interfaces;
 using FitnessRecipes.BLL.Services;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
+using FitnessRecipes.DAL.Repositories;
 using Microsoft.Practices.Unity;
 using User = FitnessRecipes.DAL.Models.User;
 
@@ -43,9 +44,11 @@ namespace FitnessRecipes.App_Start
             container.RegisterType<IDietIngredientRepository, DietIngredientRepository>(new InjectionConstructor(fitnessRecipeEntites));
             container.RegisterType<IDietMealRepository, DietMealRepository>(new InjectionConstructor(fitnessRecipeEntites));
             container.RegisterType<IDietRepository, DietRepository>(new InjectionConstructor(fitnessRecipeEntites));
-            container.RegisterType<IIngredientRepository, IngredientRepository>(new InjectionConstructor(fitnessRecipeEntites)); 
+            container.RegisterType<IIngredientRepository, IngredientRepository>(new InjectionConstructor(fitnessRecipeEntites));
+            container.RegisterType<IIngredientCategoryRepository, IngredientCategoryRepository>(new InjectionConstructor(fitnessRecipeEntites));
             container.RegisterType<IIngredientQuantityRepository, IngredientQuantityRepository>(new InjectionConstructor(fitnessRecipeEntites));
             container.RegisterType<IMealRepository, MealRepository>(new InjectionConstructor(fitnessRecipeEntites));
+            container.RegisterType<IMealCategoryRepository, MealCategoryRepository>(new InjectionConstructor(fitnessRecipeEntites));
             container.RegisterType<IMealIngredientRepository, MealIngredientRepository>(new InjectionConstructor(fitnessRecipeEntites));
             container.RegisterType<IMealRepository, MealRepository>(new InjectionConstructor(fitnessRecipeEntites));
             container.RegisterType<IQuantityTypeRepository, QuantityTypeRepository>(new InjectionConstructor(fitnessRecipeEntites));

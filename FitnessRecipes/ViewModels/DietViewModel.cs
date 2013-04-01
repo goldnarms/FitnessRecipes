@@ -22,9 +22,13 @@ namespace FitnessRecipes.ViewModels
         public string WebUrl { get; set; }
         [Display(Name = "Beskrivelse")]
         public string Description { get; set; }
+        [DisplayFormat(NullDisplayText = "0", DataFormatString = "{0:n1}", ApplyFormatInEditMode = true)]
         public double? Protein { get; set; }
+        [DisplayFormat(NullDisplayText = "0", DataFormatString = "{0:n1}", ApplyFormatInEditMode = true)]
         public double? Carb { get; set; }
+        [DisplayFormat(NullDisplayText = "0", DataFormatString = "{0:n1}", ApplyFormatInEditMode = true)]
         public double? Fat { get; set; }
+        [DisplayFormat(NullDisplayText = "0", DataFormatString = "{0:n0}", ApplyFormatInEditMode = true)]
         public double? Kcal { get; set; }
         public int? AuthorId { get; set; }
         public DateTime DateAdded { get; set; }

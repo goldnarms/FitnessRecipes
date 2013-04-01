@@ -1,15 +1,18 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
+using FitnessRecipes.BLL.Services;
 using FitnessRecipes.DAL.Interfaces;
+using FitnessRecipes.DAL.Models;
 
-namespace FitnessRecipes.DAL.Models
+namespace FitnessRecipes.DAL.Repositories
 {
     public abstract class Repository<T> : IRepository<T>
-        where T : class
+        where T : class 
     {
         protected FitnessRecipiesEntities Context;
 

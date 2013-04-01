@@ -8,6 +8,7 @@ using AutoMapper;
 using FitnessRecipes.BLL.Services;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
+using FitnessRecipes.DAL.Services;
 using FitnessRecipes.Helpers;
 using FitnessRecipes.ViewModels;
 using System.Linq;
@@ -22,12 +23,13 @@ namespace FitnessRecipes.Controllers
         private readonly IDietMealRepository _dietMealRepository;
         private readonly IDietIngredientRepository _dietIngredientRepository;
         private readonly IQuantityTypeRepository _quantityTypeRepository;
+        private readonly IIngredientQuantityRepository _ingredientQuantityRepository;
         private readonly IDietRepository _dietRepository;
         private readonly IUserDietRepository _userDietRepository;
 
         public DietController(IDietRepository dietRepository, ICommentRepository commentRepository, IUserRepository userRepository, IDietCategoryRepository categoryRepository,
             IDietMealRepository dietMealRepository, IDietIngredientRepository dietIngredientRepository, IQuantityTypeRepository quantityTypeRepository,
-            IUserDietRepository userDietRepository)
+            IUserDietRepository userDietRepository, IIngredientQuantityRepository ingredientQuantityRepository)
         {
             _dietRepository = dietRepository;
             _commentRepository = commentRepository;
@@ -37,6 +39,7 @@ namespace FitnessRecipes.Controllers
             _dietIngredientRepository = dietIngredientRepository;
             _quantityTypeRepository = quantityTypeRepository;
             _userDietRepository = userDietRepository;
+            _ingredientQuantityRepository = ingredientQuantityRepository;
         }
 
         public ActionResult Index()
@@ -51,7 +54,7 @@ namespace FitnessRecipes.Controllers
         {
             var diet = _dietRepository.Get(id);
             var dietViewModel = Mapper.Map<Diet, DietViewModel>(diet);
-            var dietCalculator = new DietCalculator(diet);
+            var dietCalculator = new DietCalculator(diet, _ingredientQuantityRepository);
             dietViewModel.Ingredients = Mapper.Map<IEnumerable<DietIngredient>, IEnumerable<DietIngredientViewModel>>(diet.DietIngredients);
             dietViewModel.Meals = Mapper.Map<IEnumerable<DietMeal>, IEnumerable<DietMealViewModel>>(diet.DietMeals);
             dietViewModel.Kcal = dietCalculator.CalculateAverageKcal();
@@ -63,7 +66,12 @@ namespace FitnessRecipes.Controllers
 
         public ActionResult Schedule(int id)
         {
-            return View(Mapper.Map<Diet, DietViewModel>(_dietRepository.Get(id)));
+            var diet = _dietRepository.Get(id);
+            var dietViewModel = Mapper.Map<Diet, DietViewModel>(diet);
+            var dietCalculator = new DietCalculator(diet, _ingredientQuantityRepository);
+            dietViewModel.Ingredients = Mapper.Map<IEnumerable<DietIngredient>, IEnumerable<DietIngredientViewModel>>(diet.DietIngredients);
+            dietViewModel.Meals = Mapper.Map<IEnumerable<DietMeal>, IEnumerable<DietMealViewModel>>(diet.DietMeals);
+            return View(dietViewModel);
         }
 
         public ActionResult SearchResult(string searchString)

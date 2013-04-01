@@ -79,8 +79,11 @@ namespace FitnessRecipes.DAL.Fakes
 
         public T Create(T obj)
         {
-            _dictionary.Add(_dictionary.Count, obj);
-            return obj;
+            dynamic dynObj = obj;
+            _dictionary.Add(_dictionary.Count +1, obj);
+            if (dynObj.PropertyExist("Id"))
+                dynObj.Id = _dictionary.Count;
+            return dynObj;
         }
 
         public int Update(T obj)

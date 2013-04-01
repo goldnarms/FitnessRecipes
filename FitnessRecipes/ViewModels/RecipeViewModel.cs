@@ -5,6 +5,7 @@ using System.Linq;
 using AutoMapper;
 using FitnessRecipes.BLL.Services;
 using FitnessRecipes.DAL.Models;
+using FitnessRecipes.DAL.Repositories;
 using FitnessRecipes.Models;
 using Recipe = FitnessRecipes.Resources.Models.Recipe;
 

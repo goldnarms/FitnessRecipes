@@ -38,10 +38,10 @@
 <div class="row">
     <div class="small-8 large-8 columns  page_margin_top">
         <div class="row">
-            <div class="small-10 large-10 columns oppskrifter">
+            <div class="small-9 large-9 columns oppskrifter">
                 <h2>@Html.DisplayFor(model => model.Name)</h2>
             </div>
-            <div class="small-2 large-2 columns" style="text-align: right; font-size: 20px">
+            <div class="small-3 large-3 columns" style="text-align: right; font-size: 20px">
                 <i class="icon-facebook"></i>
                 <a href="https://twitter.com/share" data-related="fitnessoppskrifter" data-count="none">
                 <i class="icon-twitter"></i></a>
@@ -83,25 +83,25 @@
                             <div class="small-3 large-3 columns">
                                 <h3 class="box_header">Kcal
                                 </h3>
-                                <p>@Model.Kcal.HasValue ? @Model.Kcal.Value.ToString("N0") : "0"</p>
+                                <p>@Html.DisplayFor(m => m.Kcal) pr. dag</p>
 
                             </div>
                             <div class="small-3 large-3 columns">
                                 <h3 class="box_header">Protein
                                 </h3>
-                                <p>@Model.Protein.HasValue ? @Model.Protein.Value.ToString("N1")% : "0"</p>
+                                <p>@Html.DisplayFor(m => m.Protein)%</p>
 
                             </div>
                             <div class="small-3 large-3 columns">
                                 <h3 class="box_header">Karb
                                 </h3>
-                                <p>@Model.Carb</p>
+                                <p>@Html.DisplayFor(m => m.Carb)%</p>
 
                             </div>
                             <div class="small-3 large-3 columns">
                                 <h3 class="box_header">Fett
                                 </h3>
-                                <p>@Model.Fat</p>
+                                <p>@Html.DisplayFor(m => m.Fat)%</p>
 
                             </div>
                         </div>

@@ -48,17 +48,10 @@
     <Compile Include="MagicStrings\GeneralValues.cs" />
     <Compile Include="MagicStrings\HtmlValues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\DietCalculator.cs" />
     <Compile Include="Services\FormsAuth.cs" />
-    <Compile Include="Services\MealCalculator.cs" />
+    <Compile Include="Services\ObjectExtensions.cs" />
     <Compile Include="Services\QuantityConverter.cs" />
     <Compile Include="Services\StringExtensions.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FitnessRecipes.DAL\FitnessRecipes.DAL.csproj">
-      <Project>{924e6c40-1aee-40ef-ad9a-d248aa7bbc12}</Project>
-      <Name>FitnessRecipes.DAL</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

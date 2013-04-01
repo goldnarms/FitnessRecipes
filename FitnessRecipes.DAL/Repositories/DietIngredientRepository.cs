@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using FitnessRecipes.DAL.Interfaces;
+using FitnessRecipes.DAL.Models;
 
-namespace FitnessRecipes.DAL.Models
+namespace FitnessRecipes.DAL.Repositories
 {
     public class DietIngredientRepository : Repository<DietIngredient>, IDietIngredientRepository
     {

@@ -18,21 +18,9 @@ namespace FitnessRecipes.ViewModels
         public DietViewModel Diet { get; set; }
         public IngredientViewModel Ingredient { get; set; }
         public QuantityTypeViewModel QuantityType { get; set; }
-        public double Kcal
-        {
-            get { return Ingredient.Kcal * Quantity / QuantityConverter.ConvertTo100Grams(QuantityType.ID); }
-        }
-        public double Protein
-        {
-            get { return Ingredient.Protein * Quantity / QuantityConverter.ConvertTo100Grams(QuantityType.ID); }
-        }
-        public double Carb
-        {
-            get { return Ingredient.Carb * Quantity / QuantityConverter.ConvertTo100Grams(QuantityType.ID); }
-        }
-        public double Fat
-        {
-            get { return Ingredient.Fat * Quantity / QuantityConverter.ConvertTo100Grams(QuantityType.ID); }
-        }
+        public double Kcal { get; set; }
+        public double Protein { get; set; }
+        public double Carb { get; set; }
+        public double Fat { get; set; }
     }
 }

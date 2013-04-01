@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using FitnessRecipes.DAL.Models;
+using FitnessRecipes.DAL.Repositories;
 
 namespace FitnessRecipes.Controllers.Api
 {

@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
+using FitnessRecipes.DAL.Models;
 
-namespace FitnessRecipes.DAL.Models
+namespace FitnessRecipes.DAL.Repositories
 {
     public class CategoryRepository : Repository<MealCategory>
     {

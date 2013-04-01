@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using FitnessRecipes.DAL.Interfaces;
+using FitnessRecipes.DAL.Repositories;
 
 namespace FitnessRecipes.DAL.Models
 {

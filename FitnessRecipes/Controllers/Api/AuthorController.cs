@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
 using FitnessRecipes.DAL.Models;
+using FitnessRecipes.DAL.Repositories;
 using FitnessRecipes.Models;
 using FitnessRecipes.ViewModels;
 

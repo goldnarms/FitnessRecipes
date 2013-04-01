@@ -181,33 +181,36 @@
                                             </div>
                                         </div>
                                     </li>
-                                    @foreach (var ingredient in Model.Ingredients)
+                                    @if (Model.Ingredients != null && Model.Ingredients.Any())
                                     {
-                                        <li>
-                                            <div class="row">
-                                                <div class="small-6 large-6 columns" style="margin-left: 0; padding-left: 0">
-                                                    <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span>
-                                                    @Html.ActionLink(@ingredient.Ingredient.Name, "Details", "Ingredient", new { id = ingredient.Ingredient.Id }, null)
-                                                    <span>(@ingredient.Quantity @ingredient.QuantityType.Name)</span>
+                                        foreach (var ingredient in Model.Ingredients)
+                                        {
+                                            <li>
+                                                <div class="row">
+                                                    <div class="small-6 large-6 columns" style="margin-left: 0; padding-left: 0">
+                                                        <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span>
+                                                        @Html.ActionLink(@ingredient.Ingredient.Name, "Details", "Ingredient", new {id = ingredient.Ingredient.Id}, null)
+                                                        <span>(@ingredient.Quantity @ingredient.QuantityType.Name)</span>
+                                                    </div>
+                                                    <div class="small-6 large-6 columns">
+                                                        <ul class="small-block-grid-4 large-block-grid-4">
+                                                            <li>
+                                                                <span>@ingredient.Kcal.ToString("N1")</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>@ingredient.Protein.ToString("N1")</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>@ingredient.Carb.ToString("N1")</span>
+                                                            </li>
+                                                            <li>
+                                                                <span>@ingredient.Fat.ToString("N1")</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                                <div class="small-6 large-6 columns">
-                                                    <ul class="small-block-grid-4 large-block-grid-4">
-                                                        <li>
-                                                            <span>@ingredient.Kcal.ToString("N1")</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>@ingredient.Protein.ToString("N1")</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>@ingredient.Carb.ToString("N1")</span>
-                                                        </li>
-                                                        <li>
-                                                            <span>@ingredient.Fat.ToString("N1")</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </li>
+                                            </li>
+                                        }
                                     }
                                 </ul>
                             </div>
@@ -244,7 +247,7 @@
                                             </div>
                                         </div>
                                     </li>
-                                    @if (Model.Diets != null)
+                                    @if (Model.Diets != null && Model.Diets.Any())
                                     {
                                         foreach (var diet in Model.Diets)
                                         {

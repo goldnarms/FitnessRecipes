@@ -4,6 +4,7 @@ using FitnessRecipes.BLL.Services;
 using FitnessRecipes.DAL.Fakes;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
+using FitnessRecipes.DAL.Services;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Should;
 
@@ -22,6 +23,7 @@ namespace FitnessRecipes.Tests.UnitTests
         private IUserDietRepository _userDietRepository;
         private IIngredientRepository _ingredientRepository;
         private IMealRepository _mealRepository;
+        private IIngredientQuantityRepository _ingredientQuantityRepository;
 
         public MealCalculatorTest()
         {
@@ -36,6 +38,7 @@ namespace FitnessRecipes.Tests.UnitTests
             _userDietRepository = new FakeUserDietRepository();
             _ingredientRepository = new FakeIngredientRepository();
             _mealRepository = new FakeMealRepository();
+            _ingredientQuantityRepository = new FakeIngredientQuantityRepository();
         }
 
         [TestMethod]
@@ -45,13 +48,11 @@ namespace FitnessRecipes.Tests.UnitTests
             var ingredient2 = ModelCreator.CreateIngredient();
             ingredient2.Kcal = 200;
             var meal = ModelCreator.CreateMeal();
-            var mealIngredients1 = ModelCreator.CreateMealIngredients(meal, ingredient1, ModelCreator.CreateQuantityType(1));
-            var mealIngredients2 = ModelCreator.CreateMealIngredients(meal, ingredient2, ModelCreator.CreateQuantityType(2));
-            var ingredient1Id = _ingredientRepository.Create(ingredient1).Id;
-            var ingredient2Id = _ingredientRepository.Create(ingredient2).Id;
+            _mealRepository.Create(meal);
+            var mealIngredients1 = ModelCreator.CreateMealIngredients(meal, ingredient1, ModelCreator.CreateQuantityType(12));
+            var mealIngredients2 = ModelCreator.CreateMealIngredients(meal, ingredient2, ModelCreator.CreateQuantityType(12));
             meal.MealIngredients = new List<MealIngredient> { mealIngredients1, mealIngredients2 };
-            var mealId = _mealRepository.Create(meal);
-            var mealCalculator = new MealCalculator(meal);
+            var mealCalculator = new MealCalculator(meal, _ingredientQuantityRepository);
             mealCalculator.CalculateTotalKcal().ShouldEqual(960);
         }
     }

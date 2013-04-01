@@ -27,6 +27,9 @@ namespace FitnessRecipes.Tests.Controllers
         private IQuantityTypeRepository _quantityTypeRepository;
         private IUserDietRepository _userDietRepository;
         private IIngredientRepository _ingredientRepository;
+        private IMealRepository _mealRepository;
+        private IIngredientQuantityRepository _ingredientQuantityRepository;
+        private IMealIngredientRepository _mealIngredientRepository;
         private Diet _diet;
 
         public DietControllerTest()
@@ -41,7 +44,10 @@ namespace FitnessRecipes.Tests.Controllers
             _quantityTypeRepository = new FakeQuantityTypeRepository();
             _userDietRepository = new FakeUserDietRepository();
             _ingredientRepository = new FakeIngredientRepository();
-            _controller = new DietController(_dietRepository, _commentRepository, _userRepository, _dietCategoryRepository, _dietMealRepository, _dietIngredientRepository, _quantityTypeRepository, _userDietRepository);
+            _mealRepository = new FakeMealRepository();
+            _ingredientQuantityRepository = new FakeIngredientQuantityRepository();
+            _mealIngredientRepository = new FakeMealIngredientRepository();
+            _controller = new DietController(_dietRepository, _commentRepository, _userRepository, _dietCategoryRepository, _dietMealRepository, _dietIngredientRepository, _quantityTypeRepository, _userDietRepository, _ingredientQuantityRepository);
         }
 
         [TestInitialize]
@@ -53,7 +59,10 @@ namespace FitnessRecipes.Tests.Controllers
             ingredient2.Kcal = 200;
             ingredient2.Fat = 24;
             ingredient2.Protein = 44;
+            _ingredientRepository.Create(ingredient1);
+            _ingredientRepository.Create(ingredient2);
             var meal = ModelCreator.CreateMeal();
+            _mealRepository.Create(meal);
             var mealIngredients1 = ModelCreator.CreateMealIngredients(meal, ingredient1, ModelCreator.CreateQuantityType(1));
             var mealIngredients2 = ModelCreator.CreateMealIngredients(meal, ingredient2, ModelCreator.CreateQuantityType(2));
             meal.MealIngredients = new List<MealIngredient> { mealIngredients1, mealIngredients2 };
@@ -86,6 +95,18 @@ namespace FitnessRecipes.Tests.Controllers
         }
 
         [TestMethod]
+        public void ShouldGetAverageKcalForSuperDiet()
+        {
+            var oatMealDiet = _dietRepository.Create(ModelCreator.CreateOatMealDiet());
+            var result = _controller.Details(oatMealDiet.Id) as ViewResult;
+            result.ShouldNotBeNull();
+            result.Model.ShouldBeType<DietViewModel>();
+            var dietViewModel = result.Model as DietViewModel;
+            dietViewModel.Kcal.HasValue.ShouldBeTrue();
+            dietViewModel.Kcal.Value.ShouldEqual(370.4);
+        }
+
+        [TestMethod]
         public void ShouldGetAverageKcalForDiet()
         {
             var result = _controller.Details(_diet.Id) as ViewResult;
@@ -93,7 +114,7 @@ namespace FitnessRecipes.Tests.Controllers
             result.Model.ShouldBeType<DietViewModel>();
             var dietViewModel = result.Model as DietViewModel;
             dietViewModel.Kcal.HasValue.ShouldBeTrue();
-            dietViewModel.Kcal.Value.ShouldEqual(1200);
+            dietViewModel.Kcal.Value.ShouldEqual(21.6);
         }
 
         [TestMethod]
@@ -104,7 +125,7 @@ namespace FitnessRecipes.Tests.Controllers
             result.Model.ShouldBeType<DietViewModel>();
             var dietViewModel = result.Model as DietViewModel;
             dietViewModel.Fat.HasValue.ShouldBeTrue();
-            dietViewModel.Fat.Value.ToString("N2").ShouldEqual("25,68");
+            dietViewModel.Fat.Value.ToString("N2").ShouldEqual("23,70");
         }
         
         [TestMethod]
@@ -115,7 +136,7 @@ namespace FitnessRecipes.Tests.Controllers
             result.Model.ShouldBeType<DietViewModel>();
             var dietViewModel = result.Model as DietViewModel;
             dietViewModel.Carb.HasValue.ShouldBeTrue();
-            dietViewModel.Carb.Value.ToString("N2").ShouldEqual("15,56");
+            dietViewModel.Carb.Value.ToString("N2").ShouldEqual("16,63");
         }
 
         [TestMethod]
@@ -126,7 +147,7 @@ namespace FitnessRecipes.Tests.Controllers
             result.Model.ShouldBeType<DietViewModel>();
             var dietViewModel = result.Model as DietViewModel;
             dietViewModel.Protein.HasValue.ShouldBeTrue();
-            dietViewModel.Protein.Value.ToString("N2").ShouldEqual("58,75");
+            dietViewModel.Protein.Value.ToString("N2").ShouldEqual("59,67");
         }
     }
 }

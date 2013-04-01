@@ -1,12 +1,11 @@
-﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using FitnessRecipes.DAL.Interfaces;
+using FitnessRecipes.DAL.Models;
 
-namespace FitnessRecipes.DAL.Models
+namespace FitnessRecipes.DAL.Repositories
 {
-    public class IngredientCategoryRepository : Repository<IngredientCategory>
+    public class IngredientCategoryRepository : Repository<IngredientCategory>, IIngredientCategoryRepository
     {
         public IngredientCategoryRepository()
         {
