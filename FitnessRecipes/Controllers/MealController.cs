@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using AutoMapper;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
+using FitnessRecipes.DAL.Services;
 using FitnessRecipes.Helpers;
 using FitnessRecipes.Resources.Common;
 using FitnessRecipes.ViewModels;
@@ -24,8 +25,9 @@ namespace FitnessRecipes.Controllers
         private readonly IRecipeRepository _recipeRepository;
         private readonly IUserRepository _userRepository;
         private readonly IAuthorRepository _authorRepository;
+        private readonly IIngredientQuantityRepository _ingredientQuantityRepository;
 
-        public MealController(IMealRepository mealRepository, IIngredientRepository ingredientRepository, IQuantityTypeRepository quantityTypeRepository, IIngredientCategoryRepository ingredientCategoryRepository, IMealIngredientRepository mealIngredientRepository, IMealCategoryRepository categoryRepository, IRecipeRepository recipeRepository, IUserRepository userRepository, IAuthorRepository authorRepository)
+        public MealController(IMealRepository mealRepository, IIngredientRepository ingredientRepository, IQuantityTypeRepository quantityTypeRepository, IIngredientCategoryRepository ingredientCategoryRepository, IMealIngredientRepository mealIngredientRepository, IMealCategoryRepository categoryRepository, IRecipeRepository recipeRepository, IUserRepository userRepository, IAuthorRepository authorRepository, IIngredientQuantityRepository ingredientQuantityRepository)
         {
             _mealRepository = mealRepository;
             _ingredientRepository = ingredientRepository;
@@ -36,6 +38,7 @@ namespace FitnessRecipes.Controllers
             _recipeRepository = recipeRepository;
             _userRepository = userRepository;
             _authorRepository = authorRepository;
+            _ingredientQuantityRepository = ingredientQuantityRepository;
         }
 
         public ActionResult Index()
@@ -93,7 +96,14 @@ namespace FitnessRecipes.Controllers
         [HttpGet]
         public ActionResult Meal(int id)
         {
-            return View(Mapper.Map<Meal, MealViewModel>(_mealRepository.Get(id)));
+            var meal = _mealRepository.Get(id);
+            var mealViewModel = Mapper.Map<Meal, MealViewModel>(meal);
+            var mealCalculator = new MealCalculator(meal, _ingredientQuantityRepository);
+            mealViewModel.Kcal = mealCalculator.CalculateTotalKcal();
+            mealViewModel.Protein = mealCalculator.CalculateTotalProtein();
+            mealViewModel.Fat = mealCalculator.CalculateTotalFat();
+            mealViewModel.Carb = mealCalculator.CalculateTotalCarb();
+            return View(mealViewModel);
         }
 
         public ActionResult SearchResult(string searchString)

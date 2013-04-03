@@ -1,6 +1,5 @@
 (function () {
     $(document).ready(function () {
-        $("a#single_image").fancybox();
         var btnSearchRecipe, mealId;
         btnSearchRecipe = $("#btnSearchRecipe");
         mealId = $("#hiMealId").val();

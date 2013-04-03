@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using FitnessRecipes.BLL.Services;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
 
@@ -81,7 +82,7 @@ namespace FitnessRecipes.DAL.Fakes
         {
             dynamic dynObj = obj;
             _dictionary.Add(_dictionary.Count +1, obj);
-            if (dynObj.PropertyExist("Id"))
+            if (obj.PropertyExist("Id"))
                 dynObj.Id = _dictionary.Count;
             return dynObj;
         }

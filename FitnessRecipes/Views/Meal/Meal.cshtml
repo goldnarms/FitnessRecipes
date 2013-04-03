@@ -43,8 +43,10 @@
                     </i></a>
                     if (user.Id == Model.UserId)
                     {
-                        <a href="/Meal/Create/@Model.Id" id="btnEdit" title="Endre dette måltidet"><i class="icon-edit"></i></a>
-                        <a href="#" id="btnDelete" title="Slett dette måltidet"><i class="icon-trash"></i></a>
+                    <a href="/Meal/Create/@Model.Id" id="btnEdit" title="Endre dette måltidet"><i class="icon-edit">
+                    </i></a>
+                    <a href="#" id="btnDelete" title="Slett dette måltidet"><i class="icon-trash"></i>
+                    </a>
                     }
                 }
             </div>
@@ -52,7 +54,14 @@
         <hr class="greenBorderBottom" />
         <div class="row">
             <div class="small-3 large-3 columns clearfix tabs">
-
+                <div class="section-container auto" data-section>
+                    <section class="section">
+                        <p class="title"><a href="#simple1Tab">Section 1</a></p>
+                    </section>
+                    <section class="section">
+                        <p class="title"><a href="#simple2Tab">Section 2</a></p>
+                    </section>
+                </div>
                 <dl class="tabs">
                     <dd class="tabsli active"><a class="tabsa" href="#simple1">Info</a></dd>
                     <dd class="tabsli"><a class="tabsa" href="#simple2">Ingredienser</a></dd>
@@ -154,68 +163,72 @@
                             </div>
                         </div>
                     </li>
-                    <li id="simple2Tab" class="hide">
-                        <div class="row">
-                            <div class="small-12 large-12 columns">
-                                <h2 class="box_header">Ingredienser</h2>
+                    <div class="section-container auto" data-section data-options="deep_linking: true">
+                    <section class="section">
+                        <div class="content" data-slug="simple2Tab">
+                            <div class="row">
+                                <div class="small-12 large-12 columns">
+                                    <h2 class="box_header">Ingredienser</h2>
+                                </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="small-12 large-12 columns">
-                                <br />
-                                <ul>
-                                    <li>
-                                        <div class="row">
-                                            <div class="small-6 large-6 columns box_header">Navn(Mengde)</div>
-                                            <div class="small-6 large-6 columns">
-                                                <ul class="small-block-grid-4 large-block-grid-4">
-                                                    <li class="box_header">Kcal
-                                                    </li>
-                                                    <li class="box_header">Protein
-                                                    </li>
-                                                    <li class="box_header">Karbs
-                                                    </li>
-                                                    <li class="box_header">Fett
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    @if (Model.Ingredients != null && Model.Ingredients.Any())
-                                    {
-                                        foreach (var ingredient in Model.Ingredients)
-                                        {
-                                            <li>
-                                                <div class="row">
-                                                    <div class="small-6 large-6 columns" style="margin-left: 0; padding-left: 0">
-                                                        <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span>
-                                                        @Html.ActionLink(@ingredient.Ingredient.Name, "Details", "Ingredient", new {id = ingredient.Ingredient.Id}, null)
-                                                        <span>(@ingredient.Quantity @ingredient.QuantityType.Name)</span>
-                                                    </div>
-                                                    <div class="small-6 large-6 columns">
-                                                        <ul class="small-block-grid-4 large-block-grid-4">
-                                                            <li>
-                                                                <span>@ingredient.Kcal.ToString("N1")</span>
-                                                            </li>
-                                                            <li>
-                                                                <span>@ingredient.Protein.ToString("N1")</span>
-                                                            </li>
-                                                            <li>
-                                                                <span>@ingredient.Carb.ToString("N1")</span>
-                                                            </li>
-                                                            <li>
-                                                                <span>@ingredient.Fat.ToString("N1")</span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                            <div class="row">
+                                <div class="small-12 large-12 columns">
+                                    <br />
+                                    <ul>
+                                        <li>
+                                            <div class="row">
+                                                <div class="small-6 large-6 columns box_header">Navn(Mengde)</div>
+                                                <div class="small-6 large-6 columns">
+                                                    <ul class="small-block-grid-4 large-block-grid-4">
+                                                        <li class="box_header">Kcal
+                                                        </li>
+                                                        <li class="box_header">Protein
+                                                        </li>
+                                                        <li class="box_header">Karbs
+                                                        </li>
+                                                        <li class="box_header">Fett
+                                                        </li>
+                                                    </ul>
                                                 </div>
-                                            </li>
+                                            </div>
+                                        </li>
+                                        @if (Model.Ingredients != null && Model.Ingredients.Any())
+                                        {
+                                            foreach (var ingredient in Model.Ingredients)
+                                            {
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="small-6 large-6 columns" style="margin-left: 0; padding-left: 0">
+                                                            <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span>
+                                                            @Html.ActionLink(@ingredient.Ingredient.Name, "Details", "Ingredient", new { id = ingredient.Ingredient.Id }, null)
+                                                            <span>(@ingredient.Quantity @ingredient.QuantityType.Name)</span>
+                                                        </div>
+                                                        <div class="small-6 large-6 columns">
+                                                            <ul class="small-block-grid-4 large-block-grid-4">
+                                                                <li>
+                                                                    <span>@ingredient.Kcal.ToString("N1")</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span>@ingredient.Protein.ToString("N1")</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span>@ingredient.Carb.ToString("N1")</span>
+                                                                </li>
+                                                                <li>
+                                                                    <span>@ingredient.Fat.ToString("N1")</span>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            }
                                         }
-                                    }
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
-                    </li>
+                    </section>
+                        </div>
                     <li id="simple3Tab" class="hide">
                         <div class="row">
                             <div class="small-12 large-12 columns">
@@ -251,30 +264,30 @@
                                     {
                                         foreach (var diet in Model.Diets)
                                         {
-                                            <li>
-                                                <div class="row">
-                                                    <div class="small-6 large-6 columns" style="margin-left: 0; padding-left: 0">
-                                                        <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span>
-                                                        @Html.ActionLink(@diet.Name, "Details", "Diet", new {id = diet.Id}, null)
-                                                    </div>
-                                                    <div class="small-6 large-6 columns">
-                                                        <ul class="small-block-grid-4 large-block-grid-4">
-                                                            <li>
-                                                                <span>@diet.Kcal</span>
-                                                            </li>
-                                                            <li>
-                                                                <span>@diet.Protein%</span>
-                                                            </li>
-                                                            <li>
-                                                                <span>@diet.Carb%</span>
-                                                            </li>
-                                                            <li>
-                                                                <span>@diet.Fat%</span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
+                                        <li>
+                                            <div class="row">
+                                                <div class="small-6 large-6 columns" style="margin-left: 0; padding-left: 0">
+                                                    <span class="separator icon_small_arrow right_white">&nbsp;&nbsp;&nbsp;</span>
+                                                    @Html.ActionLink(@diet.Name, "Details", "Diet", new { id = diet.Id }, null)
                                                 </div>
-                                            </li>
+                                                <div class="small-6 large-6 columns">
+                                                    <ul class="small-block-grid-4 large-block-grid-4">
+                                                        <li>
+                                                            <span>@diet.Kcal</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>@diet.Protein%</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>@diet.Carb%</span>
+                                                        </li>
+                                                        <li>
+                                                            <span>@diet.Fat%</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </li>
                                         }
                                     }
                                 </ul>
@@ -328,11 +341,9 @@
 
     </div>
     <div class="small-4 large-4 columns">
-                <br />
+        <br />
         <ul>
-            <li class="home_box white">
-
-                </li>
+            <li class="home_box white"></li>
             @Html.Partial("_Sidebar")
         </ul>
     </div>
@@ -340,10 +351,5 @@
 @section scripts
 {
     <script src="~/js/recipeDetail.js"></script>
-    <script src="~/Scripts/jquery.fancybox-1.3.4.pack.min.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function () {
 
-        });
-    </script>
 }

@@ -155,49 +155,54 @@ namespace FitnessRecipes.Tests
 
         public static Diet CreateOatMealDiet()
         {
-            var milk = new Ingredient {Carb = 4.7, Fat = 0.7, Protein = 3.3, Kcal = 38, Name = "Melk", Id = 4};
-            var whey = new Ingredient {Carb = 0.4, Fat = 3, Protein = 86, Kcal = 360, Name = "Whey-100"};
-            var oatMeal = new Ingredient {Carb = 61, Fat = 7, Protein = 13, Kcal = 365, Name = "Havregryn"};
-            var meal = new Meal {Name = "HavreShake"};
-            var glass = new QuantityType {Name = "Glass", Id = 14};
+            var diet = new Diet {Name = "SuperDiett"};
+            var dietMeal = new DietMeal {Day = "0,2", Diet = diet, Meal = CreateOatMeal(), Time = 900};
+            diet.DietMeals = new List<DietMeal> {dietMeal};
+            return diet;
+        }
+
+        public static Meal CreateOatMeal()
+        {
+            var milk = new Ingredient { Carb = 4.7, Fat = 0.7, Protein = 3.3, Kcal = 38, Name = "Melk", Id = 4 };
+            var whey = new Ingredient { Carb = 0.4, Fat = 3, Protein = 86, Kcal = 360, Name = "Whey-100" };
+            var oatMeal = new Ingredient { Carb = 61, Fat = 7, Protein = 13, Kcal = 365, Name = "Havregryn" };
+            var meal = new Meal { Name = "HavreShake" };
+            var glass = new QuantityType { Name = "Glass", Id = 14 };
             var mealIngredientMilk = new MealIngredient
-                                         {
-                                             Ingredient = milk,
-                                             IngredientId = 4,
-                                             Meal = meal,
-                                             Quantity = 1.2,
-                                             QuantityType = glass,
-                                             QuantityTypeId = 14
-                                         };
-            var gram = new QuantityType {Name = "Gram", Id = 1};
+            {
+                Ingredient = milk,
+                IngredientId = 4,
+                Meal = meal,
+                Quantity = 1.2,
+                QuantityType = glass,
+                QuantityTypeId = 14
+            };
+            var gram = new QuantityType { Name = "Gram", Id = 1 };
             var mealIngredientWhey = new MealIngredient
-                                         {
-                                             Ingredient = whey,
-                                             IngredientId = 5,
-                                             Meal = meal,
-                                             Quantity = 37,
-                                             QuantityType = gram,
-                                             QuantityTypeId = 1
-                                         };
+            {
+                Ingredient = whey,
+                IngredientId = 5,
+                Meal = meal,
+                Quantity = 37,
+                QuantityType = gram,
+                QuantityTypeId = 1
+            };
             var mealIngredientOatMeal = new MealIngredient
-                                            {
-                                                Ingredient = oatMeal,
-                                                IngredientId = 6,
-                                                Quantity = 40,
-                                                QuantityType = gram,
-                                                Meal = meal,
-                                                QuantityTypeId = 1
-                                            };
+            {
+                Ingredient = oatMeal,
+                IngredientId = 6,
+                Quantity = 40,
+                QuantityType = gram,
+                Meal = meal,
+                QuantityTypeId = 1
+            };
             meal.MealIngredients = new List<MealIngredient>
                                        {
                                            mealIngredientMilk,
                                            mealIngredientOatMeal,
                                            mealIngredientWhey
                                        };
-            var diet = new Diet {Name = "SuperDiett"};
-            var dietMeal = new DietMeal {Day = "0,2", Diet = diet, Meal = meal, Time = 900};
-            diet.DietMeals = new List<DietMeal> {dietMeal};
-            return diet;
+            return meal;
         }
     }
 }
