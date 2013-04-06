@@ -1012,6 +1012,7 @@
     <Content Include="Scripts\jquery.fancybox-1.3.4.pack.min.js">
       <DependentUpon>jquery.fancybox-1.3.4.pack.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\jquery.foundation.tabs.js" />
     <Content Include="Scripts\jquery.hint.js" />
     <Content Include="Scripts\jquery.isotope.min.js" />
     <Content Include="Scripts\jquery.linkify.js" />
