@@ -177,6 +177,7 @@ i:hover{
 }
 #comments_list li.comment{
     margin-top: 21px;
+
 }
 
 .comment_details {
@@ -355,9 +356,9 @@ ul{
     li{
         border-bottom-width: 0px !important;
     }
-	a{
-		font-size: 12px;
-	}
+    a{
+        font-size: 12px;
+    }
 }
 
 .linkCategories
@@ -377,26 +378,26 @@ ul{
     }
     li{
         font-size: 13px;
-        padding-bottom: 20px;
-        padding-left: 25px;
-        padding-top: 10px;
+        padding-bottom: 18px;
+        padding-left: 1px;
+        padding-top: 6px;
         float: left;
         list-style-image: none;
         list-style-type: none;
     }
 }
 .sidebarnav{
-	margin-left: 0px;
-	color: #222;
-	font-size: 1.1em;
-	ul{
-		color: #222;
-		font-size: 1.1em;
-		li{
-			font-size: 1.1em;
-			color: #222;
-		}
-	}
+    margin-left: 0px;
+    color: #222;
+    font-size: 1.1em;
+    ul{
+        color: #222;
+        font-size: 1.1em;
+        li{
+            font-size: 1.1em;
+            color: #222;
+        }
+    }
 }
 .timetable{
     .alternative{
@@ -429,7 +430,6 @@ ul{
     font-size: 13px;
     margin-top: 0px;
     display: block;
-    width: 480px;
 }
 .block-grid.three-up > li{
     padding:0;
@@ -443,7 +443,7 @@ ul{
 }
 
 .lightgray sidebarnav{
-		color: $lightgray;
+        color: $lightgray;
 }
 
 /*.event{
@@ -473,7 +473,7 @@ h2{
 }
 
 .tabsli{
-    padding-bottom: 9px;
+    padding-bottom: 18px;
 }
 .tabsli a:hover{
     border-color: $lightgreen;
@@ -569,6 +569,11 @@ h2{
     width: 14px;
 }
 
+.section-container.auto .section .content {
+        border: 0px;
+      background-color: transparent; 
+}
+
 body {
   font-size: 0.8em;
   line-height: 1.1em;
@@ -579,7 +584,7 @@ body {
   -webkit-font-smoothing: antialiased; }
 
 h2 {
-	line-height: 1.1em;
+    line-height: 1.1em;
 }
 
 /*h1 {
@@ -730,3 +735,7 @@ ul.orbit-bullets li.active.has-thumb { background-position: 0 0; border-top: 2px
     }
 }
 /* Small display targeting */
+
+.Hidden{
+	display: none;
+}

@@ -44,109 +44,99 @@
             <div class="small-3 large-3 columns" style="text-align: right; font-size: 20px">
                 <i class="icon-facebook"></i>
                 <a href="https://twitter.com/share" data-related="fitnessoppskrifter" data-count="none">
-                <i class="icon-twitter"></i></a>
-                <a href="#" id="btnSetAsDefault" title="Sett som diett"><i class="icon-bookmark"></i></a>
+                    <i class="icon-twitter"></i></a>
+                <a href="#" id="btnSetAsDefault" title="Sett som diett"><i class="icon-bookmark"></i>
+                </a>
             </div>
         </div>
-                <hr class="greenBorderBottom" />
+        <hr class="greenBorderBottom" />
         <div class="row">
             <div class="small-3 large-3 columns clearfix tabs">
-                <dl class="tabs">
-                    <dd class="tabsli active"><a class="tabsa" href="#simple1">Info</a></dd>
-                    <dd class="tabsli"><a class="tabsa" href="#simple2">Tidsskjema</a></dd>
-                    <dd class="tabsli">@Html.ActionLink("Full diett", "Schedule", new { id = Model.Id }, new { @class = "tabsa" })
-                    <dd class="tabsli">@Html.ActionLink("Oppsett", "AddMeals", new { id = Model.Id }, new { @class = "tabsa" })
-                    </dd>
-                </dl>
-            </div>
-            <div class="small-9 large-9 columns">
-                <ul class="tabs-content">
-                    <li class="active" id="simple1Tab">
-                        <div class="row">
-                            <div class="small-12 large-12 columns headerPadding">
-                                <h2 class="box_header">Informasjon</h2>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="small-12 large-12 columns">
-                                @Model.Description
-                            </div></div>
-                        @if (!string.IsNullOrEmpty(Model.ImgUrl))
-                        {
-                            
-                                                        <div class="gallery_box">
-                                    <a id="single_image" href="@Model.ImgUrl">
-                                        <img src="@Model.ImgUrl" /></a>
-                                </div>
-                        }
-                        <div class="row toppadding">
-                            <div class="small-3 large-3 columns">
-                                <h3 class="box_header">Kcal
-                                </h3>
-                                <p>@Html.DisplayFor(m => m.Kcal) pr. dag</p>
-
-                            </div>
-                            <div class="small-3 large-3 columns">
-                                <h3 class="box_header">Protein
-                                </h3>
-                                <p>@Html.DisplayFor(m => m.Protein)%</p>
-
-                            </div>
-                            <div class="small-3 large-3 columns">
-                                <h3 class="box_header">Karb
-                                </h3>
-                                <p>@Html.DisplayFor(m => m.Carb)%</p>
-
-                            </div>
-                            <div class="small-3 large-3 columns">
-                                <h3 class="box_header">Fett
-                                </h3>
-                                <p>@Html.DisplayFor(m => m.Fat)%</p>
-
-                            </div>
-                        </div>
+                <ul class="tabs">
+                    <li class="tabsli active"><a class="tabsa" href="#info">Info</a></li>
+                    <li class="tabsli"><a class="tabsa" href="#skjema">Tidsskjema</a></li>
+                    <li class="tabsli">@Html.ActionLink("Full diett", "Schedule", new { id = Model.Id }, new { @class = "tabsa" })
                     </li>
-                    <li id="simple2Tab" class="hide">
-                        <div class="row">
-                            <div class="small-12 large-12 columns">
-                                <div class="row">
-                                    <div class="small-12 large-12 columns">
-                                        <h2 class="box_header">Tidsskjema</h2>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="small-12 large-12 columns">
-                                        <h4 class="sentence">Dietten er satt opp slik:</h4>
-                                        @Html.Partial("_SmallScheduleForDiet", ScheduleHelper.GenerateSchedule(Model))
-@*                                        <div class="timetable">
-                                            @foreach (var day in Model.Meals.GroupBy(m => m.Day))
-                                            {
-                                                <h3 class="box_header">Mandag
-                                                </h3>
-                                                <ul class="items_list dark opening_hours">
-                                                    @foreach (var dietMeal in day)
-                                                    {
-                                                        <li>@Html.ActionLink(@dietMeal.Meal.Name, "Meal", "Meal", new { id = @dietMeal.MealId }, null)
-                                                            <div class="value">
-                                                                @DateTime.Today.AddMinutes(@dietMeal.Time).ToShortTimeString()
-                                                            </div>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            }
-                                        </div>*@
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <li class="tabsli">@Html.ActionLink("Oppsett", "AddMeals", new { id = Model.Id }, new { @class = "tabsa" })
                     </li>
                 </ul>
             </div>
+            <div class="small-9 large-9 columns">
+                <div class="section-container auto" data-section data-options="deep_linking: true">
+                    <section class="section">
+                        <div class="content" data-slug="info">
+                            <div class="row">
+                                <div class="small-12 large-12 columns headerPadding">
+                                    <h2 class="box_header">Informasjon</h2>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="small-12 large-12 columns">
+                                    @Model.Description
+                                </div>
+                            </div>
+                            @if (!string.IsNullOrEmpty(Model.ImgUrl))
+                            {
+                            
+                                <div class="gallery_box">
+                                    <a id="single_image" href="@Model.ImgUrl">
+                                        <img src="@Model.ImgUrl" /></a>
+                                </div>
+                            }
+                            <div class="row toppadding">
+                                <div class="small-3 large-3 columns">
+                                    <h3 class="box_header">Kcal
+                                    </h3>
+                                    <p>@Html.DisplayFor(m => m.Kcal) pr. dag</p>
+
+                                </div>
+                                <div class="small-3 large-3 columns">
+                                    <h3 class="box_header">Protein
+                                    </h3>
+                                    <p>@Html.DisplayFor(m => m.Protein)%</p>
+
+                                </div>
+                                <div class="small-3 large-3 columns">
+                                    <h3 class="box_header">Karb
+                                    </h3>
+                                    <p>@Html.DisplayFor(m => m.Carb)%</p>
+
+                                </div>
+                                <div class="small-3 large-3 columns">
+                                    <h3 class="box_header">Fett
+                                    </h3>
+                                    <p>@Html.DisplayFor(m => m.Fat)%</p>
+
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                    <section class="section">
+                        <div class="content" data-slug="skjema">
+                            <div class="row">
+                                <div class="small-12 large-12 columns">
+                                    <div class="row">
+                                        <div class="small-12 large-12 columns">
+                                            <h2 class="box_header">Tidsskjema</h2>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="small-12 large-12 columns">
+                                            <h4 class="sentence">Dietten er satt opp slik:</h4>
+                                            @Html.Partial("_SmallScheduleForDiet", ScheduleHelper.GenerateSchedule(Model))
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <hr />
+            </div>
         </div>
-        <hr />
-        <div id="comments">
-            @Html.Partial("_Comments", Model.Comments)
-        </div>
+                <div id="comments">
+                    @Html.Partial("_Comments", Model.Comments)
+                </div>
     </div>
     <div class="small-4 large-4 columns">
         <br />
@@ -154,12 +144,19 @@
             <li class="home_box white">
                 @Html.Partial("_SearchDiet")
             </li>
-        @Html.Partial("_Sidebar")
+            @Html.Partial("_Sidebar")
         </ul>
     </div>
 </div>
 @section scripts
 {
-    <script src="~/js/diet.js"></script>    
-    <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+    <script src="~/Scripts/jquery.foundation.tabs.js"></script>
+    <script src="~/js/diet.js"></script>
+    <script>!function (d, s, id) {
+var js, fjs = d.getElementsByTagName(s)[0]; if 
+(!d.getElementById(id)) {
+    js = d.createElement(s); js.id = id; js.src = "//platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}
+}(document, "script", "twitter-wjs");</script>
 }

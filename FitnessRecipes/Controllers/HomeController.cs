@@ -77,5 +77,10 @@ namespace FitnessRecipes.Controllers
         {
             return View();
         }
+
+        public ActionResult Error()
+        {
+            return View();
+        }
     }
 }

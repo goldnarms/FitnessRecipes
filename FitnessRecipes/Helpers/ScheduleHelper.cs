@@ -132,11 +132,11 @@ namespace FitnessRecipes.Helpers
             var list = new List<ScheduleViewModel>();
             foreach (var ingredient in diet.Ingredients)
             {
-                list.AddRange(ingredient.Day.ToIntArray().Select(day => new ScheduleViewModel { Day = day, Time = ingredient.Time, Name = ingredient.Ingredient.Name, Link = string.Format("<a href='/Ingredient/Details/{0}' title='{1}'>{1}</a>", ingredient.IngredientId, ingredient.Ingredient.Name.Shorten()) }));
+                list.AddRange(ingredient.Day.ToIntArray().Select(day => new ScheduleViewModel { Day = day, Time = ingredient.Time, Name = ingredient.Ingredient.Name, Link = string.Format("<a href='/Ingredient/Details/{0}' title='{1}'>{2}</a>", ingredient.IngredientId, ingredient.Ingredient.Name, ingredient.Ingredient.Name.Shorten(33)) }));
             }
             foreach (var meal in diet.Meals)
             {
-                list.AddRange(meal.Day.ToIntArray().Select(day => new ScheduleViewModel { Day = day, Time = meal.Time, Name = meal.Meal.Name, Link = string.Format("<a href='/Meal/Meal/{0}' title='{1}'>{1}</a>", meal.MealId, meal.Meal.Name.Shorten()) }));
+                list.AddRange(meal.Day.ToIntArray().Select(day => new ScheduleViewModel { Day = day, Time = meal.Time, Name = meal.Meal.Name, Link = string.Format("<a href='/Meal/Meal/{0}' title='{1}'>{2}</a>", meal.MealId, meal.Meal.Name, meal.Meal.Name.Shorten(33)) }));
             }
             return list;
         }
