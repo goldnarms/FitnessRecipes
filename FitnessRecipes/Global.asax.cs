@@ -4,6 +4,7 @@ using System.Web.Optimization;
 using System.Web.Routing;
 using FitnessRecipes.App_Start;
 using WebMatrix.WebData;
+using WorldDomination.Web.Authentication.Mvc;
 
 namespace FitnessRecipes
 {
@@ -15,14 +16,15 @@ namespace FitnessRecipes
         protected void Application_Start()
         {
             DependencyConfig.SetUpDependencies();
-            WebSecurity.InitializeDatabaseConnection(
-                connectionStringName: "DefaultConnection", userTableName: "User", userIdColumn: "Id", userNameColumn: "Username", autoCreateTables: true);
             //WebSecurity.InitializeDatabaseConnection(
-            //    connectionStringName: "FitnessRecipiesEntities", userTableName: "User", userIdColumn: "Id", userNameColumn: "Username", autoCreateTables: true);
+            //    connectionStringName: "DefaultConnection", userTableName: "User", userIdColumn: "Id", userNameColumn: "Username", autoCreateTables: true);
+            //WebSecurity.InitializeDatabaseConnection(
+            //    connectionStringName: "FitnessRecipiesEntities", userTableName: "User", userIdColumn: "Id", userNameColumn: "Username", autoCreateTables: false);
             AreaRegistration.RegisterAllAreas();
             AuthConfig.RegisterAuth();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
+            WorldDominationRouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ApiConfig.ConfigureApi(GlobalConfiguration.Configuration);
             //MiniProfilerPackage.PreStart();

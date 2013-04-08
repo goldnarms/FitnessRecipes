@@ -234,6 +234,9 @@
     <Reference Include="NotFoundMvc">
       <HintPath>..\packages\NotFoundMvc.1.0.0\lib\net40\NotFoundMvc.dll</HintPath>
     </Reference>
+    <Reference Include="RestSharp">
+      <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
+    </Reference>
     <Reference Include="SassAndCoffee.AspNet">
       <HintPath>..\packages\SassAndCoffee.AspNet.2.0.2.0\lib\net40\SassAndCoffee.AspNet.dll</HintPath>
     </Reference>
@@ -352,6 +355,12 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
     </Reference>
+    <Reference Include="WorldDomination.Web.Authentication">
+      <HintPath>..\packages\WorldDomination.Web.Authentication.0.17.0\lib\net40\WorldDomination.Web.Authentication.dll</HintPath>
+    </Reference>
+    <Reference Include="WorldDomination.Web.Authentication.Mvc">
+      <HintPath>..\packages\WorldDomination.Web.Authentication.Mvc.0.17.0\lib\net40\WorldDomination.Web.Authentication.Mvc.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Packages\TaskHelpers.Sources.0.1\TaskHelpers.cs" />
@@ -392,6 +401,7 @@
     <Compile Include="Helpers\AcceptParameterAttribute.cs" />
     <Compile Include="Helpers\AppHttpContext.cs" />
     <Compile Include="Helpers\AutoMapperExtensions.cs" />
+    <Compile Include="Helpers\CallbackProvider.cs" />
     <Compile Include="Helpers\DietNotifier.cs" />
     <Compile Include="Helpers\HtmlHelperExtension.cs" />
     <Compile Include="Helpers\IntExtensions.cs" />
@@ -453,6 +463,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MealViews.resx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AuthenticateCallbackViewModel.cs" />
     <Compile Include="ViewModels\AuthorViewModel.cs" />
     <Compile Include="ViewModels\BrandViewModel.cs" />
     <Compile Include="ViewModels\DietIngredientViewModel.cs" />
@@ -1231,6 +1242,7 @@
     <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Views\Shared\_WizardSteps.cshtml" />
+    <Content Include="Views\Account\AuthenticateCallback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

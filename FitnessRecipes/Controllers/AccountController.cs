@@ -15,6 +15,10 @@ using FitnessRecipes.Helpers;
 using FitnessRecipes.ViewModels;
 using Microsoft.Web.WebPages.OAuth;
 using WebMatrix.WebData;
+using WorldDomination.Web.Authentication;
+using WorldDomination.Web.Authentication.Facebook;
+using WorldDomination.Web.Authentication.Google;
+using WorldDomination.Web.Authentication.Twitter;
 
 namespace FitnessRecipes.Controllers
 {
@@ -24,16 +28,26 @@ namespace FitnessRecipes.Controllers
     {
         private readonly IUserRepository _userRepository;
         private readonly IFormsAuthentication _formsAuthentication;
-        //public AccountController()
-        //{
-        //    var fitnessRecipeEntites = new DbContextFactory().GetFitnessRecipeEntities();
-        //    _userRepository = new UserRepository(fitnessRecipeEntites);
-        //    _formsAuthentication = new FormsAuth();
-        //}
+        private const string FacebookAppId = "113220502168922";
+        private const string FacebookAppSecret = "b09592a5904746646f3d402178ce9c0f";
+        private const string TwitterConsumerKey = "Rb7qNNPUPsRSYkznFTbF6Q";
+        private const string TwitterConsumerSecret = "pP1jBdYOlmCzo08QFJjGIHY4YSyPdGLPO2m1q47hu9c";
+        private const string GoogleConsumerKey = "587140099194.apps.googleusercontent.com";
+        private const string GoogleConsumerSecret = "npk1_gx-gqJmLiJRPFooxCEY";
+
+        private static AuthenticationService _authenticationService;
         public AccountController(IUserRepository userRepository, IFormsAuthentication formsAuthentication)
         {
             _userRepository = userRepository;
             _formsAuthentication = formsAuthentication;
+            var facebookProvider = new FacebookProvider(FacebookAppId, FacebookAppSecret);
+            var twitterProvider = new TwitterProvider(TwitterConsumerKey, TwitterConsumerSecret);
+            var googleProvider = new GoogleProvider(GoogleConsumerKey, GoogleConsumerSecret);
+
+            _authenticationService = new AuthenticationService();
+            _authenticationService.AddProvider(facebookProvider);
+            _authenticationService.AddProvider(twitterProvider);
+            _authenticationService.AddProvider(googleProvider);
         }
 
         [AllowAnonymous]
@@ -356,6 +370,53 @@ namespace FitnessRecipes.Controllers
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
 
+        public RedirectResult RedirectToAuthenticate(string providerKey)
+        {
+            if (string.IsNullOrEmpty(providerKey))
+            {
+                throw new ArgumentNullException("providerKey");
+            }
+
+            // Grab the required Provider settings.
+            var settings = _authenticationService.GetAuthenticateServiceSettings(providerKey, Request.Url, "account/authenticatecallback");
+
+            // Do use a state key.
+            settings.State = null;
+
+            // Determine the provider's end point Url we need to redirect to.
+            var uri = _authenticationService.RedirectToAuthenticationProvider(settings);
+
+            // Kthxgo!
+            return Redirect(uri.AbsoluteUri);
+        }
+
+        public ActionResult AuthenticateCallback(string providerKey)
+        {
+            if (string.IsNullOrEmpty(providerKey))
+            {
+                throw new ArgumentNullException("providerKey");
+            }
+
+            // Determine which settings we need, based on the Provider.
+            var settings = _authenticationService.GetAuthenticateServiceSettings(providerKey, Request.Url, "account/authenticatecallback");
+
+            // Don't check for somet State.
+            settings.State = null;
+
+            var model = new AuthenticateCallbackViewModel();
+
+            try
+            {
+                // Grab the authenticated client information.
+                model.AuthenticatedClient = _authenticationService.GetAuthenticatedClient(settings, Request.QueryString);
+            }
+            catch (Exception exception)
+            {
+                model.Exception = exception;
+            }
+
+            return View(model);
+        }
         #region Helpers
         private ActionResult RedirectToLocal(string returnUrl)
         {
