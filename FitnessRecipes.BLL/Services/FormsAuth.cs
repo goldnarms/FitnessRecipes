@@ -14,5 +14,10 @@ namespace FitnessRecipes.BLL.Services
         {
             FormsAuthentication.RedirectToLoginPage();
         }
+
+        public void SignOut()
+        {
+            FormsAuthentication.SignOut();
+        }
     }
 }

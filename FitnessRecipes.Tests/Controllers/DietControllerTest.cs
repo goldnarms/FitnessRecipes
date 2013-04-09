@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Text;
 using System.Web.Mvc;
+using FitnessRecipes.BLL.Interfaces;
+using FitnessRecipes.BLL.Services;
 using FitnessRecipes.Controllers;
 using FitnessRecipes.DAL.Fakes;
 using FitnessRecipes.DAL.Interfaces;
@@ -30,6 +32,7 @@ namespace FitnessRecipes.Tests.Controllers
         private IMealRepository _mealRepository;
         private IIngredientQuantityRepository _ingredientQuantityRepository;
         private IMealIngredientRepository _mealIngredientRepository;
+        private ITracer _tracer;
         private Diet _diet;
 
         public DietControllerTest()
@@ -47,7 +50,8 @@ namespace FitnessRecipes.Tests.Controllers
             _mealRepository = new FakeMealRepository();
             _ingredientQuantityRepository = new FakeIngredientQuantityRepository();
             _mealIngredientRepository = new FakeMealIngredientRepository();
-            _controller = new DietController(_dietRepository, _commentRepository, _userRepository, _dietCategoryRepository, _dietMealRepository, _dietIngredientRepository, _quantityTypeRepository, _userDietRepository, _ingredientQuantityRepository);
+            _tracer = new Tracer();
+            _controller = new DietController(_dietRepository, _commentRepository, _userRepository, _dietCategoryRepository, _dietMealRepository, _dietIngredientRepository, _quantityTypeRepository, _userDietRepository, _ingredientQuantityRepository, _tracer);
         }
 
         [TestInitialize]

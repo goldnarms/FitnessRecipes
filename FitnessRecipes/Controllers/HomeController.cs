@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
+using DevTrends.MvcDonutCaching;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
 using FitnessRecipes.ViewModels;
@@ -25,19 +26,9 @@ namespace FitnessRecipes.Controllers
             _authorRepository = authorRepository;
         }
 
-        //public HomeController()
-        //{
-        //    var fitnessRecipeEntites = new DbContextFactory().GetFitnessRecipeEntities();
-        //    _ingredientRepository = new IngredientRepository(fitnessRecipeEntites);
-        //    _recipeRepository = new RecipeRepository(fitnessRecipeEntites);
-        //    _dietRepository = new DietRepository(fitnessRecipeEntites);
-        //    _authorRepository = new AuthorRepository(fitnessRecipeEntites);
-        //}
-
+        [OutputCache(Duration = 1800)]
         public ActionResult Index()
         {
-            var login = new LoginRadius("1a187df5-ff86-48d7-88d7-151e79847f08");
-
             var viewModel = new FrontPageViewModel();
             viewModel.Recipes = Mapper.Map<IEnumerable<Recipe>, List<RecipeViewModel>>(_recipeRepository.GetAll().OrderByDescending(r => r.DateAdded).Take(5));
             viewModel.Diets = Mapper.Map<IEnumerable<Diet>, List<DietViewModel>>(_dietRepository.GetAll().OrderByDescending(diet => diet.Id).Take(5));

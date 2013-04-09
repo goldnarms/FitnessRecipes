@@ -5,6 +5,7 @@ using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using FitnessRecipes.BLL.Interfaces;
 using FitnessRecipes.BLL.Services;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
@@ -24,12 +25,13 @@ namespace FitnessRecipes.Controllers
         private readonly IDietIngredientRepository _dietIngredientRepository;
         private readonly IQuantityTypeRepository _quantityTypeRepository;
         private readonly IIngredientQuantityRepository _ingredientQuantityRepository;
+        private readonly ITracer _tracer;
         private readonly IDietRepository _dietRepository;
         private readonly IUserDietRepository _userDietRepository;
 
         public DietController(IDietRepository dietRepository, ICommentRepository commentRepository, IUserRepository userRepository, IDietCategoryRepository categoryRepository,
             IDietMealRepository dietMealRepository, IDietIngredientRepository dietIngredientRepository, IQuantityTypeRepository quantityTypeRepository,
-            IUserDietRepository userDietRepository, IIngredientQuantityRepository ingredientQuantityRepository)
+            IUserDietRepository userDietRepository, IIngredientQuantityRepository ingredientQuantityRepository, ITracer tracer)
         {
             _dietRepository = dietRepository;
             _commentRepository = commentRepository;
@@ -40,6 +42,7 @@ namespace FitnessRecipes.Controllers
             _quantityTypeRepository = quantityTypeRepository;
             _userDietRepository = userDietRepository;
             _ingredientQuantityRepository = ingredientQuantityRepository;
+            _tracer = tracer;
         }
 
         public ActionResult Index()
@@ -47,6 +50,7 @@ namespace FitnessRecipes.Controllers
             var diets = Mapper.Map<IEnumerable<Diet>, IEnumerable<DietViewModel>>(_dietRepository.GetAll());
             const string alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ";
             var alfabetDic = alfabet.ToDictionary(t => t, t => diets.Where(diett => diett.Name.ToUpper()[0] == t).ToList());
+            _tracer.WriteTrace(string.Format("Number of diets: {0}", diets.Count()));
             return View(alfabetDic);
         }
 
@@ -54,7 +58,7 @@ namespace FitnessRecipes.Controllers
         {
             var diet = _dietRepository.Get(id);
             var dietViewModel = Mapper.Map<Diet, DietViewModel>(diet);
-            var dietCalculator = new DietCalculator(diet, _ingredientQuantityRepository);
+            var dietCalculator = new DietCalculator(diet, _ingredientQuantityRepository, _tracer);
             dietViewModel.Ingredients = Mapper.Map<IEnumerable<DietIngredient>, IEnumerable<DietIngredientViewModel>>(diet.DietIngredients);
             dietViewModel.Meals = Mapper.Map<IEnumerable<DietMeal>, IEnumerable<DietMealViewModel>>(diet.DietMeals);
             dietViewModel.Kcal = dietCalculator.CalculateAverageKcal();
@@ -68,7 +72,7 @@ namespace FitnessRecipes.Controllers
         {
             var diet = _dietRepository.Get(id);
             var dietViewModel = Mapper.Map<Diet, DietViewModel>(diet);
-            var dietCalculator = new DietCalculator(diet, _ingredientQuantityRepository);
+            var dietCalculator = new DietCalculator(diet, _ingredientQuantityRepository, _tracer);
             dietViewModel.Ingredients = Mapper.Map<IEnumerable<DietIngredient>, IEnumerable<DietIngredientViewModel>>(diet.DietIngredients);
             dietViewModel.Meals = Mapper.Map<IEnumerable<DietMeal>, IEnumerable<DietMealViewModel>>(diet.DietMeals);
             return View(dietViewModel);

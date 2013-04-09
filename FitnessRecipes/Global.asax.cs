@@ -16,10 +16,6 @@ namespace FitnessRecipes
         protected void Application_Start()
         {
             DependencyConfig.SetUpDependencies();
-            //WebSecurity.InitializeDatabaseConnection(
-            //    connectionStringName: "DefaultConnection", userTableName: "User", userIdColumn: "Id", userNameColumn: "Username", autoCreateTables: true);
-            //WebSecurity.InitializeDatabaseConnection(
-            //    connectionStringName: "FitnessRecipiesEntities", userTableName: "User", userIdColumn: "Id", userNameColumn: "Username", autoCreateTables: false);
             AreaRegistration.RegisterAllAreas();
             AuthConfig.RegisterAuth();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
@@ -29,6 +25,8 @@ namespace FitnessRecipes
             ApiConfig.ConfigureApi(GlobalConfiguration.Configuration);
             //MiniProfilerPackage.PreStart();
             MapperConfig.ConfigureMapper();
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(new RazorViewEngine());
         }
 
         protected void Application_BeginRequest()

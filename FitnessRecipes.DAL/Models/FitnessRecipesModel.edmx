@@ -345,13 +345,16 @@
           </Key>
           <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="Username" Type="nvarchar" MaxLength="350" />
-          <Property Name="Email" Type="nvarchar" Nullable="false" MaxLength="1500" />
+          <Property Name="Email" Type="nvarchar" MaxLength="1500" />
           <Property Name="IsDeleted" Type="bit" Nullable="false" />
           <Property Name="ImgUrl" Type="nvarchar" MaxLength="500" />
           <Property Name="WebUrl" Type="nvarchar" MaxLength="500" />
           <Property Name="Name" Type="nvarchar" MaxLength="500" />
           <Property Name="Password" Type="nvarchar(max)" />
           <Property Name="Role" Type="int" />
+          <Property Name="TwitterHandle" Type="nvarchar" MaxLength="500" />
+          <Property Name="FacebookHandle" Type="nvarchar" MaxLength="500" />
+          <Property Name="GoogleHandle" Type="nvarchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="UserDiet">
           <Key>
@@ -1019,7 +1022,7 @@
           </Key>
           <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="Username" MaxLength="350" FixedLength="false" Unicode="true" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="1500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Email" MaxLength="1500" FixedLength="false" Unicode="true" />
           <Property Type="Boolean" Name="IsDeleted" Nullable="false" />
           <Property Type="String" Name="ImgUrl" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="WebUrl" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -1033,6 +1036,9 @@
           <NavigationProperty Name="UserDiets" Relationship="FitnessRecipiesModel.FK_UserDiet_1" FromRole="User" ToRole="UserDiet" />
           <Property Type="Int32" Name="Role" />
           <NavigationProperty Name="Meals" Relationship="FitnessRecipiesModel.FK_Meal_1" FromRole="User" ToRole="Meal" />
+          <Property Type="String" Name="TwitterHandle" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FacebookHandle" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="GoogleHandle" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_Author_0">
           <End Type="FitnessRecipiesModel.User" Role="User" Multiplicity="1" />
@@ -1568,6 +1574,9 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="FitnessRecipiesModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="GoogleHandle" ColumnName="GoogleHandle" />
+                <ScalarProperty Name="FacebookHandle" ColumnName="FacebookHandle" />
+                <ScalarProperty Name="TwitterHandle" ColumnName="TwitterHandle" />
                 <ScalarProperty Name="Role" ColumnName="Role" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Name" ColumnName="Name" />

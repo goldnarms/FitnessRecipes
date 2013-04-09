@@ -11,7 +11,7 @@ namespace FitnessRecipes.DAL.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    //[Serializable]
     public partial class User
     {
         public User()
@@ -33,6 +33,9 @@ namespace FitnessRecipes.DAL.Models
         public string Name { get; set; }
         public string Password { get; set; }
         public Nullable<int> Role { get; set; }
+        public string TwitterHandle { get; set; }
+        public string FacebookHandle { get; set; }
+        public string GoogleHandle { get; set; }
     
         public virtual Author Author { get; set; }
         public virtual ICollection<Comment> Comments { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using System.Web.Mvc;
 using AdminPortal.BLL.Interfaces;
+using FitnessRecipes.BLL.Interfaces;
 using FitnessRecipes.BLL.Services;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
@@ -56,6 +57,7 @@ namespace FitnessRecipes.App_Start
             container.RegisterType<IUserDietRepository, UserDietRepository>(new InjectionConstructor(fitnessRecipeEntites));
             container.RegisterType<IUserRepository, UserRepository>(new InjectionConstructor(fitnessRecipeEntites));
             container.RegisterType<IFormsAuthentication, FormsAuth>();
+            container.RegisterType<ITracer, Tracer>();
             DependencyResolver.SetResolver(new Helpers.UnityDependencyResolver(container));
         }
     }

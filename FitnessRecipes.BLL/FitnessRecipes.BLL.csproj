@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Interfaces\IFormsAuthentication.cs" />
+    <Compile Include="Interfaces\ITracer.cs" />
     <Compile Include="MagicStrings\GeneralValues.cs" />
     <Compile Include="MagicStrings\HtmlValues.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Services\ObjectExtensions.cs" />
     <Compile Include="Services\QuantityConverter.cs" />
     <Compile Include="Services\StringExtensions.cs" />
+    <Compile Include="Services\Tracer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

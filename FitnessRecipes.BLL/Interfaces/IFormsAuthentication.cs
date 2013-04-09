@@ -10,5 +10,6 @@ namespace AdminPortal.BLL.Interfaces
     {
         void SetAuthCookie(string userName, bool rememberMe);
         void RedirectToLoginPage();
+        void SignOut();
     }
 }

@@ -56,6 +56,9 @@
     <Reference Include="DataAnnotationsExtensions.ClientValidation">
       <HintPath>..\packages\DataAnnotationsExtensions.MVC3.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
     </Reference>
+    <Reference Include="DevTrends.MvcDonutCaching">
+      <HintPath>..\packages\MvcDonutCaching.1.2.1\lib\net40\DevTrends.MvcDonutCaching.dll</HintPath>
+    </Reference>
     <Reference Include="DotNetOpenAuth.AspNet, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.AspNet.4.2.2.13055\lib\net45-full\DotNetOpenAuth.AspNet.dll</HintPath>
@@ -64,83 +67,21 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.Core.4.2.2.13055\lib\net45-full\DotNetOpenAuth.Core.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.Core.UI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.Core.UI.4.2.2.13055\lib\net45-full\DotNetOpenAuth.Core.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.InfoCard, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.InfoCard.4.2.2.13055\lib\net45-full\DotNetOpenAuth.InfoCard.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.InfoCard.UI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.InfoCard.UI.4.2.2.13055\lib\net45-full\DotNetOpenAuth.InfoCard.UI.dll</HintPath>
-    </Reference>
     <Reference Include="DotNetOpenAuth.OAuth, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.Common, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.Common.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth.Common.dll</HintPath>
     </Reference>
     <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth.ServiceProvider, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OAuth.ServiceProvider.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth.ServiceProvider.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth2">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Core.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth2.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth2.AuthorizationServer">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth2.AuthorizationServer.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth2.AuthorizationServer.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth2.Client">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Client.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth2.Client.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth2.Client.UI">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth2.Client.UI.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth2.Client.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth2.ClientAuthorization">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ClientAuthorization.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth2.ClientAuthorization.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OAuth2.ResourceServer">
-      <HintPath>..\packages\DotNetOpenAuth.OAuth2.ResourceServer.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OAuth2.ResourceServer.dll</HintPath>
-    </Reference>
     <Reference Include="DotNetOpenAuth.OpenId, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenId.dll</HintPath>
     </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId.Provider, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.Provider.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenId.Provider.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId.Provider.UI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.Provider.UI.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenId.Provider.UI.dll</HintPath>
-    </Reference>
     <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty.UI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.UI.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenId.RelyingParty.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OpenId.UI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.UI.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenId.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OpenIdInfoCard.UI, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenIdInfoCard.UI.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenIdInfoCard.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetOpenAuth.OpenIdOAuth, Version=4.2.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\DotNetOpenAuth.OpenIdOAuth.4.2.2.13055\lib\net45-full\DotNetOpenAuth.OpenIdOAuth.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
       <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
@@ -165,9 +106,6 @@
     </Reference>
     <Reference Include="Glimpse.Elmah">
       <HintPath>..\packages\Glimpse.Elmah.1.0.0\lib\net40\Glimpse.Elmah.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.Mvc3">
-      <HintPath>..\packages\Glimpse.Mvc3.0.83\lib\net40\Glimpse.Mvc3.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.Mvc4">
       <HintPath>..\packages\Glimpse.Mvc4.1.2.0\lib\net40\Glimpse.Mvc4.dll</HintPath>
@@ -326,9 +264,6 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
-    <Reference Include="Tall.Glimpse.DependencyPlugin">
-      <HintPath>..\packages\glimpse-dependencies.1.3\lib\net40\Tall.Glimpse.DependencyPlugin.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.Mvc3">
       <HintPath>..\packages\Unity.Mvc3.1.2\lib\net40\Unity.Mvc3.dll</HintPath>
     </Reference>
@@ -409,6 +344,7 @@
     <Compile Include="Helpers\ScheduleHelper.cs" />
     <Compile Include="Helpers\SessionFacade.cs" />
     <Compile Include="Helpers\TimeHelper.cs" />
+    <Compile Include="Helpers\TimelineTracer.cs" />
     <Compile Include="Helpers\UnityDependencyResolver.cs" />
     <Compile Include="MessagePoster.cs" />
     <Compile Include="Models\AuthenticatedUser.cs" />
@@ -488,7 +424,6 @@
     <Compile Include="ViewModels\WizardStepViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
     <Content Include="Content\chosen-sprite.png" />
     <Content Include="Content\chosen.css" />
     <Content Include="Content\font-awesome.css" />
@@ -691,6 +626,7 @@
     <Content Include="Definitions\knockback-0.16.d.ts" />
     <Content Include="Definitions\knockout-2.2.d.ts" />
     <Content Include="Definitions\underscore-1.4.d.ts" />
+    <Content Include="DevTrends.MvcDonutCaching.README.txt" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\themes\base\_normalize.scss">
@@ -1151,7 +1087,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Error.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Author\Index.cshtml" />
     <Content Include="Views\Author\Create.cshtml" />
