@@ -1,17 +1,17 @@
 <?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>Glimpse.EF5</id>
+    <id>Glimpse.EF6</id>
     <version>1.2.0</version>
-    <title>Glimpse EF5</title>
+    <title>Glimpse EF6</title>
     <authors>nmolnar,  avanderhoorn</authors>
     <owners>nmolnar,  avanderhoorn</owners>
     <licenseUrl>http://www.opensource.org/licenses/apache2.0</licenseUrl>
     <projectUrl>http://getglimpse.com/</projectUrl>
     <iconUrl>http://getglimpse.com/content/glimpse100.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Glimpse is a web debugging and diagnostics tool used to gain a better understanding of whats happening inside of your web application. Provides Glimpse tabs for EF5.</description>
-    <summary>Glimpse tabs for Entity Framework 5.</summary>
+    <description>Glimpse is a web debugging and diagnostics tool used to gain a better understanding of whats happening inside of your web application. Provides Glimpse tabs for EF6.</description>
+    <summary>Glimpse tabs for Entity Framework 6.</summary>
     <releaseNotes>Initial cut of EF support: 
  - Supports default configuration setup, as well as if you are connection DbConnectionFactory.</releaseNotes>
     <copyright />
@@ -21,7 +21,7 @@
       <dependency id="Glimpse.Ado" version="1.2.0" />
     </dependencies>
     <references>
-      <reference file="Glimpse.EF5.dll" />
+      <reference file="Glimpse.EF6.dll" />
     </references>
   </metadata>
 </package>
