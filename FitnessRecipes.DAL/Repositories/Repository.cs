@@ -9,7 +9,7 @@ using System.Linq.Expressions;
 using FitnessRecipes.BLL.Services;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
-using EntityState = System.Data.Entity.EntityState;
+using EntityState = System.Data.EntityState;
 
 namespace FitnessRecipes.DAL.Repositories
 {

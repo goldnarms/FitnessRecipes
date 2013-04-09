@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Should;
+﻿using Should;
 using TechTalk.SpecFlow;
 
 namespace FitnessRecipes.WebTests.StepDefinitions

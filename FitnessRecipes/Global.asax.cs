@@ -3,6 +3,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using FitnessRecipes.App_Start;
+using FitnessRecipes.Helpers;
 using WebMatrix.WebData;
 using WorldDomination.Web.Authentication.Mvc;
 
@@ -25,8 +26,10 @@ namespace FitnessRecipes
             ApiConfig.ConfigureApi(GlobalConfiguration.Configuration);
             //MiniProfilerPackage.PreStart();
             MapperConfig.ConfigureMapper();
+            var razorViewEngine = new RazorViewEngine();
+            razorViewEngine.ViewLocationCache = new TwoLevelViewCache(razorViewEngine.ViewLocationCache);
             ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new RazorViewEngine());
+            ViewEngines.Engines.Add(razorViewEngine);
         }
 
         protected void Application_BeginRequest()

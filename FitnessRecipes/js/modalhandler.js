@@ -1,9 +1,9 @@
 function showModal(modalid, idholder, idvalue) {
-    $(modalid).reveal();
+    $(modalid).foundation('reveal', 'open');
     $(idholder).val(idvalue);
 }
 function showModalWithoutId(modalid) {
-    $(modalid).reveal();
+    $(modalid).foundation('reveal', 'open');
 }
 function loadResult(resultholder, func) {
     $(resultholder).click(func);

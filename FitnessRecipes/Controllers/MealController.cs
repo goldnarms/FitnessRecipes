@@ -41,6 +41,8 @@ namespace FitnessRecipes.Controllers
             _ingredientQuantityRepository = ingredientQuantityRepository;
         }
 
+        [OutputCache(Duration = 1800)]
+        [HttpGet]
         public ActionResult Index()
         {
             var oppskrifter = Mapper.Map<IEnumerable<Meal>, IEnumerable<MealViewModel>>(_mealRepository.GetAll()).ToList();

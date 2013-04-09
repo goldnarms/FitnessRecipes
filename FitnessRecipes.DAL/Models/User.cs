@@ -11,7 +11,7 @@ namespace FitnessRecipes.DAL.Models
 {
     using System;
     using System.Collections.Generic;
-    //[Serializable]
+    [Serializable]
     public partial class User
     {
         public User()

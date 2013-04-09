@@ -30,6 +30,7 @@ namespace FitnessRecipes.Controllers
         private readonly IUserRepository _userRepository;
         private readonly IFormsAuthentication _formsAuthentication;
         private readonly ITracer _tracer;
+        private readonly IDietRepository _dietRepository;
         private const string FacebookAppId = "113220502168922";
         private const string FacebookAppSecret = "b09592a5904746646f3d402178ce9c0f";
         private const string TwitterConsumerKey = "Rb7qNNPUPsRSYkznFTbF6Q";
@@ -38,11 +39,12 @@ namespace FitnessRecipes.Controllers
         private const string GoogleConsumerSecret = "npk1_gx-gqJmLiJRPFooxCEY";
 
         private static AuthenticationService _authenticationService;
-        public AccountController(IUserRepository userRepository, IFormsAuthentication formsAuthentication, ITracer tracer)
+        public AccountController(IUserRepository userRepository, IFormsAuthentication formsAuthentication, ITracer tracer, IDietRepository dietRepository)
         {
             _userRepository = userRepository;
             _formsAuthentication = formsAuthentication;
             _tracer = tracer;
+            _dietRepository = dietRepository;
             var facebookProvider = new FacebookProvider(FacebookAppId, FacebookAppSecret);
             var twitterProvider = new TwitterProvider(TwitterConsumerKey, TwitterConsumerSecret);
             var googleProvider = new GoogleProvider(GoogleConsumerKey, GoogleConsumerSecret);
@@ -91,7 +93,14 @@ namespace FitnessRecipes.Controllers
             SessionFacade.User = user;
             var diet = user.UserDiets.LastOrDefault(ud => ud.Active);
             if(diet != null)
-                SessionFacade.CurrentDiet = Mapper.Map<Diet, DietViewModel>(diet.Diet);
+            {
+                var userDiet = diet.Diet;
+                var dietViewModel = Mapper.Map<Diet, DietViewModel>(userDiet);
+                dietViewModel.Meals = Mapper.Map<IEnumerable<DietMeal>, IEnumerable<DietMealViewModel>>(userDiet.DietMeals);
+                dietViewModel.Ingredients = Mapper.Map<IEnumerable<DietIngredient>, IEnumerable<DietIngredientViewModel>>(userDiet.DietIngredients);
+                SessionFacade.CurrentDiet = dietViewModel;
+
+            }
             return RedirectToAction("Index", "Home");
         }
 
@@ -462,7 +471,7 @@ namespace FitnessRecipes.Controllers
                     SignInUser(user.Username, false, user);
                 }
             }
-            return View(model);
+            return RedirectToAction("Index", "Home");
         }
 
         private void SetAuthenticationHandle(AuthenticateCallbackViewModel model, User dbUser)

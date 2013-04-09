@@ -32,27 +32,10 @@
         </h2>
 
         <h3>Din konto</h3>
-        <ul class="items_list green margin_top">
-            <li class="icon_card_white">
-                @Html.ActionLink("Endre...", "Manage", "Account")
-            </li>
-            <li class="icon_card_white">
-                <span>3-day Session
-                </span>
-                <div class="value">
-                    $ 269.25
-                </div>
-            </li>
-            <li class="icon_card_white">
-                <span>7-day Session
-                </span>
-                <div class="value">
-                    $ 630.95
-                </div>
-            </li>
-        </ul>
+        @Html.ActionLink("Endre...", "Manage", "Account")
+
         <a class="more black icon_small_arrow margin_right_white" href="~/Views/Ingredient/contact.html"
-            title="Contact us">Contact us</a>
+            title="Contact us">Kontakt oss</a>
     }
     else
     {

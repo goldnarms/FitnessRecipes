@@ -30,7 +30,7 @@ namespace FitnessRecipes.DAL.Services
             tracer.WriteTrace("Henter ut ingredienser og måltid");
             var ingredients = _diet.DietIngredients.ToList();
             var meals = _diet.DietMeals.ToList();
-            //tracer.WriteTrace("Beregner fett");
+            tracer.WriteTrace("Beregner fett");
             //_totalIngredientFatGrams = ingredients != null && ingredients.Count > 0 ? ingredients.Sum(di => di.Ingredient.Fat * di.Quantity / QuantityConverter.ConvertTo100Grams(di.QuantityTypeId, _ingredientQuantityRepository.GetConvertFactor(di.IngredientId, di.QuantityTypeId)) * di.Day.ToIntArray().Count()) : 0;
             //_totalMealFatGrams = meals != null && meals.Count > 0 ? meals.Sum(dm => new MealCalculator(dm.Meal, _ingredientQuantityRepository).CalculateTotalFat() * dm.Day.ToIntArray().Count()) : 0;
             //_totalGrams += _totalIngredientFatGrams + _totalMealFatGrams;

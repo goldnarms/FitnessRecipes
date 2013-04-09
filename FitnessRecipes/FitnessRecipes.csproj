@@ -345,6 +345,7 @@
     <Compile Include="Helpers\SessionFacade.cs" />
     <Compile Include="Helpers\TimeHelper.cs" />
     <Compile Include="Helpers\TimelineTracer.cs" />
+    <Compile Include="Helpers\TwoLevelViewCache.cs" />
     <Compile Include="Helpers\UnityDependencyResolver.cs" />
     <Compile Include="MessagePoster.cs" />
     <Compile Include="Models\AuthenticatedUser.cs" />
@@ -621,6 +622,8 @@
     <Content Include="Definitions\chosen.jquery-0.9.d.ts" />
     <Content Include="Definitions\fancybox-2.1.d.ts" />
     <Content Include="Definitions\foundation-3.2.d.ts" />
+    <Content Include="Definitions\foundation-tests.ts" />
+    <Content Include="Definitions\foundation.d.ts" />
     <Content Include="Definitions\jasmine-1.2.d.ts" />
     <Content Include="Definitions\jquery-1.8.d.ts" />
     <Content Include="Definitions\knockback-0.16.d.ts" />

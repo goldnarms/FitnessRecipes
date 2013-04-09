@@ -21,8 +21,8 @@ namespace FitnessRecipes.Helpers
         public List<DietMealViewModel> GetMealsForDay(DateTime day)
         {
             var dietMeals =
-                _diet.Meals.Where(dietmeal => StringExtensions.ToIntArray(dietmeal.Day).Contains((int)day.DayOfWeek)).ToList();
-            return dietMeals;
+                _diet.Meals.Where(dietmeal => StringExtensions.ToIntArray(dietmeal.Day).Contains((int)day.DayOfWeek));
+            return dietMeals.ToList();
         }
 
         public List<DietIngredientViewModel> GetIngrediensForDay(DateTime day)

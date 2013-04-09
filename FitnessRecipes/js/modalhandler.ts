@@ -1,13 +1,13 @@
-﻿/// <reference path="../Definitions/foundation-3.2.d.ts" />
+﻿/// <reference path="../Definitions/foundation.d.ts" />
 /// <reference path="../Definitions/jquery-1.8.d.ts" />
 
 function showModal(modalid: string, idholder: string, idvalue: string) {
-    $(modalid).reveal();
+    $(modalid).foundation('reveal', 'open');
     $(idholder).val(idvalue);
 }
 
 function showModalWithoutId(modalid: string) {
-    $(modalid).reveal();
+    $(modalid).foundation('reveal', 'open');
 }
 
 function loadResult(resultholder: string, func) {
