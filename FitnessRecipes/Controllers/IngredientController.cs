@@ -37,7 +37,6 @@ namespace FitnessRecipes.Controllers
         [HttpGet]
         public ActionResult Details(int id)
         {
-            throw new Exception("Exception for your viewing pleasure");
             var model = _ingredientRepository.Get(id);
             var viewModel = Mapper.Map<Ingredient, IngredientViewModel>(model);
             viewModel.Meals = Mapper.Map<IEnumerable<Meal>, IEnumerable<MealViewModel>>(_mealRepository.GetAll().Where(meal => meal.MealIngredients.Any(mi => mi.IngredientId == id)));

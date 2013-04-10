@@ -184,7 +184,13 @@ namespace FitnessRecipes.Controllers
                 : message == ManageMessageId.SetPasswordSuccess ? "Your password has been set."
                 : message == ManageMessageId.RemoveLoginSuccess ? "The external login was removed."
                 : "";
-            ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            var user = SessionFacade.User;
+            if (user == null)
+            {
+                return RedirectToAction("Login");
+            }
+            ViewBag.HasLocalPassword = user.Password != null && user.Password != string.Empty;
+            //ViewBag.HasLocalPassword = OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
             ViewBag.ReturnUrl = Url.Action("Manage");
             return View();
         }
@@ -462,7 +468,7 @@ namespace FitnessRecipes.Controllers
                     SignInUser(user.Username, false, user);
                 }
             }
-            return View(model);
+            return RedirectToAction("Index", "Home");
         }
 
         private void SetAuthenticationHandle(AuthenticateCallbackViewModel model, User dbUser)

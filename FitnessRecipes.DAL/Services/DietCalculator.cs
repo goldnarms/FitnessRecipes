@@ -30,18 +30,6 @@ namespace FitnessRecipes.DAL.Services
             tracer.WriteTrace("Henter ut ingredienser og måltid");
             var ingredients = _diet.DietIngredients.ToList();
             var meals = _diet.DietMeals.ToList();
-            //tracer.WriteTrace("Beregner fett");
-            //_totalIngredientFatGrams = ingredients != null && ingredients.Count > 0 ? ingredients.Sum(di => di.Ingredient.Fat * di.Quantity / QuantityConverter.ConvertTo100Grams(di.QuantityTypeId, _ingredientQuantityRepository.GetConvertFactor(di.IngredientId, di.QuantityTypeId)) * di.Day.ToIntArray().Count()) : 0;
-            //_totalMealFatGrams = meals != null && meals.Count > 0 ? meals.Sum(dm => new MealCalculator(dm.Meal, _ingredientQuantityRepository).CalculateTotalFat() * dm.Day.ToIntArray().Count()) : 0;
-            //_totalGrams += _totalIngredientFatGrams + _totalMealFatGrams;
-            //tracer.WriteTrace("Beregner protein");
-            //_totalIngredientProteinGrams = ingredients != null && ingredients.Count > 0 ? ingredients.Sum(di => di.Ingredient.Protein * di.Quantity / QuantityConverter.ConvertTo100Grams(di.QuantityTypeId, _ingredientQuantityRepository.GetConvertFactor(di.IngredientId, di.QuantityTypeId)) * di.Day.ToIntArray().Count()) : 0;
-            //_totalMealProteinGrams = meals != null && meals.Count > 0 ? meals.Sum(dm => new MealCalculator(dm.Meal, _ingredientQuantityRepository).CalculateTotalProtein() * dm.Day.ToIntArray().Count()) : 0;
-            //_totalGrams += _totalIngredientProteinGrams + _totalMealProteinGrams;
-            //_totalIngredientCarbsGrams = ingredients != null && ingredients.Count > 0 ? ingredients.Sum(di => di.Ingredient.Carb * di.Quantity / QuantityConverter.ConvertTo100Grams(di.QuantityTypeId, _ingredientQuantityRepository.GetConvertFactor(di.IngredientId, di.QuantityTypeId)) * di.Day.ToIntArray().Count()) : 0;
-            //_totalMealCarbGrams = meals != null && meals.Count > 0 ? meals.Sum(dm => new MealCalculator(dm.Meal, _ingredientQuantityRepository).CalculateTotalCarb() * dm.Day.ToIntArray().Count()) : 0;
-            //_totalGrams += _totalIngredientCarbsGrams + _totalMealCarbGrams;
-
             foreach (var di in ingredients)
             {
                 var quantityConversion = di.Quantity / QuantityConverter.ConvertTo100Grams(di.QuantityTypeId, _ingredientQuantityRepository.GetConvertFactor(di.IngredientId, di.QuantityTypeId)) * di.Day.ToIntArray().Count();
@@ -76,10 +64,6 @@ namespace FitnessRecipes.DAL.Services
             var maxdays = Math.Max(totalIngredientDays, totalMealDays);
             _tracer.WriteTrace("Ferdig med snitt kcal");
             return (_totalIngredientKcals + _totalMealKcals) / maxdays;
-            var totalIngredientKcals = _diet.DietIngredients != null && _diet.DietIngredients.Count > 0 ? _diet.DietIngredients.Sum(di => di.Ingredient.Kcal * di.Quantity / QuantityConverter.ConvertTo100Grams(di.QuantityTypeId, _ingredientQuantityRepository.GetConvertFactor(di.IngredientId, di.QuantityTypeId)) * di.Day.ToIntArray().Count()) : 0;
-            var totalMealKcals = _diet.DietMeals != null && _diet.DietMeals.Count > 0 ? _diet.DietMeals.Sum(dm => new MealCalculator(dm.Meal, _ingredientQuantityRepository).CalculateTotalKcal() * dm.Day.ToIntArray().Count()) : 0;
-            _tracer.WriteTrace("Ferdig med snitt kcal");
-            return (totalIngredientKcals + totalMealKcals) / maxdays;
         }
 
         public double? CalculateFatPercentage()
