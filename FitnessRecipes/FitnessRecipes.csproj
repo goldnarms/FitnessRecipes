@@ -89,20 +89,19 @@
     <Reference Include="Elmah.Mvc">
       <HintPath>..\packages\Elmah.MVC.2.0.2\lib\net40\Elmah.Mvc.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.0-alpha3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="Glimpse.Ado">
-      <HintPath>..\packages\Glimpse.Ado.1.2.0\lib\net45\Glimpse.Ado.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.0-alpha3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.AspNet">
       <HintPath>..\packages\Glimpse.AspNet.1.2.0\lib\net45\Glimpse.AspNet.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.Core">
       <HintPath>..\packages\Glimpse.1.2.0\lib\net45\Glimpse.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Glimpse.EF5">
-      <HintPath>..\packages\Glimpse.EF5.1.2.0\lib\net45\Glimpse.EF5.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.Elmah">
       <HintPath>..\packages\Glimpse.Elmah.1.0.0\lib\net40\Glimpse.Elmah.dll</HintPath>
