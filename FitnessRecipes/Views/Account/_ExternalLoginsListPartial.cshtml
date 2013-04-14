@@ -1,26 +1,13 @@
-﻿@model ICollection<AuthenticationClientData>
-
-@if (Model.Count == 0)
+﻿@using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
 {
-    <div class="message-info">
-        <p>There are no external authentication services configured. See <a href="http://go.microsoft.com/fwlink/?LinkId=252166">this article</a>
-        for details on setting up this ASP.NET application to support logging in via external services.</p>
-    </div>
-}
-else
-{
-    using (Html.BeginForm("ExternalLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
-    {
     @Html.AntiForgeryToken()
-        <h4 class="info_green">Logg inn med en annen tjeneste</h4><br/><br/>
-        <a href="/Account/RedirectToAuthenticate?providerKey=Twitter"><img src="/Content/themes/base/images/1358652820_twitter.png"/></a>
-    <a href="/Account/RedirectToAuthenticate?providerKey=Facebook"><img src="/Content/themes/base/images/1358652758_facebook.png" /></a>
-    <a href="/Account/RedirectToAuthenticate?providerKey=Google"><img src="/Content/themes/base/images/1358652735_google.png"/></a>
-        foreach (AuthenticationClientData p in Model)
-        {
-            <button type="submit" class="socialButton" name="provider" value="@p.AuthenticationClient.ProviderName" title="Logg inn med din @p.DisplayName konto">
-                <img src="~/Content/themes/base/images/1358652735_google.png" />
-            </button>
-        }
-    }
+    <h4 class="info_green">Logg inn med en annen tjeneste</h4>
+    <br />
+    <br />
+    <a href="/Account/RedirectToAuthenticate?providerKey=Twitter">
+        <img src="/Content/themes/base/images/1358652820_twitter.png" /></a>
+    <a href="/Account/RedirectToAuthenticate?providerKey=Facebook">
+        <img src="/Content/themes/base/images/1358652758_facebook.png" /></a>
+    <a href="/Account/RedirectToAuthenticate?providerKey=Google">
+        <img src="/Content/themes/base/images/1358652735_google.png" /></a>
 }

@@ -31,10 +31,10 @@ namespace FitnessRecipes.Controllers
         private readonly IFormsAuthentication _formsAuthentication;
         private readonly ITracer _tracer;
         private readonly IDietRepository _dietRepository;
-        private const string FacebookAppId = "113220502168922";
-        private const string FacebookAppSecret = "b09592a5904746646f3d402178ce9c0f";
-        private const string TwitterConsumerKey = "Rb7qNNPUPsRSYkznFTbF6Q";
-        private const string TwitterConsumerSecret = "pP1jBdYOlmCzo08QFJjGIHY4YSyPdGLPO2m1q47hu9c";
+        private const string FacebookAppId = "156912527811133";
+        private const string FacebookAppSecret = "7f59b811a8fec444c72084987eb437ff";
+        private const string TwitterConsumerKey = "nbi3k6mjYTE0TJLr1hHFWA";
+        private const string TwitterConsumerSecret = "9Br8vnIxAzwums6QXBDXgi5MpQiCyXe5x2K0WgOJ1k";
         private const string GoogleConsumerKey = "587140099194.apps.googleusercontent.com";
         private const string GoogleConsumerSecret = "npk1_gx-gqJmLiJRPFooxCEY";
 
@@ -377,21 +377,26 @@ namespace FitnessRecipes.Controllers
         [ChildActionOnly]
         public ActionResult RemoveExternalLogins()
         {
-            ICollection<OAuthAccount> accounts = OAuthWebSecurity.GetAccountsFromUserName(User.Identity.Name);
-            List<ExternalLogin> externalLogins = new List<ExternalLogin>();
-            foreach (OAuthAccount account in accounts)
+            var user = SessionFacade.User;
+            var externalLogins = new List<ExternalLogin>();
+            var showRemoveButton = false;
+            if (!string.IsNullOrEmpty(user.FacebookHandle))
             {
-                AuthenticationClientData clientData = OAuthWebSecurity.GetOAuthClientData(account.Provider);
-
-                externalLogins.Add(new ExternalLogin
-                {
-                    Provider = account.Provider,
-                    ProviderDisplayName = clientData.DisplayName,
-                    ProviderUserId = account.ProviderUserId,
-                });
+                externalLogins.Add(new ExternalLogin { Provider = Enum.GetName(typeof(ProviderNames), ProviderNames.facebook), ProviderDisplayName = "Facebook", ProviderUserId = user.FacebookHandle });
+                showRemoveButton = true;
             }
 
-            ViewBag.ShowRemoveButton = externalLogins.Count > 1 || OAuthWebSecurity.HasLocalAccount(WebSecurity.GetUserId(User.Identity.Name));
+            if (!string.IsNullOrEmpty(user.TwitterHandle))
+            {
+                externalLogins.Add(new ExternalLogin { Provider = Enum.GetName(typeof(ProviderNames), ProviderNames.twitter), ProviderDisplayName = "Twitter", ProviderUserId = user.TwitterHandle });
+                showRemoveButton = true;
+            }
+            if (!string.IsNullOrEmpty(user.GoogleHandle))
+            {
+                externalLogins.Add(new ExternalLogin { Provider = Enum.GetName(typeof(ProviderNames), ProviderNames.google), ProviderDisplayName = "Google", ProviderUserId = user.GoogleHandle });
+                showRemoveButton = true;
+            }
+            ViewBag.ShowRemoveButton = showRemoveButton;
             return PartialView("_RemoveExternalLoginsPartial", externalLogins);
         }
 

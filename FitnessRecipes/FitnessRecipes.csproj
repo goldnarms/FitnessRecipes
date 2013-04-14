@@ -50,6 +50,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AutoMapper.2.2.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\packages\Castle.Core.3.0.0.4001\lib\net40-client\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\packages\Castle.Windsor.3.0.0.4001\lib\net40\Castle.Windsor.dll</HintPath>
+    </Reference>
     <Reference Include="DataAnnotationsExtensions">
       <HintPath>..\packages\DataAnnotationsExtensions.1.1.0.0\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
     </Reference>
@@ -96,6 +102,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.0-alpha3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Facebook">
+      <HintPath>..\packages\Facebook.6.4.0\lib\net45\Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="FaceSharp">
+      <HintPath>..\packages\FaceSharp.3.0.6\lib\net40\FaceSharp.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.AspNet">
       <HintPath>..\packages\Glimpse.AspNet.1.2.0\lib\net45\Glimpse.AspNet.dll</HintPath>
@@ -337,6 +349,7 @@
     <Compile Include="Helpers\AutoMapperExtensions.cs" />
     <Compile Include="Helpers\CallbackProvider.cs" />
     <Compile Include="Helpers\DietNotifier.cs" />
+    <Compile Include="Helpers\FacebookHelper.cs" />
     <Compile Include="Helpers\HtmlHelperExtension.cs" />
     <Compile Include="Helpers\IntExtensions.cs" />
     <Compile Include="Helpers\RssReader.cs" />
@@ -628,6 +641,16 @@
     <Content Include="Definitions\knockout-2.2.d.ts" />
     <Content Include="Definitions\underscore-1.4.d.ts" />
     <Content Include="DevTrends.MvcDonutCaching.README.txt" />
+    <Content Include="Facebook\Docs\content\images\FBCoreSettings.png" />
+    <Content Include="Facebook\Docs\content\images\FBCreateApplication.png" />
+    <Content Include="Facebook\Docs\content\images\webx-bkg.png" />
+    <Content Include="Facebook\Docs\content\images\webx-content-bkg.jpg" />
+    <Content Include="Facebook\Docs\content\images\webx-icon.png" />
+    <Content Include="Facebook\Docs\content\images\wm-mysite-settings.png" />
+    <Content Include="Facebook\Docs\content\images\wm-site-settings.png" />
+    <Content Include="Facebook\Docs\content\Site.css" />
+    <Content Include="Facebook\Docs\reference.htm" />
+    <Content Include="Facebook\Docs\startHere.htm" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\themes\base\_normalize.scss">
@@ -780,6 +803,7 @@
     <Content Include="Content\themes\base\_gymbase.scss" />
     <Content Include="Content\themes\base\_reveal.scss" />
     <Content Include="js\test.coffee" />
+    <Content Include="App_Code\Facebook.cshtml" />
     <None Include="CodeTemplates\AddController\ApiController.tt" />
     <None Include="CodeTemplates\AddController\ApiControllerWithContext.tt" />
     <None Include="CodeTemplates\AddController\Controller.tt" />
@@ -978,6 +1002,7 @@
     <Content Include="Content\font\fontawesome-webfont.ttf" />
     <Content Include="Content\font\fontawesome-webfont.woff" />
     <Content Include="Content\font\FontAwesome.otf" />
+    <Content Include="Facebook\Login.cshtml" />
     <None Include="Properties\PublishProfiles\fitnessoppskrifter - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\fitnessoppskrifter - Web Deploy.pubxml" />
     <Content Include="Scripts\jasmine\MIT.LICENSE" />

@@ -114,6 +114,7 @@
     <Compile Include="Controllers\DietControllerTest.cs" />
     <Compile Include="Controllers\QuantityTypeControllerTest.cs" />
     <Compile Include="Controllers\MealControllerTest.cs" />
+    <Compile Include="Helpers\FacebookTest.cs" />
     <Compile Include="MapperConfig.cs" />
     <Compile Include="ModelCreator.cs" />
     <Compile Include="Models\UnitTest1.cs" />
