@@ -343,7 +343,6 @@
     <Compile Include="Helpers\ScheduleHelper.cs" />
     <Compile Include="Helpers\SessionFacade.cs" />
     <Compile Include="Helpers\TimeHelper.cs" />
-    <Compile Include="Helpers\TimelineTracer.cs" />
     <Compile Include="Helpers\TwoLevelViewCache.cs" />
     <Compile Include="Helpers\UnityDependencyResolver.cs" />
     <Compile Include="MessagePoster.cs" />
