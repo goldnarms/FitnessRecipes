@@ -40,8 +40,7 @@ namespace FitnessRecipes.Helpers
             sb.Append("<ul>");
             foreach (var ingredientViewModel in ingredients.Where(ingredient => ingredient.Time.ToDateTime().Hour > DateTime.Now.Hour - 2 && ingredient.Time.ToDateTime().Hour < DateTime.Now.Hour + 2))
             {
-                sb.Append(string.Format("<li>{0}({1})</li>", ingredientViewModel.Ingredient.Name,
-                                        ingredientViewModel.Time.ToTimeString()));
+                sb.Append(string.Format("<li><a href='ingredient\\details\\{0}' title='{1}'>{1}({2})</a></li>", ingredientViewModel.IngredientId, ingredientViewModel.Ingredient.Name, ingredientViewModel.Time.ToTimeString()));
             }
             foreach (var dietMealViewModel in meals.Where(meal => meal.Time.ToDateTime().Hour > DateTime.Now.Hour - 2 && meal.Time.ToDateTime().Hour < DateTime.Now.Hour + 2))
             {

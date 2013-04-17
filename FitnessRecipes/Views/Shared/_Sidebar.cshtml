@@ -18,11 +18,11 @@
 <li class="home_box light_green">
     @if (diet != null)
     {
-        <h2>Neste måltid</h2>
-        if (dietNotification != null)
-        {
+        <h2>@Html.ActionLink(@diet.Name, "Details", "Diet", new { id = @diet.Id}, null)</h2>
+        
+        <h3>Neste måltid</h3>
+        
         @Html.Raw(dietNotification.ToString());
-        }
     }
 </li>
 <li class="home_box green">
