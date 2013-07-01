@@ -1,13 +1,11 @@
-﻿using System;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using AutoMapper;
-using DevTrends.MvcDonutCaching;
 using FitnessRecipes.DAL.Interfaces;
 using FitnessRecipes.DAL.Models;
 using FitnessRecipes.ViewModels;
-using LoginRadiusSDKv2;
 
 namespace FitnessRecipes.Controllers
 {
@@ -17,13 +15,15 @@ namespace FitnessRecipes.Controllers
         private readonly IRecipeRepository _recipeRepository;
         private readonly IDietRepository _dietRepository;
         private readonly IAuthorRepository _authorRepository;
+        private readonly ICommentRepository _commentRepository;
 
-        public HomeController(IIngredientRepository ingredientRepository, IRecipeRepository recipeRepository, IDietRepository dietRepository, IAuthorRepository authorRepository)
+        public HomeController(IIngredientRepository ingredientRepository, IRecipeRepository recipeRepository, IDietRepository dietRepository, IAuthorRepository authorRepository, ICommentRepository commentRepository)
         {
             _ingredientRepository = ingredientRepository;
             _recipeRepository = recipeRepository;
             _dietRepository = dietRepository;
             _authorRepository = authorRepository;
+            _commentRepository = commentRepository;
         }
 
         [OutputCache(Duration = 1800)]
@@ -52,6 +52,11 @@ namespace FitnessRecipes.Controllers
             ingredientsHave.Remove(Mapper.Map(_ingredientRepository.Get(ingredientId), new IngredientViewModel()));
             ViewData["IngredientsHave"] = ingredientsHave;
             return PartialView("_IngredientsHave", ingredientsHave);
+        }
+
+        public PartialViewResult Comments(User user)
+        {
+            return PartialView("_Comments", Mapper.Map<IEnumerable<Comment>, IEnumerable<CommentViewModel>>(_commentRepository.GetLatestCommentsForUser(user.Id)));
         }
 
         public ActionResult Author()

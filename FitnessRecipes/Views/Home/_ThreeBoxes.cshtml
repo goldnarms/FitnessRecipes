@@ -1,15 +1,18 @@
 ﻿@model FrontPageViewModel
-<ul class="home_box_container clearfix small-block-grid-3 large-block-grid-3 middlebox">
+<ul class="home_box_container clearfix small-block-grid-3 large-block-grid-3 middlebox" data-ng-controller="App.FrontpageController">
     <li>
         <div class="home_box white">
             <div class="clearfix">
                 <h2 class="largeGreenText">Oppskrifter</h2>
                 <h3 class="mediumBlackText">søk blant våre oppskrifter</h3>
                 <ul >
-                    @foreach (var recipe in Model.Recipes)
+                    <li data-ng-repeat="meal in meals">
+                        {{meal.Name}}
+                    </li>
+@*                    @foreach (var recipe in Model.Recipes)
                     {
                         <li>@Html.ActionLink(@recipe.Meal.Name, "Meal", "Meal", new { id = @recipe.MealId }, null)</li>
-                    }
+                    }*@
                 </ul>
             </div>
         </div>

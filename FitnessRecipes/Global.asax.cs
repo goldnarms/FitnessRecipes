@@ -3,6 +3,8 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using FitnessRecipes.App_Start;
+using FitnessRecipes.Binders;
+using FitnessRecipes.DAL.Models;
 using FitnessRecipes.Helpers;
 using WebMatrix.WebData;
 using WorldDomination.Web.Authentication.Mvc;
@@ -30,6 +32,7 @@ namespace FitnessRecipes
             razorViewEngine.ViewLocationCache = new TwoLevelViewCache(razorViewEngine.ViewLocationCache);
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(razorViewEngine);
+            ModelBinders.Binders.Add(typeof(User), new UserModelBinder());
         }
 
         protected void Application_BeginRequest()

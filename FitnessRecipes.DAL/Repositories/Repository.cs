@@ -24,6 +24,9 @@ namespace FitnessRecipes.DAL.Repositories
         {
             Context = context;
             _shareContext = true;
+            context.Configuration.LazyLoadingEnabled = true;
+            if(context.Database.Connection.State == ConnectionState.Closed)
+                context.Database.Connection.Open();
         }
 
         protected Repository()
@@ -42,7 +45,10 @@ namespace FitnessRecipes.DAL.Repositories
         public void Dispose()
         {
             if (_shareContext && (Context != null))
+            {
+                Context.Database.Connection.Close();
                 Context.Dispose();
+            }
         }
 
         public abstract T Get(int id);

@@ -11,5 +11,6 @@ namespace FitnessRecipes.DAL.Interfaces
     {
         IEnumerable<Comment> GetCommentsForMeal(int mealId);
         IEnumerable<Comment> GetCommentsForDiet(int dietId);
+        IEnumerable<Comment> GetLatestCommentsForUser(int userId, int size = 3);
     }
 }

@@ -16,5 +16,10 @@ namespace FitnessRecipes.DAL.Fakes
         {
             throw new NotImplementedException();
         }
+
+        public IEnumerable<Comment> GetLatestCommentsForUser(int userId, int size)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

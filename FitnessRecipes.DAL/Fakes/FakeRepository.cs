@@ -65,17 +65,19 @@ namespace FitnessRecipes.DAL.Fakes
 
         public IEnumerable<T> Filter<Key>(Expression<Func<T, bool>> filter, out int total, int index = 0, int size = 50)
         {
-            throw new NotImplementedException();
+            var result = _dictionary.Values.AsQueryable().Where(filter);
+            total = result.Count();
+            return result.Skip(index).Take(size);
         }
 
         public bool Contains(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return _dictionary.Values.AsQueryable().Any(predicate);
         }
 
         public T Find(Expression<Func<T, bool>> predicate)
         {
-            throw new NotImplementedException();
+            return _dictionary.Values.AsQueryable().FirstOrDefault(predicate);
         }
 
         public T Create(T obj)
@@ -89,23 +91,18 @@ namespace FitnessRecipes.DAL.Fakes
 
         public int Update(T obj)
         {
-            throw new NotImplementedException();
+            dynamic dynObj = obj;
+            if (obj.PropertyExist("Id"))
+            {
+                if (_dictionary.ContainsKey(dynObj.Id))
+                {
+                    _dictionary[dynObj.Id] = obj;
+                }
+                return dynObj.Id;
+            }
+            return 0;
         }
 
-        public int Count { get; private set; }
-        public void RemoveIngredientFromDiet(int dietId, int ingredientId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Recipe> GetMatching(List<int> liste)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Ingredient> GetIngredientsForRecipe(int id)
-        {
-            throw new NotImplementedException();
-        }
+        public int Count { get { return _dictionary.Count; } }
     }
 }

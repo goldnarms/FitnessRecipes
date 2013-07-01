@@ -6,6 +6,16 @@ namespace FitnessRecipes
     {
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Add(new ScriptBundle("~/bundles/App").Include(
+                "~/Scripts/angular.js",
+                "~/App/Services/AuthorService.js",
+                "~/App/Services/DietService.js",
+                "~/App/Services/MealService.js",
+                "~/App/App.js",
+                "~/App/Controllers/FrontPageController.js",
+                "~/App/Controllers/MealController.js"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                 "~/Scripts/jquery-1.9.1.js"));
 

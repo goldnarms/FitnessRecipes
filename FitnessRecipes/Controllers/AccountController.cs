@@ -65,7 +65,7 @@ namespace FitnessRecipes.Controllers
         //
         // POST: /Account/Login
 
-        [HttpPost]
+        [System.Web.Mvc.HttpPost]
         [AllowAnonymous]
         //[ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model, string returnUrl)
@@ -90,6 +90,7 @@ namespace FitnessRecipes.Controllers
         private ActionResult SignInUser(string username, bool rememberMe, User user)
         {
             _formsAuthentication.SetAuthCookie(username, rememberMe);
+            
             SessionFacade.User = user;
             var diet = user.UserDiets.LastOrDefault(ud => ud.Active);
             if(diet != null)

@@ -2357,6 +2357,9 @@ i:hover {
       padding: 15px;
       width: 100%; }
 
+.green h2 {
+  color: #fff; }
+
 #comments_list .comment_details p {
   padding-bottom: 10px;
   padding-top: 10px;

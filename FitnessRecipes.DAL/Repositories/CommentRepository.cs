@@ -30,5 +30,11 @@ namespace FitnessRecipes.DAL.Repositories
         {
             return DbSet.Where(comment => comment.Diet.Id == dietId);
         }
+
+        public IEnumerable<Comment> GetLatestCommentsForUser(int userId, int size = 3)
+        {
+            var commentsForUser = DbSet.Where(comment => comment.UserId == userId || comment.Comment2.UserId == userId || comment.Comment1.Any(c => c.UserId == userId));
+            return commentsForUser.OrderByDescending(c => c.DateAdded).Take(3);
+        }
     }
 }

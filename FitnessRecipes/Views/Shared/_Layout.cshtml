@@ -13,7 +13,7 @@
 
     @*@Scripts.Render("~/bundles/fitnessrecipes")*@
 </head>
-<body>
+<body data-ng-app="app">
     @Html.Partial("_Menu")
     @RenderSection("slider", required: false)
     <div class="row">
@@ -35,6 +35,7 @@
 </script>*@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/foundation")
+    @Scripts.Render("~/bundles/App")
     <script>
         $(document).foundation();
     </script>
